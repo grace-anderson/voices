@@ -16,6 +16,9 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+// Navbar links (on Header)
+const linksArray = ["Home", "About", "Stories", "Contact"];
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,8 +48,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
+          <Header links={linksArray} />
+          <div>
             <Routes>
               <Route 
                 path="/"
