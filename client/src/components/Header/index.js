@@ -14,10 +14,10 @@ const Header = () => {
     <header className="">
       <div>
         <Link className="" to="/">
-          <Typography variant="h1" sx={{color: "red"}}>Tech Thoughts</Typography>
+          <Typography variant="h1" sx={{color: "red"}}>Voices</Typography>
         </Link>
         <Typography variant="subtitle1">
-          Get into the mind of a programmer.
+          Tell your story.
         </Typography>
       </div>
       <div>

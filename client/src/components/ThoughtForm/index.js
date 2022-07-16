@@ -80,7 +80,7 @@ const ThoughtForm = () => {
 
   return (
     <div>
-      <Typography variant="h3">What's on your techy mind?</Typography>
+      <Typography variant="h3">Write your story...</Typography>
       {Auth.loggedIn() ? (
         <>
           <p

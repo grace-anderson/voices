@@ -30,7 +30,7 @@ const ThoughtList = ({
               ) : (
                 <>
                   <span style={{ fontSize: "1rem" }}>
-                    You had this thought on {thought.createdAt}
+                    You wrote this story on {thought.createdAt}
                   </span>
                 </>
               )}
@@ -39,7 +39,7 @@ const ThoughtList = ({
               <Typography variant="body2">{thought.thoughtText}</Typography>
             </div>
             <Link className="btn" to={`/thoughts/${thought._id}`}>
-              Join the discussion on this thought.
+              Read the story
             </Link>
           </div>
         ))}
