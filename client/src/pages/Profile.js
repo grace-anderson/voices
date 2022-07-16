@@ -49,10 +49,10 @@ const Profile = () => {
         )}
 
         <div>
-        {/* <h2>
+        <h2>
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-        </h2> */}
-        <Typography variant='h2'>Your stories</Typography>
+        </h2>
+        {/* <Typography variant='h2'>Your stories</Typography> */}
           <ThoughtList
             thoughts={user.thoughts}
             title={`${user.username}'s thoughts...`}

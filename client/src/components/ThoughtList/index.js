@@ -24,7 +24,7 @@ const ThoughtList = ({
                 <Link className="" to={`/profiles/${thought.thoughtAuthor}`}>
                   {thought.thoughtAuthor} <br />
                   <span style={{ fontSize: "1rem" }}>
-                    had this thought on {thought.createdAt}
+                    wrote this story on {thought.createdAt}
                   </span>
                 </Link>
               ) : (
@@ -36,7 +36,7 @@ const ThoughtList = ({
               )}
             </Typography>
             <div className="card-body">
-              <Typography variant="body2">{thought.thoughtText}</Typography>
+              <p>{thought.thoughtText}</p>
             </div>
             <Link className="btn" to={`/thoughts/${thought._id}`}>
               Read the story
