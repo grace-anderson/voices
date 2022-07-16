@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import {
+  Typography,
+  Button,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 
-import Auth from '../../utils/auth';
+import { ADD_THOUGHT } from "../../utils/mutations";
+import { QUERY_THOUGHTS, QUERY_ME } from "../../utils/queries";
+
+import Auth from "../../utils/auth";
 
 const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
+  const [thoughtText, setThoughtText] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
+
+  // TEST checkbox
+  const [publish, setPublish] = useState(false);
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     update(cache, { data: { addThought } }) {
@@ -42,10 +54,11 @@ const ThoughtForm = () => {
         variables: {
           thoughtText,
           thoughtAuthor: Auth.getProfile().data.username,
+          publish,
         },
       });
 
-      setThoughtText('');
+      setThoughtText("");
     } catch (err) {
       console.error(err);
     }
@@ -54,57 +67,77 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'thoughtText' && value.length <= 280) {
+    if (name === "thoughtText" && value.length <= 280) {
       setThoughtText(value);
       setCharacterCount(value.length);
+    }
+
+    if (setPublish(true)) {
+      console.log("publish is true");
+      setPublish(false);
     }
   };
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
-
+      <Typography variant="h3">What's on your techy mind?</Typography>
       {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
+              characterCount === 280 || error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/280
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            style={{ display: "flex", flexDirection: "column" }}
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
-              <textarea
+            <div className="">
+              <TextField
                 name="thoughtText"
                 placeholder="Here's a new thought..."
                 value={thoughtText}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                variant="outlined"
+                className="form-input"
+                type={"text"}
+                multiline
                 onChange={handleChange}
-              ></textarea>
+                sx={{ margin: 3 }}
+              ></TextField>
+              {/* adding a test checkbox */}
+              <FormGroup>
+                <FormControlLabel
+                  // control={<Checkbox defaultChecked />}
+                  control={
+                    <Checkbox
+                      onChange={() =>
+                        setPublish((prev) => ({
+                          ...prev,
+                          publish: !publish.publish,
+                        }))
+                      }
+                    />
+                  }
+                  label="Publish this story"
+                />
+              </FormGroup>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <div className="">
+              <Button variant="contained" sx={{ margin: 3 }} type="submit">
                 Add Thought
-              </button>
+              </Button>
             </div>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
-              </div>
-            )}
+            {error && <div className="">{error.message}</div>}
           </form>
         </>
       ) : (
-        <p>
-          You need to be logged in to share your thoughts. Please{' '}
+        <Typography variant="body1">
+          You need to be logged in to share your thoughts. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
+        </Typography>
       )}
     </div>
   );

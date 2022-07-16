@@ -1,5 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { Typography } from "@mui/material";
 
 const ThoughtList = ({
   thoughts,
@@ -16,33 +18,27 @@ const ThoughtList = ({
       {showTitle && <h3>{title}</h3>}
       {thoughts &&
         thoughts.map((thought) => (
-          <div key={thought._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+          <div key={thought._id} className="card">
+            <Typography variant="h4" className="card-header">
               {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${thought.thoughtAuthor}`}
-                >
+                <Link className="" to={`/profiles/${thought.thoughtAuthor}`}>
                   {thought.thoughtAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     had this thought on {thought.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: '1rem' }}>
+                  <span style={{ fontSize: "1rem" }}>
                     You had this thought on {thought.createdAt}
                   </span>
                 </>
               )}
-            </h4>
-            <div className="card-body bg-light p-2">
-              <p>{thought.thoughtText}</p>
+            </Typography>
+            <div className="card-body">
+              <Typography variant="body2">{thought.thoughtText}</Typography>
             </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
-            >
+            <Link className="btn" to={`/thoughts/${thought._id}`}>
               Join the discussion on this thought.
             </Link>
           </div>

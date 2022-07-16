@@ -1,33 +1,31 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Typography, Button } from "@mui/material";
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container text-center mb-5">
-        {location.pathname !== '/' && (
-          <button
-            className="btn btn-dark mb-3"
-            onClick={() => navigate(-1)}
-          >
-            &larr; Go Back
-          </button>
-        )}
-        <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            ❤️
-          </span>{' '}
-          by the Tech Thoughts team.
-        </h4>
-      </div>
+    <footer className="">
+        <div className="">
+          {location.pathname !== "/" && (
+            <Button variant="text" sx={{margin:3}} onClick={() => navigate(-1)}>
+              &larr; Go Back
+            </Button>
+          )}
+                <Typography variant="h4">
+            Copyright 2022 {" "}
+            <span
+              className="emoji"
+              role="img"
+              aria-label="heart"
+              aria-hidden="false"
+            >
+              ❤️
+            </span>{" "}
+            Helen Anderson
+          </Typography>
+        </div>
     </footer>
   );
 };
