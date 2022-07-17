@@ -13,7 +13,6 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import PublicIcon from "@mui/icons-material/Public";
 
 import Auth from "../../utils/auth";
 import DrawerComp from "./DrawerComp";
@@ -33,10 +32,10 @@ const Header = ({ links }) => {
 
   return (
     <React.Fragment>
+      const theme = useTheme(); console.log(theme);
       <AppBar
         sx={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(191,185,174,0.9556197478991597) 0%, rgba(140,130,125,1) 48%, rgba(115,107,101,1) 100%)",
+          backgroundColor: "#8c7876",
         }}
       >
         <Toolbar>
@@ -44,7 +43,11 @@ const Header = ({ links }) => {
             <>
               <DrawerComp links={links} />
               <Grid sx={{ placeItems: "center" }} container>
-                <Grid item xs="8" />
+                <Grid item xs="1" />
+                <Grid item xs="2">
+                  <Typography variant="subtitle2">Voices</Typography>
+                </Grid>
+                <Grid item xs="3" />
                 <Grid item xs="4">
                   <Box display="flex">
                     {Auth.loggedIn() ? (
@@ -54,6 +57,7 @@ const Header = ({ links }) => {
                         </Link>
                         <Button
                           variant="contained"
+                          background="#ec732b"
                           sx={{
                             marginLeft: "auto",
                             background: "rgba(191,185,174,0.9556197478991597)",
@@ -95,12 +99,10 @@ const Header = ({ links }) => {
             </>
           ) : (
             <Grid sx={{ placeItems: "center" }} container>
-              <Grid item xs={1}>
-                <Typography>
-                  <PublicIcon />
-                </Typography>
+              <Grid item xs="2">
+                <Typography variant="subtitle2">Voices</Typography>
               </Grid>
-              <Grid item xs={7}>
+              <Grid item xs="6">
                 <Tabs
                   indicatorColor="secondary"
                   textColor="inherit"
@@ -165,9 +167,7 @@ const Header = ({ links }) => {
       </AppBar>
       <div>
         <Link className="" to="/">
-          <Typography variant="h1" sx={{ color: "red" }}>
-            Voices
-          </Typography>
+          <Typography variant="h1">Welcome to Voices</Typography>
         </Link>
         <Typography variant="subtitle1">Tell your story.</Typography>
       </div>
