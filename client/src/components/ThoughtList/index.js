@@ -20,23 +20,28 @@ const ThoughtList = ({
   }
 
   return (
-    <Grid container spacing={3}
-    display="flex"
-    flexGrow={1}
-    flexDirection="row"
-    justify="space-between"
-    justifyContent="center"
-    sx={{marginLeft: "auto", marginRight: "auto"}}
+    <Grid
+      container
+      spacing={3}
+      display="flex"
+      flexGrow={1}
+      flexDirection="row"
+      justify="space-between"
+      justifyContent="center"
+      sx={{ marginLeft: "auto", marginRight: "auto" }}
     >
       {/* {showTitle && <h3>{title}</h3>} */}
       {thoughts &&
         thoughts.map((thought) => (
           <Grid>
             {/* Card */}
-            <Card sx={{ maxWidth: 300, minHeight: 300, margin: 3}}>
+            <Card sx={{ maxWidth: 300, minHeight: 300, margin: 3 }}>
               <div key={thought._id}>
                 {/* Card Content */}
                 <CardContent>
+                  <Typography variant="body1" sx={{ marginTop: 1 }}>
+                    {thought.thoughtTitle}
+                  </Typography>
                   <Typography variant="h4">
                     {showUsername ? (
                       <Link
@@ -45,7 +50,7 @@ const ThoughtList = ({
                       >
                         {thought.thoughtAuthor} <br />
                         <Typography variant="caption">
-                            wrote this story on {thought.createdAt}
+                          wrote this story on {thought.createdAt}
                         </Typography>
                       </Link>
                     ) : (

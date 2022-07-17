@@ -6,9 +6,9 @@ import {
   Typography,
   Button,
   TextField,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
+  // FormGroup,
+  // FormControlLabel,
+  // Checkbox,
 } from "@mui/material";
 
 import { ADD_THOUGHT } from "../../utils/mutations";
@@ -17,12 +17,14 @@ import { QUERY_THOUGHTS, QUERY_ME } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const ThoughtForm = () => {
+  const [thoughtTitle, setThoughtTitle] = useState("");
+
   const [thoughtText, setThoughtText] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  // TEST checkbox
-  const [publish, setPublish] = useState(false);
+  // Publishing checkbox - not complete
+  // const [publish, setPublish] = useState(false);
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     update(cache, { data: { addThought } }) {
@@ -52,12 +54,14 @@ const ThoughtForm = () => {
     try {
       const { data } = await addThought({
         variables: {
+          thoughtTitle,
           thoughtText,
           thoughtAuthor: Auth.getProfile().data.username,
-          publish,
+          // publish,
         },
       });
 
+      setThoughtTitle("");
       setThoughtText("");
     } catch (err) {
       console.error(err);
@@ -72,10 +76,14 @@ const ThoughtForm = () => {
       setCharacterCount(value.length);
     }
 
-    if (setPublish(true)) {
-      console.log("publish is true");
-      setPublish(false);
+    if (name === "thoughtTitle" && value.length <= 140) {
+      setThoughtTitle(value);
     }
+
+    // if (setPublish(true)) {
+    //   console.log("publish is true");
+    //   setPublish(false);
+    // }
   };
 
   return (
@@ -94,7 +102,20 @@ const ThoughtForm = () => {
             style={{ display: "flex", flexDirection: "column" }}
             onSubmit={handleFormSubmit}
           >
-            <div className="">
+            <div>
+              <TextField
+                name="thoughtTitle"
+                placeholder="My story title"
+                value={thoughtTitle}
+                variant="outlined"
+                className="form-input"
+                type={"text"}
+                multiline
+                onChange={handleChange}
+                sx={{ margin: 3 }}
+              ></TextField>
+            </div>
+            <div>
               <TextField
                 name="thoughtText"
                 placeholder="Here's a new thought..."
@@ -107,7 +128,7 @@ const ThoughtForm = () => {
                 sx={{ margin: 3 }}
               ></TextField>
               {/* adding a test checkbox */}
-              <FormGroup>
+              {/* <FormGroup>
                 <FormControlLabel
                   // control={<Checkbox defaultChecked />}
                   control={
@@ -122,7 +143,7 @@ const ThoughtForm = () => {
                   }
                   label="Publish this story"
                 />
-              </FormGroup>
+              </FormGroup> */}
             </div>
 
             <div className="">

@@ -45,6 +45,7 @@ const Login = (props) => {
   return (
     <main className="">
       <div className="">
+        <Typography variant="h1">Login</Typography>
         <div className="card">
           <Typography variant="h4" className="card-header">
             Login

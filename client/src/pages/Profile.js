@@ -39,6 +39,7 @@ const Profile = () => {
 
   return (
     <div>
+      <Typography variant="h1">{user.username}'s Profile</Typography>
       <div>
         {!userParam && (
           <div
@@ -52,7 +53,7 @@ const Profile = () => {
         <h2>
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
-        {/* <Typography variant='h2'>Your stories</Typography> */}
+        <Typography variant='h2'>Your stories</Typography>
           <ThoughtList
             thoughts={user.thoughts}
             title={`${user.username}'s thoughts...`}
