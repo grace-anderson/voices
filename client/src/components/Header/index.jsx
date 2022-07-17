@@ -89,7 +89,6 @@ const Header = ({ links }) => {
                           // background=""
                           sx={{
                             marginLeft: "auto",
-                            // background: "rgba(236,115,43,1)",
                           }}
                           onClick={logout}
                         >
@@ -101,7 +100,6 @@ const Header = ({ links }) => {
                         <CustomisedButton
                           sx={{
                             marginLeft: "auto",
-                            // background: "rgba(236,115,43,1)",
                           }}
                           variant="contained"
                         >
@@ -112,7 +110,6 @@ const Header = ({ links }) => {
                         <CustomisedButton
                           sx={{
                             marginLeft: 1,
-                            // background: "rgba(236,115,43,1)",
                           }}
                           variant="contained"
                         >
@@ -128,7 +125,7 @@ const Header = ({ links }) => {
             </>
           ) : (
             <Grid sx={{ placeItems: "center" }} container>
-              <Grid item xs="2">
+              <Grid item xs="4">
                 <CustomisedLinkHome className="" to="/">
                   <Typography variant="subtitle2">Voices</Typography>
                 </CustomisedLinkHome>
@@ -139,6 +136,9 @@ const Header = ({ links }) => {
                   textColor="inherit"
                   fontSize="1.2rem"
                   value={value}
+                  sx={{
+                    marginLeft: "auto",
+                  }}
                   onChange={(e, val) => setValue(val)}
                 >
                   {links.map((link, index) => (
@@ -146,8 +146,8 @@ const Header = ({ links }) => {
                   ))}
                 </Tabs>
               </Grid>
-              <Grid item xs="1" />
-              <Grid item xs="3">
+              {/* <Grid item xs="1" /> */}
+              <Grid item xs="2">
                 <Box display="flex">
                   {Auth.loggedIn() ? (
                     <>
@@ -156,10 +156,6 @@ const Header = ({ links }) => {
                       </CustomisedLink>
                       <CustomisedButton
                         variant="contained"
-                        sx={{
-                          marginLeft: "auto",
-                          // background: "rgba(191,185,174,0.9556197478991597)",
-                        }}
                         onClick={logout}
                       >
                         Logout
@@ -170,7 +166,6 @@ const Header = ({ links }) => {
                       <CustomisedButton
                         sx={{
                           marginLeft: "auto",
-                          // background: "rgba(191,185,174,0.9556197478991597)",
                         }}
                         variant="contained"
                       >
@@ -181,7 +176,6 @@ const Header = ({ links }) => {
                       <CustomisedButton
                         sx={{
                           marginLeft: 1,
-                          // background: "rgba(191,185,174,0.9556197478991597)",
                         }}
                         variant="contained"
                       >
