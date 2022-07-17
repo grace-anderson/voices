@@ -19,6 +19,14 @@ export const theme = createTheme({
         color: "#F2762E",
         fontWeight: 400,
     },
+    h2: {
+      fontFamily: '"Satisfy", cursive',
+      fontSize: "3rem",
+      marginTop: "2rem",
+      marginBottom: "2rem",
+      color: "#F2762E",
+      fontWeight: 400,
+  },
     subtitle2: {
         fontFamily: '"Satisfy", cursive',
         fontSize: "2.4rem",
