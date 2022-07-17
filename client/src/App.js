@@ -17,7 +17,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Header navbar links
-const linksArray = ["Home", "Stories", "About"];
+const linksArray = ["Home", "All Our Stories", "About Us"];
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

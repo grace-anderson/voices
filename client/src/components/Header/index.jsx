@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Grid,
+  styled,
   Toolbar,
   Tab,
   Tabs,
@@ -17,6 +18,29 @@ import {
 import Auth from "../../utils/auth";
 import DrawerComp from "./DrawerComp";
 
+const CustomisedButton = styled(Button)`
+  font-size: 1rem;
+  color: white;
+  background: #f2762e;
+  :hover {
+    color: white;
+  }
+`;
+const CustomisedLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+`;
+const CustomisedLinkHome = styled(Link)`
+  color: black;
+  text-decoration: none;
+  :hover {
+    color: white;
+  }
+`;
+const CustomisedTab = styled(Tab)`
+  font-size: 1.2rem;
+`;
+
 const Header = ({ links }) => {
   const logout = (event) => {
     event.preventDefault();
@@ -25,7 +49,8 @@ const Header = ({ links }) => {
 
   const theme = useTheme();
   console.log(theme);
-  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
 
   const [value, setValue] = React.useState(0);
@@ -35,7 +60,9 @@ const Header = ({ links }) => {
       const theme = useTheme(); console.log(theme);
       <AppBar
         sx={{
-          backgroundColor: "#8c7876",
+          backgroundColor: "#D9B589",
+          paddingTop: "0.8rem",
+          paddingBottom: "0.8rem",
         }}
       >
         <Toolbar>
@@ -45,52 +72,54 @@ const Header = ({ links }) => {
               <Grid sx={{ placeItems: "center" }} container>
                 <Grid item xs="1" />
                 <Grid item xs="2">
-                  <Typography variant="subtitle2">Voices</Typography>
+                  <CustomisedLinkHome className="" to="/">
+                    <Typography variant="subtitle2">Voices</Typography>
+                  </CustomisedLinkHome>
                 </Grid>
                 <Grid item xs="3" />
                 <Grid item xs="4">
                   <Box display="flex">
                     {Auth.loggedIn() ? (
                       <>
-                        <Link className="" to="/me">
+                        <CustomisedLink className="" to="/me">
                           {Auth.getProfile().data.username}'s profile
-                        </Link>
-                        <Button
+                        </CustomisedLink>
+                        <CustomisedButton
                           variant="contained"
-                          background="#ec732b"
+                          // background=""
                           sx={{
                             marginLeft: "auto",
-                            background: "rgba(191,185,174,0.9556197478991597)",
+                            // background: "rgba(236,115,43,1)",
                           }}
                           onClick={logout}
                         >
                           Logout
-                        </Button>
+                        </CustomisedButton>
                       </>
                     ) : (
                       <>
-                        <Button
+                        <CustomisedButton
                           sx={{
                             marginLeft: "auto",
-                            background: "rgba(191,185,174,0.9556197478991597)",
+                            // background: "rgba(236,115,43,1)",
                           }}
                           variant="contained"
                         >
-                          <Link className="" to="/login">
+                          <CustomisedLink className="" to="/login">
                             Login
-                          </Link>
-                        </Button>
-                        <Button
+                          </CustomisedLink>
+                        </CustomisedButton>
+                        <CustomisedButton
                           sx={{
                             marginLeft: 1,
-                            background: "rgba(191,185,174,0.9556197478991597)",
+                            // background: "rgba(236,115,43,1)",
                           }}
                           variant="contained"
                         >
-                          <Link className="btn" to="/signup">
+                          <CustomisedLink className="btn" to="/signup">
                             Signup
-                          </Link>
-                        </Button>
+                          </CustomisedLink>
+                        </CustomisedButton>
                       </>
                     )}
                   </Box>
@@ -100,17 +129,20 @@ const Header = ({ links }) => {
           ) : (
             <Grid sx={{ placeItems: "center" }} container>
               <Grid item xs="2">
-                <Typography variant="subtitle2">Voices</Typography>
+                <CustomisedLinkHome className="" to="/">
+                  <Typography variant="subtitle2">Voices</Typography>
+                </CustomisedLinkHome>
               </Grid>
               <Grid item xs="6">
                 <Tabs
                   indicatorColor="secondary"
                   textColor="inherit"
+                  fontSize="1.2rem"
                   value={value}
                   onChange={(e, val) => setValue(val)}
                 >
                   {links.map((link, index) => (
-                    <Tab key={index} label={link} />
+                    <CustomisedTab key={index} label={link} />
                   ))}
                 </Tabs>
               </Grid>
@@ -119,44 +151,44 @@ const Header = ({ links }) => {
                 <Box display="flex">
                   {Auth.loggedIn() ? (
                     <>
-                      <Link className="" to="/me">
+                      <CustomisedLink className="" to="/me">
                         {Auth.getProfile().data.username}'s profile
-                      </Link>
-                      <Button
+                      </CustomisedLink>
+                      <CustomisedButton
                         variant="contained"
                         sx={{
                           marginLeft: "auto",
-                          background: "rgba(191,185,174,0.9556197478991597)",
+                          // background: "rgba(191,185,174,0.9556197478991597)",
                         }}
                         onClick={logout}
                       >
                         Logout
-                      </Button>
+                      </CustomisedButton>
                     </>
                   ) : (
                     <>
-                      <Button
+                      <CustomisedButton
                         sx={{
                           marginLeft: "auto",
-                          background: "rgba(191,185,174,0.9556197478991597)",
+                          // background: "rgba(191,185,174,0.9556197478991597)",
                         }}
                         variant="contained"
                       >
-                        <Link className="" to="/login">
+                        <CustomisedLink className="" to="/login">
                           Login
-                        </Link>
-                      </Button>
-                      <Button
+                        </CustomisedLink>
+                      </CustomisedButton>
+                      <CustomisedButton
                         sx={{
                           marginLeft: 1,
-                          background: "rgba(191,185,174,0.9556197478991597)",
+                          // background: "rgba(191,185,174,0.9556197478991597)",
                         }}
                         variant="contained"
                       >
-                        <Link className="btn" to="/signup">
+                        <CustomisedLink className="btn" to="/signup">
                           Signup
-                        </Link>
-                      </Button>
+                        </CustomisedLink>
+                      </CustomisedButton>
                     </>
                   )}
                 </Box>
@@ -165,12 +197,6 @@ const Header = ({ links }) => {
           )}
         </Toolbar>
       </AppBar>
-      <div>
-        <Link className="" to="/">
-          <Typography variant="h1">Welcome to Voices</Typography>
-        </Link>
-        <Typography variant="subtitle1">Tell your story.</Typography>
-      </div>
     </React.Fragment>
   );
 };

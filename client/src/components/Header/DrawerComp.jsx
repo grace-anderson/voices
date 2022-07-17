@@ -16,7 +16,7 @@ const DrawerComp = ({ links }) => {
   return (
     <React.Fragment>
       <Drawer
-        PaperProps={{ sx: { backgroundColor: "rgba(115,107,101,1)" } }}
+        PaperProps={{ sx: { backgroundColor: "#41591C" } }}
         open={open}
         onClose={() => setOpen(false)}
       >
@@ -31,7 +31,7 @@ const DrawerComp = ({ links }) => {
         </List>
       </Drawer>
       <IconButton
-        sx={{ marginLeft: "left", color: "white" }}
+        sx={{ marginLeft: "left", color: "black", fontSize: "large" }}
         onClick={() => setOpen(!open)}
       >
         <MenuRoundedIcon />

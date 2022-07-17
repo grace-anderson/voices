@@ -1,27 +1,28 @@
 import { createTheme } from "@mui/material";
 
-export const theme = createTheme({
+export const theme = createTheme({  
   palette: {
     background: {default: "#F2ECE8", paper: "#BFA08E"},
     primary: {
-      main: "#8C7876",
+      main: "#D9B589",
     },
     secondary: {
-        main: "#ec732b",
+        main: "#F2762E",
     }
   },
   typography: {
     h1: {
         fontFamily: '"Satisfy", cursive',
-        fontSize: "3rem",
-        marginTop: "5rem",
-        color: "#ec732b",
+        fontSize: "4rem",
+        marginTop: "8rem",
+        marginBottom: "1rem",
+        color: "#F2762E",
         fontWeight: 400,
     },
     subtitle2: {
         fontFamily: '"Satisfy", cursive',
-        fontSize: "2rem",
+        fontSize: "2.4rem",
         color: "#white",
     }
-  },
+  }
 });
