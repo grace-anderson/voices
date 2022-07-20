@@ -16,41 +16,59 @@ const Home = () => {
   // const isMatch = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
-    // <main>
-    // {isMatch ? (  ) : (   )}
-    <Grid container sx={{ placeItems: "center" }}>
-      {/* heading row */}
-      <Grid xs={1} />
-      <Grid xs={10}>
+    <Grid container spacing={3}>
+      <Grid container sx={{ placeItems: "center" }}>
+        {/* heading row */}
+        <Grid item xs={1} />
+        <Grid
+          item
+          xs={10}
+          sx={{
+            display: "flex",
+            textAlign: "center",
+            justifyContent: "center",
+            marginTop: 1,
+          }}
+        >
           <Typography variant="h1">Welcome to Voices</Typography>
-      </Grid>
-      <Grid xs={1} />
-      {/* paragraph row */}
-      <Grid item xs={1} />
-      <Grid item xs={10}>
-        <Typography variant="subtitle1">
-          Tell your story with Voices. Introduction paragraph ... Lemon drops cookie
-          marzipan candy cupcake. Dragée chocolate bar cotton candy bonbon
-          bonbon. Cupcake jelly-o chocolate cake soufflé jelly shortbread
-          chocolate cake marshmallow.
-        </Typography>
-      </Grid>
-      <Grid item xs={1} />
-      {/* recent stories heading */}
-      <Grid xs={1} />
-      <Grid xs={10}>
+        </Grid>
+        <Grid item xs={1} />
+        {/* paragraph row */}
+        <Grid item xs={1} />
+        <Grid item xs={10}>
+          <Typography variant="subtitle1">
+            Tell your story with Voices. Introduction paragraph ... Lemon drops
+            cookie marzipan candy cupcake. Dragée chocolate bar cotton candy
+            bonbon bonbon. Cupcake jelly-o chocolate cake soufflé jelly
+            shortbread chocolate cake marshmallow.
+          </Typography>
+        </Grid>
+        <Grid item xs={1} />
+        {/* recent stories heading */}
+        <Grid item xs={1} />
+        <Grid
+          item
+          xs={10}
+          sx={{
+            display: "flex",
+            textAlign: "center",
+            justifyContent: "center",
+            marginTop: 1,
+          }}
+        >
           <Typography variant="h2">Recent stories ...</Typography>
+        </Grid>
+        <Grid item xs={1} />
+        {/* Thoughts list */}
+        <Grid item xs={12}>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <ThoughtList thoughts={thoughts} />
+          )}
+        </Grid>
       </Grid>
-      <Grid xs={1} />
-      <div>
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <ThoughtList thoughts={thoughts} />
-        )}
-      </div>
     </Grid>
-    // </main>
   );
 };
 

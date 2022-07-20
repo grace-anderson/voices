@@ -125,12 +125,12 @@ const Header = ({ links }) => {
             </>
           ) : (
             <Grid sx={{ placeItems: "center" }} container>
-              <Grid item xs="4">
+              <Grid item xs={4}>
                 <CustomisedLinkHome className="" to="/">
                   <Typography variant="subtitle2">Voices</Typography>
                 </CustomisedLinkHome>
               </Grid>
-              <Grid item xs="6">
+              <Grid item xs={6}>
                 <Tabs
                   indicatorColor="secondary"
                   textColor="inherit"
@@ -147,17 +147,14 @@ const Header = ({ links }) => {
                 </Tabs>
               </Grid>
               {/* <Grid item xs="1" /> */}
-              <Grid item xs="2">
+              <Grid item xs={2}>
                 <Box display="flex">
                   {Auth.loggedIn() ? (
                     <>
                       <CustomisedLink className="" to="/me">
                         {Auth.getProfile().data.username}'s profile
                       </CustomisedLink>
-                      <CustomisedButton
-                        variant="contained"
-                        onClick={logout}
-                      >
+                      <CustomisedButton variant="contained" onClick={logout}>
                         Logout
                       </CustomisedButton>
                     </>

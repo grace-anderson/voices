@@ -1,15 +1,15 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-import ThoughtForm from '../components/ThoughtForm';
-import ThoughtList from '../components/ThoughtList';
+import ThoughtForm from "../components/ThoughtForm";
+import ThoughtList from "../components/ThoughtList";
 
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -38,32 +38,67 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <Typography variant="h1">{user.username}'s Profile</Typography>
-      <div>
+    <Grid container spacing={3}>
+      {/* heading row */}
+      <Grid item xs={1} />
+      <Grid item
+        xs={10}
+        sx={{
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+          marginTop: 1,
+          marginBottom: 2,
+        }}
+      >
+        <Typography variant="h1">{user.username}'s Profile</Typography>
+      </Grid>
+      <Grid item xs={1} />
+      {/* form row */}
+      <Grid xs={3} />
+      <Grid xs={6}>
         {!userParam && (
-          <div
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
+          <div style={{ border: "1px dotted #1a1a1a" }}>
             <ThoughtForm />
           </div>
         )}
-
-        <div>
-        <h2>
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-        </h2>
-        <Typography variant='h2'>Your stories</Typography>
-          <ThoughtList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
-            showTitle={false}
-            showUsername={false}
-          />
-        </div>
-        
-      </div>
-    </div>
+      </Grid>
+      <Grid item xs={3} />
+      {/* your profile heading */}
+      <Grid xs={1} />
+      <Grid
+        xs={10}
+        sx={{
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h2>Viewing {userParam ? `${user.username}'s` : "your"} profile.</h2>
+      </Grid>
+      <Grid item xs={1} />
+      {/* your stories heading */}
+      <Grid xs={1} />
+      <Grid item
+        xs={10}
+        sx={{
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography variant="h2">Your stories</Typography>
+      </Grid>
+      <Grid item xs={1} />
+      <Grid item xs={12}>
+        <ThoughtList
+          thoughts={user.thoughts}
+          title={`${user.username}'s thoughts...`}
+          showTitle={false}
+          showUsername={false}
+        />
+      </Grid>
+    </Grid>
   );
 };
 
