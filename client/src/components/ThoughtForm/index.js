@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import {
-  Typography,
   Button,
-  TextField,
+  Grid,
+  TextareaAutosize,
+  Typography,
   // FormGroup,
   // FormControlLabel,
   // Checkbox,
@@ -87,48 +88,73 @@ const ThoughtForm = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h3">Write your story...</Typography>
-      {Auth.loggedIn() ? (
-        <>
-          <p
-            className={`m-0 ${
-              characterCount === 280 || error ? "text-danger" : ""
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p>
-          <form
-            style={{ display: "flex", flexDirection: "column" }}
-            onSubmit={handleFormSubmit}
-          >
-            <div>
-              <TextField
-                name="thoughtTitle"
-                placeholder="My story title"
-                value={thoughtTitle}
-                variant="outlined"
-                className="form-input"
-                type={"text"}
-                multiline
-                onChange={handleChange}
-                sx={{ margin: 3 }}
-              ></TextField>
-            </div>
-            <div>
-              <TextField
-                name="thoughtText"
-                placeholder="Here's a new thought..."
-                value={thoughtText}
-                variant="outlined"
-                className="form-input"
-                type={"text"}
-                multiline
-                onChange={handleChange}
-                sx={{ margin: 3 }}
-              ></TextField>
-              {/* adding a test checkbox */}
-              {/* <FormGroup>
+    <>
+      <Grid container 
+      
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+        justifyContent: "center",
+        marginTop: 1,
+        marginBottom: 2,
+      }}
+      
+  
+      >
+        {/* form heading row */}
+        <Typography variant="h3">Write a story...</Typography>
+
+        {Auth.loggedIn() ? (
+          <>
+            <p
+              sx={{
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+              }}
+              className={`m-0 ${
+                characterCount === 280 || error ? "text-danger" : ""
+              }`}
+            >
+              Character Count: {characterCount}/280
+            </p>
+
+            <form
+              style={{ display: "flex", flexDirection: "column" }}
+              onSubmit={handleFormSubmit}
+            >
+              <div>
+                <TextareaAutosize
+                  name="thoughtTitle"
+                  placeholder="My story title (140 characters max)"
+                  value={thoughtTitle}
+                  variant="outlined"
+                  className="form-input"
+                  type={"text"}
+                  multiline
+                  onChange={handleChange}
+                  sx={{ margin: 3 }}
+                  style={{ height: "2rem", width: "70%" }}
+                  font-family="'Roboto', sans-serif"
+                />
+              </div>
+              <div>
+                <TextareaAutosize
+                  name="thoughtText"
+                  placeholder="Here's a new thought..."
+                  value={thoughtText}
+                  variant="outlined"
+                  className="form-input"
+                  type={"text"}
+                  multiline
+                  onChange={handleChange}
+                  sx={{ margin: 3 }}
+                  style={{ height: "10rem", width: "70%" }}
+                  font-family="'Roboto', sans-serif"
+                />
+                {/* adding a test checkbox */}
+                {/* <FormGroup>
                 <FormControlLabel
                   // control={<Checkbox defaultChecked />}
                   control={
@@ -144,23 +170,25 @@ const ThoughtForm = () => {
                   label="Publish this story"
                 />
               </FormGroup> */}
-            </div>
+              </div>
+              
+                <Grid>
+                <Button variant="contained" sx={{ margin: 3 }} type="submit">
+                  Add Thought
+                </Button>
+                </Grid>
+              {error && <div className="">{error.message}</div>}
+            </form>
 
-            <div className="">
-              <Button variant="contained" sx={{ margin: 3 }} type="submit">
-                Add Thought
-              </Button>
-            </div>
-            {error && <div className="">{error.message}</div>}
-          </form>
-        </>
-      ) : (
-        <Typography variant="body1">
-          You need to be logged in to share your thoughts. Please{" "}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </Typography>
-      )}
-    </div>
+          </>
+        ) : (
+          <Typography variant="body1">
+            You need to be logged in to share your thoughts. Please{" "}
+            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          </Typography>
+        )}
+    </Grid>
+    </>
   );
 };
 

@@ -38,10 +38,11 @@ const Profile = () => {
   }
 
   return (
-    <Grid container spacing={3}>
+    <Grid>
       {/* heading row */}
       <Grid item xs={1} />
-      <Grid item
+      <Grid
+        item
         xs={10}
         sx={{
           display: "flex",
@@ -55,15 +56,10 @@ const Profile = () => {
       </Grid>
       <Grid item xs={1} />
       {/* form row */}
-      <Grid xs={3} />
-      <Grid xs={6}>
-        {!userParam && (
-          <div style={{ border: "1px dotted #1a1a1a" }}>
-            <ThoughtForm />
-          </div>
-        )}
-      </Grid>
-      <Grid item xs={3} />
+      <Grid xs={2} />
+      <Grid xs={8}
+      >{!userParam && <ThoughtForm />}</Grid>
+      <Grid item xs={2} />
       {/* your profile heading */}
       <Grid xs={1} />
       <Grid
@@ -79,7 +75,8 @@ const Profile = () => {
       <Grid item xs={1} />
       {/* your stories heading */}
       <Grid xs={1} />
-      <Grid item
+      <Grid
+        item
         xs={10}
         sx={{
           display: "flex",
@@ -90,6 +87,7 @@ const Profile = () => {
         <Typography variant="h2">Your stories</Typography>
       </Grid>
       <Grid item xs={1} />
+      {/* thoughts displayed */}
       <Grid item xs={12}>
         <ThoughtList
           thoughts={user.thoughts}
