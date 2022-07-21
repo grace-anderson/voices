@@ -9,6 +9,10 @@ export const theme = createTheme({
     secondary: {
       main: "#F2762E",
     },
+    error: {
+      main: "#A60303",
+      fontWeight: "700",
+    }
   },
   typography: {
     h1: {

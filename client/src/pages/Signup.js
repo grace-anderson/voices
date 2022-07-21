@@ -149,7 +149,6 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     required
-                    // className="form-input"
                     style={{ backgroundColor: "white" }}
                     type="text"
                     value={formState.name}
@@ -162,7 +161,6 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     required
-                    // className="form-input"
                     style={{ backgroundColor: "white" }}
                     type="email"
                     value={formState.email}
@@ -175,7 +173,6 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     required
-                    // className="form-input"
                     style={{ backgroundColor: "white" }}
                     type="password"
                     value={formState.password}
@@ -202,10 +199,12 @@ const Signup = () => {
                 <Typography
                   variant="subtitle1"
                   sx={{
+                    color: "#A60303",
+                    fontWeight: "700",
                     display: "flex",
                     textAlign: "center",
                     justifyContent: "center",
-                    marginBottom: -4
+                    marginBottom: -4,
                   }}
                 >
                   {error.message}

@@ -21,8 +21,11 @@ const server = new ApolloServer({
     if (error.message.startsWith("User validation failed: username: Path `username` is required")) {
       return new Error("Your username is required");
     }
+    if (error.message.startsWith("User validation failed: email: Path `email` is required")) {
+      return new Error("Please add a valid email");
+    }
     if (error.message.startsWith("User validation failed: password")) {
-      return new Error("Password must be at least 5 characters long");
+      return new Error("Your password must be at least 5 characters long");
     }
 
     // Otherwise return the original error. The error can also
