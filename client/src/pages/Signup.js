@@ -15,18 +15,6 @@ import {
 
 import Auth from "../utils/auth";
 
-const CustomisedSubmitButton = styled(Button)`
-  font-size: 1rem;
-  color: white;
-  font-weight: 500;
-  background: #41591c;
-  :hover {
-    color: white;
-    font-weight: 700;
-    background: #f2762e;
-  }
-`;
-
 const CustomisedLinkMessage = styled(Link)`
   color: #f2762e;
   text-decoration: none;
@@ -37,6 +25,18 @@ const CustomisedLinkMessage = styled(Link)`
     color: black;
     font-weight: 700;
     font-size: 1rem;
+  }
+`;
+
+const CustomisedSubmitButton = styled(Button)`
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background: #41591c;
+  :hover {
+    color: white;
+    font-weight: 700;
+    background: #f2762e;
   }
 `;
 
@@ -57,6 +57,8 @@ const Signup = () => {
     });
   };
 
+  // const [errorText, setErrorText] = useState();
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -69,6 +71,7 @@ const Signup = () => {
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
+      // setErrorText(e);
     }
   };
 
@@ -92,7 +95,7 @@ const Signup = () => {
             <Typography variant="h1">Sign Up</Typography>
           </Grid>
           <Grid item xs />
-          {/* <div className="card-body"> */}
+          {/* sign up form */}
           {data ? (
             // Sign up success message
             <Grid
@@ -111,7 +114,10 @@ const Signup = () => {
                 }}
               >
                 Success! You may now head{" "}
-                <CustomisedLinkMessage to="/"> back to the homepage.</CustomisedLinkMessage>
+                <CustomisedLinkMessage to="/">
+                  {" "}
+                  back to the homepage.
+                </CustomisedLinkMessage>
               </Typography>
             </Grid>
           ) : (
@@ -134,14 +140,6 @@ const Signup = () => {
                     marginRight: "auto",
                   }}
                 >
-                  {/* <input
-                    className="form-input"
-                    placeholder="Your username"
-                    name="username"
-                    type="text"
-                    value={formState.name}
-                    onChange={handleChange}
-                  /> */}
                   <TextField
                     placeholder="Enter your username"
                     label="Username"
@@ -153,6 +151,8 @@ const Signup = () => {
                     type="text"
                     value={formState.name}
                     onChange={handleChange}
+                    // helperText={errorText}
+                    // error={error}
                   />
                   <TextField
                     placeholder="Your email"

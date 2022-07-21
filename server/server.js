@@ -18,10 +18,19 @@ const server = new ApolloServer({
     if (error.message.startsWith("Database Error: ")) {
       return new Error("Internal server error");
     }
-    if (error.message.startsWith("User validation failed: username: Path `username` is required")) {
+    if (
+      error.message.startsWith(
+        "User validation failed: username: Path `username` is required"
+      )
+    ) {
       return new Error("Your username is required");
     }
-    if (error.message.startsWith("User validation failed: email: Path `email` is required")) {
+    if (
+      error.message.startsWith(
+        "User validation failed: email: Path `email` is required"
+      ) ||
+      "Must match an email address"
+    ) {
       return new Error("Please add a valid email");
     }
     if (error.message.startsWith("User validation failed: password")) {
