@@ -184,7 +184,7 @@ const Signup = () => {
                   <Box
                     style={{ cursor: "pointer" }}
                     textAlign={"center"}
-                    sx={{ marginTop: 2 }}
+                    sx={{ marginTop: 2, marginBottom: 2 }}
                   >
                     <CustomisedSubmitButton type="submit">
                       Submit
@@ -205,7 +205,7 @@ const Signup = () => {
                     display: "flex",
                     textAlign: "center",
                     justifyContent: "center",
-                    marginTop: 2,
+                    marginBottom: -4
                   }}
                 >
                   {error.message}
