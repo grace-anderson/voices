@@ -68,9 +68,10 @@ const Profile = () => {
           display: "flex",
           textAlign: "center",
           justifyContent: "center",
+          marginTop: 4
         }}
       >
-        <h2>Viewing {userParam ? `${user.username}'s` : "your"} profile.</h2>
+        <Typography variant="h4Roboto" >Viewing {userParam ? `${user.username}'s` : "your"} profile</Typography>
       </Grid>
       <Grid item xs={1} />
       {/* your stories heading */}

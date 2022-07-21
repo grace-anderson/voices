@@ -26,7 +26,22 @@ const CustomisedLinkStory = styled(Link)`
 
 const ThoughtList = ({ thoughts, showUsername = true }) => {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return (
+      <Grid container
+      sx={{
+        display: "flex",
+        textAlign: "center",
+        justifyContent: "center",
+        marginTop: 1,
+      }}
+      >
+        <Typography
+          variant="h5Roboto"
+        >
+          No thoughts yet...
+        </Typography>
+      </Grid>
+    );
   }
 
   return (

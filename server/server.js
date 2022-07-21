@@ -12,35 +12,6 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
-  //custom errors to present to user
-  formatError: (error) => {
-    // Don't give the specific errors to the client.
-    if (error.message.startsWith("Database Error: ")) {
-      return new Error("Internal server error");
-    }
-    if (
-      error.message.startsWith(
-        "User validation failed: username: Path `username` is required"
-      )
-    ) {
-      return new Error("Your username is required");
-    }
-    if (
-      error.message.startsWith(
-        "User validation failed: email: Path `email` is required"
-      ) ||
-      "Must match an email address"
-    ) {
-      return new Error("Please add a valid email");
-    }
-    if (error.message.startsWith("User validation failed: password")) {
-      return new Error("Your password must be at least 5 characters long");
-    }
-
-    // Otherwise return the original error. The error can also
-    // be manipulated in other ways, as long as it's returned.
-    return error;
-  },
 });
 
 app.use(express.urlencoded({ extended: false }));
