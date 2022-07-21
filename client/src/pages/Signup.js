@@ -18,9 +18,25 @@ import Auth from "../utils/auth";
 const CustomisedSubmitButton = styled(Button)`
   font-size: 1rem;
   color: white;
-  background: #f2762e;
+  font-weight: 500;
+  background: #41591c;
   :hover {
     color: white;
+    font-weight: 700;
+    background: #f2762e;
+  }
+`;
+
+const CustomisedLinkMessage = styled(Link)`
+  color: #f2762e;
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  :hover {
+    color: black;
+    font-weight: 700;
+    font-size: 1rem;
   }
 `;
 
@@ -79,10 +95,23 @@ const Signup = () => {
           {/* <div className="card-body"> */}
           {data ? (
             // Sign up success message
-            <Grid container>
-              <Typography>
+            <Grid
+              container
+              sx={{
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                marginTop: 2,
+              }}
+            >
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  alignSelf: "center",
+                }}
+              >
                 Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
+                <CustomisedLinkMessage to="/"> back to the homepage.</CustomisedLinkMessage>
               </Typography>
             </Grid>
           ) : (
@@ -120,7 +149,8 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     required
-                    className="form-input"
+                    // className="form-input"
+                    style={{ backgroundColor: "white" }}
                     type="text"
                     value={formState.name}
                     onChange={handleChange}
@@ -132,7 +162,8 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     required
-                    className="form-input"
+                    // className="form-input"
+                    style={{ backgroundColor: "white" }}
                     type="email"
                     value={formState.email}
                     onChange={handleChange}
@@ -144,12 +175,17 @@ const Signup = () => {
                     variant="outlined"
                     fullWidth
                     required
-                    className="form-input"
+                    // className="form-input"
+                    style={{ backgroundColor: "white" }}
                     type="password"
                     value={formState.password}
                     onChange={handleChange}
                   />
-                  <Box style={{ cursor: "pointer" }} textAlign={"center"} sx={{marginTop: 2}}>
+                  <Box
+                    style={{ cursor: "pointer" }}
+                    textAlign={"center"}
+                    sx={{ marginTop: 2 }}
+                  >
                     <CustomisedSubmitButton type="submit">
                       Submit
                     </CustomisedSubmitButton>

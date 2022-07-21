@@ -89,18 +89,16 @@ const ThoughtForm = () => {
 
   return (
     <>
-      <Grid container 
-      
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        textAlign: "center",
-        justifyContent: "center",
-        marginTop: 1,
-        marginBottom: 2,
-      }}
-      
-  
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "center",
+          justifyContent: "center",
+          marginTop: 1,
+          marginBottom: 2,
+        }}
       >
         {/* form heading row */}
         <Typography variant="h3">Write a story...</Typography>
@@ -171,15 +169,14 @@ const ThoughtForm = () => {
                 />
               </FormGroup> */}
               </div>
-              
-                <Grid>
+
+              <Grid>
                 <Button variant="contained" sx={{ margin: 3 }} type="submit">
                   Add Thought
                 </Button>
-                </Grid>
+              </Grid>
               {error && <div className="">{error.message}</div>}
             </form>
-
           </>
         ) : (
           <Typography variant="body1">
@@ -187,7 +184,7 @@ const ThoughtForm = () => {
             <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
           </Typography>
         )}
-    </Grid>
+      </Grid>
     </>
   );
 };

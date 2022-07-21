@@ -55,7 +55,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
               }}
             >
               <div key={thought._id}>
-                {/* <CardMedia/> */}
+                {/* <CardMedia/> TODO */}
                 {/* Card Content */}
                 <CardContent>
                   <Typography
