@@ -7,22 +7,22 @@ import {
   CardActions,
   CardContent,
   Grid,
-  styled,
+  // styled,
   Typography,
 } from "@mui/material";
 
-const CustomisedLinkStory = styled(Link)`
-  color: #f2762e;
-  text-decoration: none;
-  font-family: Roboto;
-  font-size: 1rem;
-  font-weight: 500;
-  :hover {
-    color: black;
-    font-weight: 700;
-    font-size: 1rem;
-  }
-`;
+// const CustomisedLinkStory = styled(Link)`
+//   color: #f2762e;
+//   text-decoration: none;
+//   font-family: Roboto;
+//   font-size: 1rem;
+//   font-weight: 500;
+//   :hover {
+//     color: black;
+//     font-weight: 700;
+//     font-size: 1rem;
+//   }
+// `;
 
 const ThoughtList = ({ thoughts, showUsername = true }) => {
   if (!thoughts.length) {
@@ -94,13 +94,13 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     }}
                   >
                     {showUsername ? (
-                      <CustomisedLinkStory
+                      <Link
                         className=""
                         to={`/profiles/${thought.thoughtAuthor}`}
                       >
                         {thought.thoughtAuthor} wrote this story on{" "}
                         {thought.createdAt}
-                      </CustomisedLinkStory>
+                      </Link>
                     ) : (
                       <>
                         <Typography
@@ -112,14 +112,14 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                             marginBottom: 2,
                           }}
                         >
-                          <CustomisedLinkStory
+                          <Link
                             className=""
                             to={`/profiles/${thought.thoughtAuthor}`}
                           >
                             <span style={{ fontSize: "1rem" }}>
                               You wrote this story on {thought.createdAt}
                             </span>
-                          </CustomisedLinkStory>
+                          </Link>
                         </Typography>
                       </>
                     )}
@@ -137,12 +137,12 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     marginBottom: 2,
                   }}
                 >
-                  <CustomisedLinkStory
+                  <Link
                     className="btn"
                     to={`/thoughts/${thought._id}`}
                   >
                     Read the whole story
-                  </CustomisedLinkStory>
+                  </Link>
                 </CardActions>
               </div>
             </Card>

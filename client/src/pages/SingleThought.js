@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // Import the `useParams()` hook
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-
-import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import { QUERY_SINGLE_THOUGHT } from "../utils/queries";
 
 const SingleThought = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
@@ -25,7 +24,7 @@ const SingleThought = () => {
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {thought.thoughtAuthor} <br />
-        <span style={{ fontSize: '1rem' }}>
+        <span style={{ fontSize: "1rem" }}>
           wrote this story on {thought.createdAt}
         </span>
       </h3>
@@ -33,10 +32,10 @@ const SingleThought = () => {
         <blockquote
           className="p-4"
           style={{
-            fontSize: '1.5rem',
-            fontStyle: 'italic',
-            border: '2px dotted #1a1a1a',
-            lineHeight: '1.5',
+            fontSize: "1.5rem",
+            fontStyle: "italic",
+            border: "2px dotted #1a1a1a",
+            lineHeight: "1.5",
           }}
         >
           {thought.thoughtTitle}

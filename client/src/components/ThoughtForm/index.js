@@ -6,7 +6,7 @@ import {
   Button,
   Grid,
   TextareaAutosize,
-  styled,
+  // styled,
   Typography,
   // FormGroup,
   // FormControlLabel,
@@ -18,20 +18,20 @@ import { QUERY_THOUGHTS, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
-const CustomisedSubmitButton = styled(Button)`
-  font-size: 1rem;
-  color: white;
-  font-weight: 500;
-  background: #41591c;
-  text-align: center;
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
-  :hover {
-    color: white;
-    font-weight: 700;
-    background: #f2762e;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  }
-`;
+// const CustomisedSubmitButton = styled(Button)`
+//   font-size: 1rem;
+//   color: white;
+//   font-weight: 500;
+//   background: #41591c;
+//   text-align: center;
+//   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+//   :hover {
+//     color: white;
+//     font-weight: 700;
+//     background: #f2762e;
+//     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+//   }
+// `;
 
 const ThoughtForm = () => {
   const [thoughtTitle, setThoughtTitle] = useState("");
@@ -187,9 +187,9 @@ const ThoughtForm = () => {
               </div>
 
               <Grid>
-                <CustomisedSubmitButton variant="contained" sx={{ margin: 3 }} type="submit">
+                <Button variant="contained" sx={{ margin: 3 }} type="submit">
                   Add Thought
-                </CustomisedSubmitButton>
+                </Button>
               </Grid>
               {error && <div className="">{error.message}</div>}
             </form>
