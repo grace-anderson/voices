@@ -7,22 +7,35 @@ import {
   CardActions,
   CardContent,
   Grid,
-  // styled,
+  styled,
   Typography,
 } from "@mui/material";
 
-// const CustomisedLinkStory = styled(Link)`
-//   color: #f2762e;
-//   text-decoration: none;
-//   font-family: Roboto;
-//   font-size: 1rem;
-//   font-weight: 500;
-//   :hover {
-//     color: black;
-//     font-weight: 700;
-//     font-size: 1rem;
-//   }
-// `;
+const CustomisedLinkStory = styled(Link)`
+  color: #103E3F;
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  :hover {
+    color: #DD4614;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+`;
+
+const CustomisedLinkStoryOrange = styled(Link)`
+  color: #DD4614;
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  :hover {
+    color: #103E3F;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+`;
 
 const ThoughtList = ({ thoughts, showUsername = true }) => {
   if (!thoughts.length) {
@@ -94,13 +107,13 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     }}
                   >
                     {showUsername ? (
-                      <Link
+                      <CustomisedLinkStory
                         className=""
                         to={`/profiles/${thought.thoughtAuthor}`}
                       >
                         {thought.thoughtAuthor} wrote this story on{" "}
                         {thought.createdAt}
-                      </Link>
+                      </CustomisedLinkStory>
                     ) : (
                       <>
                         <Typography
@@ -112,14 +125,14 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                             marginBottom: 2,
                           }}
                         >
-                          <Link
+                          <CustomisedLinkStory
                             className=""
                             to={`/profiles/${thought.thoughtAuthor}`}
                           >
                             <span style={{ fontSize: "1rem" }}>
                               You wrote this story on {thought.createdAt}
                             </span>
-                          </Link>
+                          </CustomisedLinkStory>
                         </Typography>
                       </>
                     )}
@@ -137,12 +150,12 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     marginBottom: 2,
                   }}
                 >
-                  <Link
+                  <CustomisedLinkStoryOrange
                     className="btn"
                     to={`/thoughts/${thought._id}`}
                   >
                     Read the whole story
-                  </Link>
+                  </CustomisedLinkStoryOrange>
                 </CardActions>
               </div>
             </Card>

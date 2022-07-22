@@ -9,38 +9,38 @@ import {
   Button,
   Grid,
   TextField,
-  // styled,
+  styled,
   Typography,
 } from "@mui/material";
 
 import Auth from "../utils/auth";
 
-// const CustomisedLinkMessage = styled(Link)`
-//   color: #f2762e;
-//   text-decoration: none;
-//   font-family: Roboto;
-//   font-size: 1rem;
-//   font-weight: 500;
-//   :hover {
-//     color: black;
-//     font-weight: 700;
-//     font-size: 1rem;
-//   }
-// `;
+const CustomisedLinkMessage = styled(Link)`
+  color: #DD4614;
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  :hover {
+    color: black;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+`;
 
-// const CustomisedSubmitButton = styled(Button)`
-//   font-size: 1rem;
-//   color: white;
-//   font-weight: 500;
-//   background: #41591c;
-//   text-align: center;
-//   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
-//   :hover {
-//     color: white;
-//     font-weight: 700;
-//     background: #f2762e;
-//   }
-// `;
+const CustomisedSubmitButton = styled(Button)`
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background: #103E3F;
+  text-align: center;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  :hover {
+    color: white;
+    font-weight: 700;
+    background: #DD4614;
+  }
+`;
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -116,10 +116,10 @@ const Signup = () => {
                 }}
               >
                 Success! You may now head{" "}
-                <Link to="/">
+                <CustomisedLinkMessage to="/">
                   {" "}
                   back to the homepage.
-                </Link>
+                </CustomisedLinkMessage>
               </Typography>
             </Grid>
           ) : (
@@ -185,9 +185,9 @@ const Signup = () => {
                     textAlign={"center"}
                     sx={{ marginTop: 2, marginBottom: 2 }}
                   >
-                    <Button type="submit">
+                    <CustomisedSubmitButton type="submit">
                       Submit
-                    </Button>
+                    </CustomisedSubmitButton>
                   </Box>
                 </Box>
               </Grid>

@@ -5,18 +5,18 @@ import {
   Button,
   Container,
   Grid,
-  // styled,
+  styled,
   Typography,
 } from "@mui/material";
 
-// const CustomisedButton = styled(Button)`
-//   font-size: 1rem;
-//   color: white;
-//   background: #f2762e;
-//   :hover {
-//     color: white;
-//   }
-// `;
+const CustomisedButton = styled(Button)`
+  font-size: 1rem;
+  color: white;
+  background: #DD4614;
+  :hover {
+    color: white;
+  }
+`;
 
 const Footer = () => {
   const location = useLocation();
@@ -29,13 +29,13 @@ const Footer = () => {
             <Grid item xs={12}>
               <Box textAlign={"center"}>
               {location.pathname !== "/" && (
-                <Button
+                <CustomisedButton
                   variant="contained"
                   sx={{ margin: 3 }}
                   onClick={() => navigate(-1)}
                 >
                   &larr; Go Back
-                </Button>
+                </CustomisedButton>
               )}
               </Box>
             </Grid>

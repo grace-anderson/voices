@@ -57,6 +57,7 @@ export const theme = createTheme ({
     },
     subtitle1: {
       fontWeight: 600,
+      fontFamily: 'IBM Plex Mono',
     },
     button: {
       fontWeight: 800,
@@ -81,6 +82,6 @@ export const theme = createTheme ({
       fontSize: '1.2rem',
       fontWeight: 600,
     },
-    fontFamily: 'IBM Plex Mono',
+    fontFamily: 'IBM Plex Mono, Roboto, sans-serif',
   },
 });

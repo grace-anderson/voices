@@ -16,7 +16,7 @@ const DrawerComp = ({ links }) => {
   return (
     <React.Fragment>
       <Drawer
-        PaperProps={{ sx: { backgroundColor: "#41591C" } }}
+        PaperProps={{ sx: { backgroundColor: "#103E3F" } }}
         open={open}
         onClose={() => setOpen(false)}
       >
