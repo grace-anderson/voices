@@ -4,6 +4,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import { Grid, Typography } from "@mui/material";
+
 import { QUERY_SINGLE_THOUGHT } from "../utils/queries";
 
 const SingleThought = () => {
@@ -21,29 +23,49 @@ const SingleThought = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="my-3">
-      <h3 className="card-header bg-dark text-light p-2 m-0">
-        {thought.thoughtAuthor} <br />
-        <span style={{ fontSize: "1rem" }}>
-          wrote this story on {thought.createdAt}
-        </span>
-      </h3>
-      <div className="bg-light py-4">
-        <blockquote
-          className="p-4"
-          style={{
-            fontSize: "1.5rem",
-            fontStyle: "italic",
-            border: "2px dotted #1a1a1a",
-            lineHeight: "1.5",
-          }}
+    <Grid
+      container
+      sx={{
+        display: "flex",
+        textAlign: "center",
+        justifyContent: "center",
+        marginTop: 10,
+      }}
+    >
+      {/* story heading */}
+      <Grid xs={1} />
+      <Grid xs={10}>
+        <Typography variant="h2">{thought.storyTitle}</Typography>
+      </Grid>
+      <Grid xs={1} />
+      {/* story intro */}
+      <Grid xs={1} md={3} />
+      <Grid xs={10} md={6}>
+        <Typography
+          variant="subtitle1"
+          sx={{ marginBottom: "2rem", backgroundColor: "#eeedeb" }}
         >
-          {thought.storyTitle}
           {thought.storyIntro}
+        </Typography>
+      </Grid>
+      <Grid xs={1} md={3} />
+      {/* story */}
+      <Grid xs={1} md={3} />
+      <Grid xs={10} md={6}>
+        <Typography variant="body1" sx={{ textAlign: "left" }}>
           {thought.myStory}
-        </blockquote>
-      </div>
-    </div>
+        </Typography>
+      </Grid>
+      <Grid xs={1} md={3} />
+      {/* story author and publish date */}
+      <Grid xs={1} md={3} />
+      <Grid xs={10} md={6}>
+        <Typography variant="h6" sx={{ marginTop: "2rem" }}>
+          {thought.thoughtAuthor} wrote this story on {thought.createdAt}
+        </Typography>
+      </Grid>
+      <Grid xs={1} md={3} />
+    </Grid>
   );
 };
 

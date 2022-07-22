@@ -100,7 +100,7 @@ const ThoughtForm = () => {
       setCharacterCount(value.length);
     }
 
-    if (name === "myStory" && value.length > 0 ) {
+    if (name === "myStory") {
       setMyStory(value);
     }
 
@@ -177,7 +177,7 @@ const ThoughtForm = () => {
                 </div>
                 <div>
                 <TextareaAutosize
-                  name="story"
+                  name="myStory"
                   placeholder="My story"
                   value={myStory}
                   variant="outlined"

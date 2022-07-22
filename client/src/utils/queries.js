@@ -39,12 +39,6 @@ export const QUERY_SINGLE_THOUGHT = gql`
       myStory
       thoughtAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
 `;

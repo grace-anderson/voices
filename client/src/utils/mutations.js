@@ -41,27 +41,7 @@ export const ADD_THOUGHT = gql`
       myStory
       thoughtAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      storyIntro
-      myStory
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-`;
