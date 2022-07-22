@@ -34,8 +34,8 @@ const Home = () => {
         </Grid>
         <Grid item xs={1} />
         {/* paragraph row */}
-        <Grid item xs={1} />
-        <Grid item xs={10}>
+        <Grid item xs={1} md={2} />
+        <Grid item xs={10} md={8}>
           <Typography variant="subtitle1">
             Tell your story with Voices. Introduction paragraph ... Lemon drops
             cookie marzipan candy cupcake. Dragée chocolate bar cotton candy
@@ -43,7 +43,7 @@ const Home = () => {
             shortbread chocolate cake marshmallow.
           </Typography>
         </Grid>
-        <Grid item xs={1} />
+        <Grid item xs={1} md={2} />
         {/* recent stories heading */}
         <Grid item xs={1} />
         <Grid

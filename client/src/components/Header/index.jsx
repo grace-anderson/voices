@@ -95,14 +95,14 @@ const Header = ({ links }) => {
             <>
               <DrawerComp links={links} />
               <Grid sx={{ placeItems: "center" }} container>
-                <Grid item xs="1" />
-                <Grid item xs="2">
+                <Grid item xs={1} />
+                <Grid item xs={2}>
                   <CustomisedLinkHome className="" to="/">
                     <Typography variant="subtitle2">Voices</Typography>
                   </CustomisedLinkHome>
                 </Grid>
-                <Grid item xs="3" />
-                <Grid item xs="4">
+                <Grid item xs={3} />
+                <Grid item xs={4}>
                   <Box display="flex">
                     {Auth.loggedIn() ? (
                       <>
