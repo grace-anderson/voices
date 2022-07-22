@@ -138,7 +138,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     )}
                   </Typography>
                   <Typography variant="body1" sx={{ marginTop: 1 }}>
-                    {thought.thoughtText}
+                    {thought.storyIntro}
                   </Typography>
                 </CardContent>
                 {/* Card actions */}

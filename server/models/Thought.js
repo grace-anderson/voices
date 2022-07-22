@@ -9,9 +9,9 @@ const thoughtSchema = new Schema({
     maxlength: 140,
     trim: true,
   },
-  thoughtText: {
+  storyIntro: {
     type: String,
-    required: "You need to leave a thought!",
+    required: "You need to introduce your story",
     minlength: 1,
     maxlength: 280,
     trim: true,

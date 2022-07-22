@@ -36,7 +36,7 @@ const CustomisedSubmitButton = styled(Button)`
 const ThoughtForm = () => {
   const [thoughtTitle, setThoughtTitle] = useState("");
 
-  const [thoughtText, setThoughtText] = useState("");
+  const [storyIntro, setStoryIntro] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -72,14 +72,14 @@ const ThoughtForm = () => {
       const { data } = await addThought({
         variables: {
           thoughtTitle,
-          thoughtText,
+          storyIntro,
           thoughtAuthor: Auth.getProfile().data.username,
           // publish,
         },
       });
 
       setThoughtTitle("");
-      setThoughtText("");
+      setStoryIntro("");
     } catch (err) {
       console.error(err);
     }
@@ -88,8 +88,8 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "thoughtText" && value.length <= 280) {
-      setThoughtText(value);
+    if (name === "storyIntro" && value.length <= 280) {
+      setStoryIntro(value);
       setCharacterCount(value.length);
     }
 
@@ -155,9 +155,9 @@ const ThoughtForm = () => {
               </div>
               <div>
                 <TextareaAutosize
-                  name="thoughtText"
+                  name="storyIntro"
                   placeholder="Here's a new thought..."
-                  value={thoughtText}
+                  value={storyIntro}
                   variant="outlined"
                   className="form-input"
                   type={"text"}

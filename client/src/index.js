@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import "./index.css";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./components/theme";
+import { theme } from "./theme";
 
 // ReactDOM.render(
 createRoot(document.getElementById("root")).render(

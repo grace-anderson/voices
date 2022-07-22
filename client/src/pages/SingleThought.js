@@ -39,7 +39,7 @@ const SingleThought = () => {
           }}
         >
           {thought.thoughtTitle}
-          {thought.thoughtText}
+          {thought.storyIntro}
         </blockquote>
       </div>
     </div>
