@@ -37,8 +37,8 @@ const CustomisedLinkStoryOrange = styled(Link)`
   }
 `;
 
-const ThoughtList = ({ thoughts, showUsername = true }) => {
-  if (!thoughts.length) {
+const StoryList = ({ stories, showUsername = true }) => {
+  if (!stories.length) {
     return (
       <Grid container
       sx={{
@@ -51,7 +51,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
         <Typography
           variant="h5Roboto"
         >
-          No thoughts yet...
+          No stories yet...
         </Typography>
       </Grid>
     );
@@ -69,8 +69,8 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
       sx={{ marginLeft: "auto", marginRight: "auto" }}
     >
       {/* {showTitle && <h3>{title}</h3>} */}
-      {thoughts &&
-        thoughts.map((thought) => (
+      {stories &&
+        stories.map((story) => (
           <Grid>
             {/* Card */}
             <Card
@@ -82,7 +82,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                 overflowY: "visible",
               }}
             >
-              <div key={thought._id}>
+              <div key={story._id}>
                 {/* <CardMedia/> TODO */}
                 {/* Card Content */}
                 <CardContent>
@@ -95,7 +95,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                       marginTop: 1,
                     }}
                   >
-                    {thought.storyTitle}
+                    {story.storyTitle}
                   </Typography>
                   <Typography
                     variant="h5Roboto"
@@ -109,10 +109,10 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     {showUsername ? (
                       <CustomisedLinkStory
                         className=""
-                        to={`/profiles/${thought.thoughtAuthor}`}
+                        to={`/profiles/${story.storyAuthor}`}
                       >
-                        {thought.thoughtAuthor} wrote this story on{" "}
-                        {thought.createdAt}
+                        {story.storyAuthor} wrote this story on{" "}
+                        {story.createdAt}
                       </CustomisedLinkStory>
                     ) : (
                       <>
@@ -127,10 +127,10 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                         >
                           <CustomisedLinkStory
                             className=""
-                            to={`/profiles/${thought.thoughtAuthor}`}
+                            to={`/profiles/${story.storyAuthor}`}
                           >
                             <span style={{ fontSize: "1rem" }}>
-                              You wrote this story on {thought.createdAt}
+                              You wrote this story on {story.createdAt}
                             </span>
                           </CustomisedLinkStory>
                         </Typography>
@@ -138,7 +138,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                     )}
                   </Typography>
                   <Typography variant="body1" sx={{ marginTop: 1 }}>
-                    {thought.storyIntro}
+                    {story.storyIntro}
                   </Typography>
                 </CardContent>
                 {/* Card actions */}
@@ -152,7 +152,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                 >
                   <CustomisedLinkStoryOrange
                     className="btn"
-                    to={`/thoughts/${thought._id}`}
+                    to={`/stories/${story._id}`}
                   >
                     Read the whole story
                   </CustomisedLinkStoryOrange>
@@ -166,4 +166,4 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
   );
 };
 
-export default ThoughtList;
+export default StoryList;

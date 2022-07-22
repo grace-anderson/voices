@@ -6,18 +6,18 @@ import { useQuery } from "@apollo/client";
 
 import { Grid, Typography } from "@mui/material";
 
-import { QUERY_SINGLE_THOUGHT } from "../utils/queries";
+import { QUERY_SINGLE_STORY } from "../utils/queries";
 
-const SingleThought = () => {
+const SingleStory = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { thoughtId } = useParams();
+  const { storyId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
+  const { loading, data } = useQuery(QUERY_SINGLE_STORY, {
     // pass URL parameter
-    variables: { thoughtId: thoughtId },
+    variables: { storyId: storyId },
   });
 
-  const thought = data?.thought || {};
+  const story = data?.story || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -35,7 +35,7 @@ const SingleThought = () => {
       {/* story heading */}
       <Grid xs={1} />
       <Grid xs={10}>
-        <Typography variant="h2">{thought.storyTitle}</Typography>
+        <Typography variant="h2">{story.storyTitle}</Typography>
       </Grid>
       <Grid xs={1} />
       {/* story intro */}
@@ -45,7 +45,7 @@ const SingleThought = () => {
           variant="subtitle1"
           sx={{ marginBottom: "2rem", backgroundColor: "#eeedeb" }}
         >
-          {thought.storyIntro}
+          {story.storyIntro}
         </Typography>
       </Grid>
       <Grid xs={1} md={3} />
@@ -53,7 +53,7 @@ const SingleThought = () => {
       <Grid xs={1} md={3} />
       <Grid xs={10} md={6}>
         <Typography variant="body1" sx={{ textAlign: "left" }}>
-          {thought.myStory}
+          {story.myStory}
         </Typography>
       </Grid>
       <Grid xs={1} md={3} />
@@ -61,7 +61,7 @@ const SingleThought = () => {
       <Grid xs={1} md={3} />
       <Grid xs={10} md={6}>
         <Typography variant="h6" sx={{ marginTop: "2rem" }}>
-          {thought.thoughtAuthor} wrote this story on {thought.createdAt}
+          {story.storyAuthor} wrote this story on {story.createdAt}
         </Typography>
       </Grid>
       <Grid xs={1} md={3} />
@@ -69,4 +69,4 @@ const SingleThought = () => {
   );
 };
 
-export default SingleThought;
+export default SingleStory;

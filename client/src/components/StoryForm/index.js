@@ -14,8 +14,8 @@ import {
   // Checkbox,
 } from "@mui/material";
 
-import { ADD_THOUGHT } from "../../utils/mutations";
-import { QUERY_THOUGHTS, QUERY_ME } from "../../utils/queries";
+import { ADD_STORY } from "../../utils/mutations";
+import { QUERY_STORIES, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -34,7 +34,7 @@ const CustomisedSubmitButton = styled(Button)`
   }
 `;
 
-const ThoughtForm = () => {
+const StoryForm = () => {
   const [storyTitle, setStoryTitle] = useState("");
   const [storyIntro, setStoryIntro] = useState("");
   const [myStory, setMyStory] = useState("");
@@ -44,14 +44,14 @@ const ThoughtForm = () => {
   // Publishing checkbox - not complete
   // const [publish, setPublish] = useState(false);
 
-  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-    update(cache, { data: { addThought } }) {
+  const [addStory, { error }] = useMutation(ADD_STORY, {
+    update(cache, { data: { addStory } }) {
       try {
-        const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
+        const { stories } = cache.readQuery({ query: QUERY_STORIES });
 
         cache.writeQuery({
-          query: QUERY_THOUGHTS,
-          data: { thoughts: [addThought, ...thoughts] },
+          query: QUERY_STORIES,
+          data: { stories: [addStory, ...stories] },
         });
       } catch (e) {
         console.error(e);
@@ -61,7 +61,7 @@ const ThoughtForm = () => {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+        data: { me: { ...me, stories: [...me.stories, addStory] } },
       });
     },
   });
@@ -70,12 +70,12 @@ const ThoughtForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addThought({
+      const { data } = await addStory({
         variables: {
           storyTitle,
           storyIntro,
           myStory,
-          thoughtAuthor: Auth.getProfile().data.username,
+          storyAuthor: Auth.getProfile().data.username,
           // publish,
         },
       });
@@ -211,7 +211,7 @@ const ThoughtForm = () => {
 
               <Grid>
                 <CustomisedSubmitButton variant="contained" sx={{ margin: 3 }} type="submit">
-                  Add Thought
+                  Add Story
                 </CustomisedSubmitButton>
               </Grid>
               {error && <div className="">{error.message}</div>}
@@ -219,7 +219,7 @@ const ThoughtForm = () => {
           </>
         ) : (
           <Typography variant="body1">
-            You need to be logged in to share your thoughts. Please{" "}
+            You need to be logged in to share your stories. Please{" "}
             <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
           </Typography>
         )}
@@ -228,4 +228,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default StoryForm;

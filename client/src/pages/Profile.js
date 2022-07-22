@@ -2,8 +2,8 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import ThoughtForm from "../components/ThoughtForm";
-import ThoughtList from "../components/ThoughtList";
+import StoryForm from "../components/StoryForm";
+import StoryList from "../components/StoryList";
 
 import { Grid, Typography } from "@mui/material";
 
@@ -58,7 +58,7 @@ const Profile = () => {
       {/* form row */}
       <Grid xs={2} />
       <Grid xs={8}
-      >{!userParam && <ThoughtForm />}</Grid>
+      >{!userParam && <StoryForm />}</Grid>
       <Grid item xs={2} />
       {/* your profile heading */}
       <Grid xs={1} />
@@ -88,11 +88,11 @@ const Profile = () => {
         <Typography variant="h2">Your stories</Typography>
       </Grid>
       <Grid item xs={1} />
-      {/* thoughts displayed */}
+      {/* stories displayed */}
       <Grid item xs={12}>
-        <ThoughtList
-          thoughts={user.thoughts}
-          title={`${user.username}'s thoughts...`}
+        <StoryList
+          stories={user.stories}
+          title={`${user.username}'s stories...`}
           showTitle={false}
           showUsername={false}
         />

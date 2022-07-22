@@ -4,13 +4,13 @@ import { useQuery } from "@apollo/client";
 // import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Grid, Typography } from "@mui/material";
 
-import ThoughtList from "../components/ThoughtList";
+import StoryList from "../components/StoryList";
 
-import { QUERY_THOUGHTS } from "../utils/queries";
+import { QUERY_STORIES } from "../utils/queries";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+  const { loading, data } = useQuery(QUERY_STORIES);
+  const stories = data?.stories || [];
 
   // const theme = useTheme();
   // const isMatch = useMediaQuery(theme.breakpoints.down("xs"));
@@ -59,12 +59,12 @@ const Home = () => {
           <Typography variant="h2">Recent stories ...</Typography>
         </Grid>
         <Grid item xs={1} />
-        {/* Thoughts list */}
+        {/* Stories list */}
         <Grid item xs={12}>
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList thoughts={thoughts} />
+            <StoryList stories={stories} />
           )}
         </Grid>
       </Grid>
