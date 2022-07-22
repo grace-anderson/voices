@@ -10,6 +10,7 @@ export const QUERY_USER = gql`
         _id
         storyTitle
         storyIntro
+        myStory
         createdAt
       }
     }
@@ -22,6 +23,7 @@ export const QUERY_THOUGHTS = gql`
       _id
       storyTitle
       storyIntro
+      myStory
       thoughtAuthor
       createdAt
     }
@@ -34,6 +36,7 @@ export const QUERY_SINGLE_THOUGHT = gql`
       _id
       storyTitle
       storyIntro
+      myStory
       thoughtAuthor
       createdAt
       comments {
@@ -56,6 +59,7 @@ export const QUERY_ME = gql`
         _id
         storyTitle
         storyIntro
+        myStory
         thoughtAuthor
         createdAt
       }

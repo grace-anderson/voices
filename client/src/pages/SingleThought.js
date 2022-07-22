@@ -40,6 +40,7 @@ const SingleThought = () => {
         >
           {thought.storyTitle}
           {thought.storyIntro}
+          {thought.myStory}
         </blockquote>
       </div>
     </div>

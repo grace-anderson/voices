@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import {
   Button,
   Grid,
+  TextField,
   TextareaAutosize,
   styled,
   Typography,
@@ -35,8 +36,8 @@ const CustomisedSubmitButton = styled(Button)`
 
 const ThoughtForm = () => {
   const [storyTitle, setStoryTitle] = useState("");
-
   const [storyIntro, setStoryIntro] = useState("");
+  const [myStory, setMyStory] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -73,6 +74,7 @@ const ThoughtForm = () => {
         variables: {
           storyTitle,
           storyIntro,
+          myStory,
           thoughtAuthor: Auth.getProfile().data.username,
           // publish,
         },
@@ -80,6 +82,7 @@ const ThoughtForm = () => {
 
       setStoryTitle("");
       setStoryIntro("");
+      setMyStory("");
     } catch (err) {
       console.error(err);
     }
@@ -88,13 +91,17 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
+    if (name === "storyTitle" && value.length <= 140) {
+      setStoryTitle(value);
+    }
+
     if (name === "storyIntro" && value.length <= 280) {
       setStoryIntro(value);
       setCharacterCount(value.length);
     }
 
-    if (name === "storyTitle" && value.length <= 140) {
-      setStoryTitle(value);
+    if (name === "myStory" && value.length > 0 ) {
+      setMyStory(value);
     }
 
     // if (setPublish(true)) {
@@ -117,7 +124,7 @@ const ThoughtForm = () => {
         }}
       >
         {/* form heading row */}
-        <Typography variant="h3">Write a story...</Typography>
+        <Typography variant="h4">Write your story</Typography>
 
         {Auth.loggedIn() ? (
           <>
@@ -139,22 +146,21 @@ const ThoughtForm = () => {
               onSubmit={handleFormSubmit}
             >
               <div>
-                <TextareaAutosize
+                <TextField
                   name="storyTitle"
                   placeholder="My story title (140 characters max)"
                   value={storyTitle}
                   variant="outlined"
                   className="form-input"
                   type={"text"}
-                  multiline
                   onChange={handleChange}
                   sx={{ margin: 3 }}
                   style={{ height: "2rem", width: "70%" }}
-                  font-family="'Roboto', sans-serif"
+                  required
                 />
               </div>
               <div>
-                <TextareaAutosize
+                <TextField
                   name="storyIntro"
                   placeholder="Introducing my story (280 characters max)"
                   value={storyIntro}
@@ -162,25 +168,26 @@ const ThoughtForm = () => {
                   className="form-input"
                   type={"text"}
                   multiline
+                  minRows={2}
                   onChange={handleChange}
                   sx={{ margin: 3 }}
-                  style={{ height: "3rem", width: "70%" }}
-                  font-family="'Roboto', sans-serif"
+                  style={{ height: "4rem", width: "70%" }}
+                  required
                 />
                 </div>
                 <div>
                 <TextareaAutosize
-                  name="storyIntro"
-                  placeholder="Introducing my story (280 characters max)"
-                  value={storyIntro}
+                  name="story"
+                  placeholder="My story"
+                  value={myStory}
                   variant="outlined"
                   className="form-input"
                   type={"text"}
                   multiline
                   onChange={handleChange}
                   sx={{ margin: 3 }}
-                  style={{ height: "3rem", width: "70%" }}
-                  font-family="'Roboto', sans-serif"
+                  style={{ marginTop: "1rem", padding: "1rem", height: "6rem", width: "68%", fontFamily: "Roboto', sans-serif", fontSize: "1rem" }}
+                  required
                 />
                 </div>
                 {/* adding a test checkbox */}

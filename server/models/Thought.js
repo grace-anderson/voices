@@ -16,6 +16,11 @@ const thoughtSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
+  myStory: {
+    type: String,
+    required: "Write your story",
+    minlength: 1,
+  },
   thoughtAuthor: {
     type: String,
     required: true,
