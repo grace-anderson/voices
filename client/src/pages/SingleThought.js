@@ -38,7 +38,7 @@ const SingleThought = () => {
             lineHeight: "1.5",
           }}
         >
-          {thought.thoughtTitle}
+          {thought.storyTitle}
           {thought.storyIntro}
         </blockquote>
       </div>

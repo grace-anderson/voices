@@ -34,7 +34,7 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 const ThoughtForm = () => {
-  const [thoughtTitle, setThoughtTitle] = useState("");
+  const [storyTitle, setStoryTitle] = useState("");
 
   const [storyIntro, setStoryIntro] = useState("");
 
@@ -71,14 +71,14 @@ const ThoughtForm = () => {
     try {
       const { data } = await addThought({
         variables: {
-          thoughtTitle,
+          storyTitle,
           storyIntro,
           thoughtAuthor: Auth.getProfile().data.username,
           // publish,
         },
       });
 
-      setThoughtTitle("");
+      setStoryTitle("");
       setStoryIntro("");
     } catch (err) {
       console.error(err);
@@ -93,8 +93,8 @@ const ThoughtForm = () => {
       setCharacterCount(value.length);
     }
 
-    if (name === "thoughtTitle" && value.length <= 140) {
-      setThoughtTitle(value);
+    if (name === "storyTitle" && value.length <= 140) {
+      setStoryTitle(value);
     }
 
     // if (setPublish(true)) {
@@ -140,9 +140,9 @@ const ThoughtForm = () => {
             >
               <div>
                 <TextareaAutosize
-                  name="thoughtTitle"
+                  name="storyTitle"
                   placeholder="My story title (140 characters max)"
-                  value={thoughtTitle}
+                  value={storyTitle}
                   variant="outlined"
                   className="form-input"
                   type={"text"}
@@ -156,7 +156,7 @@ const ThoughtForm = () => {
               <div>
                 <TextareaAutosize
                   name="storyIntro"
-                  placeholder="Here's a new thought..."
+                  placeholder="Introducing my story (280 characters max)"
                   value={storyIntro}
                   variant="outlined"
                   className="form-input"
@@ -164,9 +164,25 @@ const ThoughtForm = () => {
                   multiline
                   onChange={handleChange}
                   sx={{ margin: 3 }}
-                  style={{ height: "10rem", width: "70%" }}
+                  style={{ height: "3rem", width: "70%" }}
                   font-family="'Roboto', sans-serif"
                 />
+                </div>
+                <div>
+                <TextareaAutosize
+                  name="storyIntro"
+                  placeholder="Introducing my story (280 characters max)"
+                  value={storyIntro}
+                  variant="outlined"
+                  className="form-input"
+                  type={"text"}
+                  multiline
+                  onChange={handleChange}
+                  sx={{ margin: 3 }}
+                  style={{ height: "3rem", width: "70%" }}
+                  font-family="'Roboto', sans-serif"
+                />
+                </div>
                 {/* adding a test checkbox */}
                 {/* <FormGroup>
                 <FormControlLabel
@@ -184,7 +200,7 @@ const ThoughtForm = () => {
                   label="Publish this story"
                 />
               </FormGroup> */}
-              </div>
+              
 
               <Grid>
                 <CustomisedSubmitButton variant="contained" sx={{ margin: 3 }} type="submit">

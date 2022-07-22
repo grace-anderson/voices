@@ -95,7 +95,7 @@ const ThoughtList = ({ thoughts, showUsername = true }) => {
                       marginTop: 1,
                     }}
                   >
-                    {thought.thoughtTitle}
+                    {thought.storyTitle}
                   </Typography>
                   <Typography
                     variant="h5Roboto"
