@@ -53,7 +53,7 @@ export const theme = createTheme({
     },
     h2: {
       fontFamily: '"Satisfy", cursive',
-      fontSize: "3rem",
+      fontSize: "3.2rem",
       marginTop: "2rem",
       marginBottom: "2rem",
       color: "#103E3F",
@@ -61,20 +61,20 @@ export const theme = createTheme({
     },
     h4: {
       fontFamily: '"Satisfy", cursive',
-      fontSize: "1.8rem",
+      fontSize: "2.8rem",
       color: "#DD4614",
     },
     h4Roboto: {
       fontFamily: "Roboto",
-      fontSize: "1.4rem",
+      fontSize: "2.8rem",
       marginBottom: "1rem",
       fontWeight: 700,
     },
     h5: {
       fontFamily: '"Satisfy", cursive',
-      fontSize: "1.4rem",
+      fontSize: "2rem",
       marginBottom: "1rem",
-      color: "black"
+      color: "#103E3F"
     },
     h5Roboto: {
       fontFamily: "Roboto",
@@ -87,4 +87,7 @@ export const theme = createTheme({
       color: "#white",
     },
   },
+  // components: {
+  //   MuiButton: {}
+  // }
 });

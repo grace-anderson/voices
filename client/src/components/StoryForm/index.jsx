@@ -23,13 +23,14 @@ const CustomisedSubmitButton = styled(Button)`
   font-size: 1rem;
   color: white;
   font-weight: 500;
-  background: #41591c;
+  background: #103e3f;
   text-align: center;
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   :hover {
     color: white;
     font-weight: 700;
-    background: #DD4614;
+    background: #dd4614;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 `;
@@ -39,7 +40,8 @@ const StoryForm = () => {
   const [storyIntro, setStoryIntro] = useState("");
   const [myStory, setMyStory] = useState("");
 
-  const [characterCount, setCharacterCount] = useState(0);
+  const [titleCharacterCount, setTitleCharacterCount] = useState(0);
+  const [introCharacterCount, setIntroCharacterCount] = useState(0);
 
   // Publishing checkbox - not complete
   // const [publish, setPublish] = useState(false);
@@ -93,11 +95,12 @@ const StoryForm = () => {
 
     if (name === "storyTitle" && value.length <= 140) {
       setStoryTitle(value);
+      setTitleCharacterCount(value.length);
     }
 
     if (name === "storyIntro" && value.length <= 280) {
       setStoryIntro(value);
-      setCharacterCount(value.length);
+      setIntroCharacterCount(value.length);
     }
 
     if (name === "myStory") {
@@ -124,23 +127,44 @@ const StoryForm = () => {
         }}
       >
         {/* form heading row */}
-        <Typography variant="h4">Write your story</Typography>
+        <Typography variant="h5">
+          Take some time to write your story..
+        </Typography>
 
         {Auth.loggedIn() ? (
           <>
-            <p
+            <Grid
+              container
               sx={{
                 display: "flex",
                 textAlign: "center",
                 justifyContent: "center",
+                marginTop: 1,
               }}
-              className={`m-0 ${
-                characterCount === 280 || error ? "text-danger" : ""
-              }`}
             >
-              Character Count: {characterCount}/280
-            </p>
-
+              <Grid item xs={1} />
+              <Grid item xs={10} md={4}>
+                <Typography variant="subtitle1" color="secondary"
+                  title={`m-0 ${
+                    titleCharacterCount === 140 || error ? "text-danger" : ""
+                  }`}
+                >
+                  Title character count: {titleCharacterCount}/140
+                </Typography>
+              </Grid>
+              <Grid item xs={1} />
+              <Grid item xs={1} />
+              <Grid item xs={10} md={4}>
+                <Typography variant="subtitle1" color="secondary"
+                  intro={`m-0 ${
+                    introCharacterCount === 280 || error ? "text-danger" : ""
+                  }`}
+                >
+                  Intro Character Count: {introCharacterCount}/280
+                </Typography>
+              </Grid>
+              <Grid item xs={1} />
+            </Grid>
             <form
               style={{ display: "flex", flexDirection: "column" }}
               onSubmit={handleFormSubmit}
@@ -153,9 +177,12 @@ const StoryForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
+                  multiline
+                  minRows={2}
                   onChange={handleChange}
                   sx={{ margin: 3 }}
                   style={{ height: "2rem", width: "70%" }}
+                  noValidate={false}
                   required
                 />
               </div>
@@ -171,11 +198,11 @@ const StoryForm = () => {
                   minRows={2}
                   onChange={handleChange}
                   sx={{ margin: 3 }}
-                  style={{ height: "4rem", width: "70%" }}
+                  style={{ paddingTop: "1rem", height: "4rem", width: "70%" }}
                   required
                 />
-                </div>
-                <div>
+              </div>
+              <div>
                 <TextareaAutosize
                   name="myStory"
                   placeholder="My story"
@@ -183,15 +210,23 @@ const StoryForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
+                  fontFamily="'Roboto', sans-serif"
                   multiline
                   onChange={handleChange}
                   sx={{ margin: 3 }}
-                  style={{ marginTop: "1rem", padding: "1rem", height: "6rem", width: "68%", fontFamily: "Roboto', sans-serif", fontSize: "1rem" }}
+                  style={{
+                    marginTop: "1rem",
+                    padding: "1rem",
+                    height: "6rem",
+                    width: "68%",
+                    fontFamily: "Roboto', sans-serif",
+                    fontSize: "1rem",
+                  }}
                   required
                 />
-                </div>
-                {/* adding a test checkbox */}
-                {/* <FormGroup>
+              </div>
+              {/* adding a test checkbox */}
+              {/* <FormGroup>
                 <FormControlLabel
                   // control={<Checkbox defaultChecked />}
                   control={
@@ -207,10 +242,13 @@ const StoryForm = () => {
                   label="Publish this story"
                 />
               </FormGroup> */}
-              
 
               <Grid>
-                <CustomisedSubmitButton variant="contained" sx={{ margin: 3 }} type="submit">
+                <CustomisedSubmitButton
+                  variant="contained"
+                  sx={{ margin: 3 }}
+                  type="submit"
+                >
                   Add Story
                 </CustomisedSubmitButton>
               </Grid>
@@ -220,7 +258,8 @@ const StoryForm = () => {
         ) : (
           <Typography variant="body1">
             You need to be logged in to share your stories. Please{" "}
-            <Link to="/login">login</Link> or <Link to="/join">join Voices.</Link>
+            <Link to="/login">login</Link> or{" "}
+            <Link to="/join">join Voices.</Link>
           </Typography>
         )}
       </Grid>
