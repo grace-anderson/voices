@@ -132,7 +132,7 @@ const Login = (props) => {
                     "& .MuiTextField-root": { m: 1, width: "30ch" },
                   }}
                   autoComplete="off"
-                  noValidate
+                  noValidate={false} 
                   onSubmit={handleFormSubmit}
                   style={{
                     display: "flex",
