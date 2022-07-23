@@ -21,10 +21,10 @@ import DrawerComp from "./DrawerComp";
 const CustomisedButton = styled(Button)`
   font-size: 1rem;
   color: white;
-  background: #103E3F;
+  background: #103e3f;
   :hover {
     color: white;
-    background: #DD4614;
+    background: #dd4614;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 `;
@@ -33,13 +33,14 @@ const CustomisedLink = styled(Link)`
   text-decoration: none;
 `;
 const CustomisedLinkHome = styled(Link)`
-  color: black;
+  color: #103e3f;
   text-decoration: none;
   :hover {
-    color: #DD4614;
+    color: #dd4614;
   }
 `;
 const CustomisedTab = styled(Tab)`
+  color: #103e3f;
   font-size: 1.2rem;
 `;
 
@@ -47,7 +48,7 @@ const CustomisedToProfileButton = styled(Link)`
   font-size: 1rem;
   color: white;
   font-weight: 400;
-  background: #103E3F;
+  background: #103e3f;
   margin-right: 0.8rem;
   padding: 0.6rem 0.5rem 0.5rem;
   text-align: center;
@@ -61,7 +62,7 @@ const CustomisedToProfileButton = styled(Link)`
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   :hover {
     color: white;
-    background: #DD4614;
+    background: #dd4614;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 `;
@@ -111,7 +112,6 @@ const Header = ({ links }) => {
                         </CustomisedToProfileButton>
                         <CustomisedButton
                           variant="contained"
-                          // background=""
                           sx={{
                             marginLeft: "auto",
                           }}
@@ -150,19 +150,21 @@ const Header = ({ links }) => {
             </>
           ) : (
             <Grid container sx={{ placeItems: "center" }}>
-              <Grid item xs={4}>
+              <Grid item xs={1}>
                 <CustomisedLinkHome className="" to="/">
-                  <Typography variant="subtitle2">Voices</Typography>
+                  <Typography variant="subtitle2" sx={{ textAlign: "left" }}>
+                    Voices
+                  </Typography>
                 </CustomisedLinkHome>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={8}>
                 <Tabs
                   indicatorColor="secondary"
                   textColor="inherit"
                   fontSize="1.2rem"
                   value={value}
                   sx={{
-                    marginLeft: "1rem",
+                    textAlign: "left",
                   }}
                   onChange={(e, val) => setValue(val)}
                 >
@@ -171,8 +173,14 @@ const Header = ({ links }) => {
                   ))}
                 </Tabs>
               </Grid>
-              <Grid item xs={2}>
-                <Box display="flex">
+              <Grid item xs={3}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    textAlign: "center",
+                    justifyContent: "end",
+                  }}
+                >
                   {Auth.loggedIn() ? (
                     <>
                       {/* update customised link to button */}
