@@ -10,13 +10,13 @@ export const theme = createTheme({
       main: "#DD4614",
     },
     background: {
-          paper: '#eeedeb',
-          default: '#fcfbfb',
-        },
+      paper: "#eeedeb",
+      default: "#fcfbfb",
+    },
     error: {
       main: "#A61A14",
       fontWeight: "700",
-    }
+    },
   },
   // palette: {
   //   type: 'light',
@@ -74,7 +74,7 @@ export const theme = createTheme({
       fontFamily: '"Satisfy", cursive',
       fontSize: "2rem",
       marginBottom: "1rem",
-      color: "#103E3F"
+      color: "#103E3F",
     },
     h5Roboto: {
       fontFamily: "Roboto",

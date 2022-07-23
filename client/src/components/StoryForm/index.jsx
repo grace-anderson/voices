@@ -133,7 +133,78 @@ const StoryForm = () => {
 
         {Auth.loggedIn() ? (
           <>
-            <Grid
+            <form
+              style={{ display: "flex", flexDirection: "column" }}
+              onSubmit={handleFormSubmit}
+            >
+              <div>
+                <TextareaAutosize
+                  name="storyTitle"
+                  placeholder="My story title (140 characters max)"
+                  value={storyTitle}
+                  variant="outlined"
+                  className="form-input"
+                  type={"text"}
+                  multiline
+                  onChange={handleChange}
+                  style={{
+                    marginTop: "1rem",
+                    padding: "1rem",
+                    height: "2rem",
+                    width: "70%",
+                    fontFamily: "Roboto', sans-serif",
+                    fontSize: "1.2rem",
+                  }}
+                  noValidate={false}
+                  required
+                />
+              </div>
+              <Grid
+              container
+              sx={{
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                marginTop: 1,
+              }}
+            >
+              <Grid item xs={1} />
+              <Grid item xs={10}>
+                <Typography
+                  variant="subtitle1"
+                  color="secondary"
+                  title={`m-0 ${
+                    titleCharacterCount === 140 || error ? "text-danger" : ""
+                  }`}
+                >
+                  Title character count: {titleCharacterCount}/140
+                </Typography>
+              </Grid>
+              <Grid item xs={1} />
+              </Grid>
+              <div>
+                <TextareaAutosize
+                  name="storyIntro"
+                  placeholder="Introducing my story (280 characters max)"
+                  value={storyIntro}
+                  variant="outlined"
+                  className="form-input"
+                  type={"text"}
+                  multiline
+                  onChange={handleChange}
+                  style={{
+                    marginTop: "1rem",
+                    padding: "1rem",
+                    height: "3rem",
+                    width: "70%",
+                    fontFamily: "Roboto', sans-serif",
+                    fontSize: "1.2rem",
+                  }}
+                  noValidate={false}
+                  required
+                />
+              </div>
+              <Grid
               container
               sx={{
                 display: "flex",
@@ -144,18 +215,9 @@ const StoryForm = () => {
             >
               <Grid item xs={1} />
               <Grid item xs={10} md={4}>
-                <Typography variant="subtitle1" color="secondary"
-                  title={`m-0 ${
-                    titleCharacterCount === 140 || error ? "text-danger" : ""
-                  }`}
-                >
-                  Title character count: {titleCharacterCount}/140
-                </Typography>
-              </Grid>
-              <Grid item xs={1} />
-              <Grid item xs={1} />
-              <Grid item xs={10} md={4}>
-                <Typography variant="subtitle1" color="secondary"
+                <Typography
+                  variant="subtitle1"
+                  color="secondary"
                   intro={`m-0 ${
                     introCharacterCount === 280 || error ? "text-danger" : ""
                   }`}
@@ -164,44 +226,7 @@ const StoryForm = () => {
                 </Typography>
               </Grid>
               <Grid item xs={1} />
-            </Grid>
-            <form
-              style={{ display: "flex", flexDirection: "column" }}
-              onSubmit={handleFormSubmit}
-            >
-              <div>
-                <TextField
-                  name="storyTitle"
-                  placeholder="My story title (140 characters max)"
-                  value={storyTitle}
-                  variant="outlined"
-                  className="form-input"
-                  type={"text"}
-                  multiline
-                  minRows={2}
-                  onChange={handleChange}
-                  sx={{ margin: 3 }}
-                  style={{ height: "2rem", width: "70%" }}
-                  noValidate={false}
-                  required
-                />
-              </div>
-              <div>
-                <TextField
-                  name="storyIntro"
-                  placeholder="Introducing my story (280 characters max)"
-                  value={storyIntro}
-                  variant="outlined"
-                  className="form-input"
-                  type={"text"}
-                  multiline
-                  minRows={2}
-                  onChange={handleChange}
-                  sx={{ margin: 3 }}
-                  style={{ paddingTop: "1rem", height: "4rem", width: "70%" }}
-                  required
-                />
-              </div>
+              </Grid>
               <div>
                 <TextareaAutosize
                   name="myStory"
@@ -210,18 +235,18 @@ const StoryForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
-                  fontFamily="'Roboto', sans-serif"
                   multiline
                   onChange={handleChange}
-                  sx={{ margin: 3 }}
                   style={{
                     marginTop: "1rem",
                     padding: "1rem",
                     height: "6rem",
-                    width: "68%",
+                    width: "70%",
                     fontFamily: "Roboto', sans-serif",
-                    fontSize: "1rem",
+                    fontSize: "1.2rem",
+                    whiteSpace: "pre-wrap",
                   }}
+                  noValidate={false}
                   required
                 />
               </div>

@@ -43,7 +43,11 @@ const SingleStory = () => {
       <Grid xs={10} md={6}>
         <Typography
           variant="subtitle1"
-          sx={{ marginBottom: "2rem", backgroundColor: "#eeedeb" }}
+          sx={{
+            fontWeight: 500,
+            marginBottom: "2rem",
+            backgroundColor: "#eeedeb",
+          }}
         >
           {story.storyIntro}
         </Typography>
@@ -52,7 +56,15 @@ const SingleStory = () => {
       {/* story */}
       <Grid xs={1} md={3} />
       <Grid xs={10} md={6}>
-        <Typography variant="body1" sx={{ textAlign: "left", backgroundColor: "#eeedeb", padding: "1rem" }}>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "left",
+            backgroundColor: "#eeedeb",
+            padding: "1rem",
+            whiteSpace: "pre-wrap",
+          }}
+        >
           {story.myStory}
         </Typography>
       </Grid>
