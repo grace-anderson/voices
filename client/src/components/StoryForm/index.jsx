@@ -160,7 +160,7 @@ const StoryForm = () => {
                     introCharacterCount === 280 || error ? "text-danger" : ""
                   }`}
                 >
-                  Intro Character Count: {introCharacterCount}/280
+                  Introduction character count: {introCharacterCount}/280
                 </Typography>
               </Grid>
               <Grid item xs={1} />
