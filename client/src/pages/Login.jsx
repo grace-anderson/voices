@@ -149,10 +149,10 @@ const Login = (props) => {
                     type="email"
                     variant="outlined"
                     fullWidth
-                    required
                     style={{ backgroundColor: "white" }}
                     value={formState.email}
                     onChange={handleChange}
+                    required
                   />
                   <TextField
                     placeholder="******"
@@ -161,10 +161,10 @@ const Login = (props) => {
                     type="password"
                     variant="outlined"
                     fullWidth
-                    required
                     style={{ backgroundColor: "white" }}
                     value={formState.password}
                     onChange={handleChange}
+                    required
                   />
                   <Box
                     style={{ cursor: "pointer" }}

@@ -56,8 +56,8 @@ const Profile = () => {
       </Grid>
       <Grid item xs={1} />
       {/* form row */}
-      <Grid xs={2} />
-      <Grid xs={8}
+      <Grid item xs={2} />
+      <Grid item xs={8}
       >{!userParam && <StoryForm />}</Grid>
       <Grid item xs={2} />
       {/* your profile heading */}

@@ -148,10 +148,10 @@ const Signup = () => {
                     name="username"
                     variant="outlined"
                     fullWidth
-                    required
                     style={{ backgroundColor: "white" }}
                     type="text"
                     value={formState.name}
+                    required
                     onChange={handleChange}
                     // helperText={errorText}
                     // error={error}
@@ -162,10 +162,10 @@ const Signup = () => {
                     name="email"
                     variant="outlined"
                     fullWidth
-                    required
                     style={{ backgroundColor: "white" }}
                     type="email"
                     value={formState.email}
+                    required
                     onChange={handleChange}
                   />
                   <TextField

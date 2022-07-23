@@ -27,6 +27,23 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
+      // server side validation
+      if (!username) {
+        throw new Error('Username is required!');
+      }
+      if (!email) {
+        throw new Error('Email is required!');
+      }
+      if (!email.match(/.+@.+\..+/)) {
+        throw new Error('Valid email is required');
+      }
+      if (!password) {
+        throw new Error('Password is required!');
+      }
+      if (password.length < 5) {
+        throw new Error('Password must be at least 5 characters long!');
+      }
+
       const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };

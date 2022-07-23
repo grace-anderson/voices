@@ -71,7 +71,7 @@ const StoryList = ({ stories, showUsername = true }) => {
       {/* {showTitle && <h3>{title}</h3>} */}
       {stories &&
         stories.map((story) => (
-          <Grid>
+          <Grid key={story._id}>
             {/* Card */}
             <Card
               sx={{
@@ -82,7 +82,7 @@ const StoryList = ({ stories, showUsername = true }) => {
                 overflowY: "visible",
               }}
             >
-              <div key={story._id}>
+              <div>
                 {/* <CardMedia/> TODO */}
                 {/* Card Content */}
                 <CardContent>
