@@ -220,7 +220,7 @@ const StoryForm = () => {
         ) : (
           <Typography variant="body1">
             You need to be logged in to share your stories. Please{" "}
-            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+            <Link to="/login">login</Link> or <Link to="/join">join Voices.</Link>
           </Typography>
         )}
       </Grid>

@@ -138,8 +138,8 @@ const Header = ({ links }) => {
                           }}
                           variant="contained"
                         >
-                          <CustomisedLink className="btn" to="/signup">
-                            Signup
+                          <CustomisedLink className="btn" to="/join">
+                            Join Voices
                           </CustomisedLink>
                         </CustomisedButton>
                       </>
@@ -201,8 +201,8 @@ const Header = ({ links }) => {
                         }}
                         variant="contained"
                       >
-                        <CustomisedLink className="btn" to="/signup">
-                          Signup
+                        <CustomisedLink className="btn" to="/join">
+                          Join Voices
                         </CustomisedLink>
                       </CustomisedButton>
                     </>
