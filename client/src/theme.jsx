@@ -66,7 +66,7 @@ export const theme = createTheme({
     },
     h4Roboto: {
       fontFamily: "Roboto",
-      fontSize: "2.8rem",
+      fontSize: "1.6rem",
       marginBottom: "1rem",
       fontWeight: 700,
     },

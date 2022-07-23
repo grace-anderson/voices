@@ -2,3 +2,12 @@
     margin: 0px;
     padding: 0px;
 }
+
+body {
+    background: url(../public/img/global-citizens-bw_warm.jpg); 
+    background-repeat: no-repeat;
+    align-items: center;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
