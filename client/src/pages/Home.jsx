@@ -36,7 +36,7 @@ const Home = () => {
         {/* paragraph row */}
         <Grid item xs={1} md={2} />
         <Grid item xs={10} md={8}>
-          <Typography variant="subtitle1">
+          <Typography variant="subtitle1" sx={{fontWeight: 500}}>
             Tell your story with Voices. Introduction paragraph ... Lemon drops
             cookie marzipan candy cupcake. Dragée chocolate bar cotton candy
             bonbon bonbon. Cupcake jelly-o chocolate cake soufflé jelly

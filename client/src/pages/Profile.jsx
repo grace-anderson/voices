@@ -57,8 +57,9 @@ const Profile = () => {
       <Grid item xs={1} />
       {/* form row */}
       <Grid item xs={2} />
-      <Grid item xs={8}
-      >{!userParam && <StoryForm />}</Grid>
+      <Grid item xs={8}>
+        {!userParam && <StoryForm />}
+      </Grid>
       <Grid item xs={2} />
       {/* your profile heading */}
       <Grid xs={1} />
@@ -68,10 +69,12 @@ const Profile = () => {
           display: "flex",
           textAlign: "center",
           justifyContent: "center",
-          marginTop: 4
+          marginTop: 4,
         }}
       >
-        <Typography variant="h4Roboto" >Viewing {userParam ? `${user.username}'s` : "your"} profile</Typography>
+        <Typography variant="h4Roboto">
+          Viewing {userParam ? `${user.username}'s` : "your"} profile
+        </Typography>
       </Grid>
       <Grid item xs={1} />
       {/* your stories heading */}

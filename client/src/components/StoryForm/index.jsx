@@ -5,7 +5,6 @@ import { useMutation } from "@apollo/client";
 import {
   Button,
   Grid,
-  TextField,
   TextareaAutosize,
   styled,
   Typography,
@@ -160,27 +159,27 @@ const StoryForm = () => {
                 />
               </div>
               <Grid
-              container
-              sx={{
-                display: "flex",
-                textAlign: "center",
-                justifyContent: "center",
-                marginTop: 1,
-              }}
-            >
-              <Grid item xs={1} />
-              <Grid item xs={10}>
-                <Typography
-                  variant="subtitle1"
-                  color="secondary"
-                  title={`m-0 ${
-                    titleCharacterCount === 140 || error ? "text-danger" : ""
-                  }`}
-                >
-                  Title character count: {titleCharacterCount}/140
-                </Typography>
-              </Grid>
-              <Grid item xs={1} />
+                container
+                sx={{
+                  display: "flex",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  marginTop: 1,
+                }}
+              >
+                <Grid item xs={1} />
+                <Grid item xs={10}>
+                  <Typography
+                    variant="subtitle1"
+                    color="secondary"
+                    title={`m-0 ${
+                      titleCharacterCount === 140 || error ? "text-danger" : ""
+                    }`}
+                  >
+                    Title character count: {titleCharacterCount}/140
+                  </Typography>
+                </Grid>
+                <Grid item xs={1} />
               </Grid>
               <div>
                 <TextareaAutosize
@@ -205,27 +204,27 @@ const StoryForm = () => {
                 />
               </div>
               <Grid
-              container
-              sx={{
-                display: "flex",
-                textAlign: "center",
-                justifyContent: "center",
-                marginTop: 1,
-              }}
-            >
-              <Grid item xs={1} />
-              <Grid item xs={10} md={4}>
-                <Typography
-                  variant="subtitle1"
-                  color="secondary"
-                  intro={`m-0 ${
-                    introCharacterCount === 280 || error ? "text-danger" : ""
-                  }`}
-                >
-                  Introduction character count: {introCharacterCount}/280
-                </Typography>
-              </Grid>
-              <Grid item xs={1} />
+                container
+                sx={{
+                  display: "flex",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  marginTop: 1,
+                }}
+              >
+                <Grid item xs={1} />
+                <Grid item xs={10} md={4}>
+                  <Typography
+                    variant="subtitle1"
+                    color="secondary"
+                    intro={`m-0 ${
+                      introCharacterCount === 280 || error ? "text-danger" : ""
+                    }`}
+                  >
+                    Introduction character count: {introCharacterCount}/280
+                  </Typography>
+                </Grid>
+                <Grid item xs={1} />
               </Grid>
               <div>
                 <TextareaAutosize
