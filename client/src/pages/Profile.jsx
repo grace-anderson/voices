@@ -58,13 +58,24 @@ const Profile = () => {
       </Grid>
       <Grid item xs={1} />
 
-      {/* Story form row */}
+      {/* Add profile data -> Profile form row */}
       <Grid item xs={2} />
       <Grid item xs={8}>
         {!userParam && <ProfileForm />}
       </Grid>
       <Grid item xs={2} />
 
+      {/* Display saved profile */}
+      {/* conditional display profile data if it exists */}
+      {/* <Grid item xs={12}>
+        // <StoryList
+        <MyProfile
+          profile={user.profile}
+          title={`${user.username}'s Profile`}
+          // showTitle={false}
+          // showUsername={false}
+        />
+      </Grid> */}
 
       {/* Story form row */}
       <Grid item xs={2} />

@@ -124,7 +124,6 @@ const ProfileForm = () => {
                     whiteSpace: "pre-wrap",
                   }}
                   noValidate={false}
-                  required
                 />
               </Grid>
               <Grid item xs={12}>
@@ -133,9 +132,9 @@ const ProfileForm = () => {
                   sx={{ margin: 3 }}
                   type="submit"
                 >
-                  Add Profile
+                  Save Profile
                 </CustomisedSubmitButton>
-                {error && <div className="">{error.message}</div>}
+                {error && <div>{error.message}</div>}
               </Grid>
             </Box>
           </>

@@ -26,7 +26,7 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
+    addUser: async (parent, { username, email, password, myProfile }) => {
       // server side validation
       if (!username) {
         throw new Error("Username is required!");
@@ -44,7 +44,7 @@ const resolvers = {
         throw new Error("Password must be at least 5 characters long!");
       }
 
-      const user = await User.create({ username, email, password });
+      const user = await User.create({ username, email, password, myProfile });
       const token = signToken(user);
       return { token, user };
     },
@@ -64,6 +64,26 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addProfile: async (parent, { myProfile }, context) => {
+      // server side validation
+      if (!myProfile) {
+        throw new Error("Have you added something in your profile?");
+      }
+
+      if (context.user) {
+        const myProfile = await User.create({
+          myProfile
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { myProfile } }
+        );
+
+        return myProfile;
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     addStory: async (parent, { storyTitle, storyIntro, myStory }, context) => {
       // server side validation
@@ -88,23 +108,6 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    addComment: async (parent, { storyId, commentText }, context) => {
-      if (context.user) {
-        return Story.findOneAndUpdate(
-          { _id: storyId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
     removeStory: async (parent, { storyId }, context) => {
       if (context.user) {
         const story = await Story.findOneAndDelete({
@@ -118,23 +121,6 @@ const resolvers = {
         );
 
         return story;
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-    removeComment: async (parent, { storyId, commentId }, context) => {
-      if (context.user) {
-        return Story.findOneAndUpdate(
-          { _id: storyId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
       }
       throw new AuthenticationError("You need to be logged in!");
     },
