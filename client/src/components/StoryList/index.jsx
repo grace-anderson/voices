@@ -65,7 +65,6 @@ const StoryList = ({ stories, showUsername = true }) => {
       justifyContent="center"
       sx={{ marginLeft: "auto", marginRight: "auto" }}
     >
-      {/* {showTitle && <h3>{title}</h3>} */}
       {stories &&
         stories.map((story) => (
           <Grid key={story._id}>

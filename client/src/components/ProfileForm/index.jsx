@@ -11,8 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import { ADD_STORY } from "../../utils/mutations";
-import { QUERY_STORIES, QUERY_ME } from "../../utils/queries";
+import { UPDATE_USER_PROFILE } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -35,25 +35,26 @@ const CustomisedSubmitButton = styled(Button)`
 const ProfileForm = () => {
   const [myProfile, setMyProfile] = useState("");
 
-  const [addStory, { error }] = useMutation(ADD_STORY, {
-    update(cache, { data: { addStory } }) {
+  const [updateUserProfile, { error}] = useMutation(UPDATE_USER_PROFILE, {
+    update(cache, { data: { updateUserProfile } }) {
       try {
-        const { stories } = cache.readQuery({ query: QUERY_STORIES });
-
+        const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
-          query: QUERY_STORIES,
-          data: { stories: [addStory, ...stories] },
+          query: QUERY_ME,
+          data: { user: updateUserProfile },
         });
-      } catch (e) {
+      }
+      catch (e) {
         console.error(e);
       }
 
-      // update me object's cache
+// update me object's cache
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, stories: [...me.stories, addStory] } },
+        query: UPDATE_USER_PROFILE,
+        data: { me: { ...me, user: [...me.user, updateUserProfile] } },
       });
+
     },
   });
 
@@ -61,10 +62,9 @@ const ProfileForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addStory({
+      const { data } = await updateUserProfile({
         variables: {
           myProfile,
-          storyAuthor: Auth.getProfile().data.username,
         },
       });
 
@@ -112,7 +112,7 @@ const ProfileForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
-                  multiline
+                  // multiline
                   onChange={handleChange}
                   style={{
                     marginTop: "1rem",
@@ -132,7 +132,7 @@ const ProfileForm = () => {
                   sx={{ margin: 3 }}
                   type="submit"
                 >
-                  Save Profile
+                  Update Profile
                 </CustomisedSubmitButton>
                 {error && <div>{error.message}</div>}
               </Grid>
@@ -140,7 +140,7 @@ const ProfileForm = () => {
           </>
         ) : (
           <Typography variant="body1">
-            You need to be logged in to add your profile. Please{" "}
+            You need to be logged in to update your profile. Please{" "}
             <Link to="/login">login</Link> or{" "}
             <Link to="/join">join Voices.</Link>
           </Typography>

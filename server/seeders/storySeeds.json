@@ -1,62 +1,38 @@
 [
   {
-    "storyTitle": "Debugging is twice as hard",
-    "storyIntro": "Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Brian Kernighan"
+    "storyTitle": "Girls are the future: Empower them",
+    "storyIntro": "Empowering girls helps solve the biggest problems, but right now we are sliding into a more unequal world.",
+    "myStory": "Women and girls suffer the most when it comes to poverty and climate change. We need world leaders to do more. Call for leaders to help every girl achieve her potential. Sign the petition!",
+    "storyAuthor": "Abdullahi S"
   },
   {
-    "storyTitle": "the best programming is done on paper",
-    "storyIntro": "Some of the best programming is done on paper, really. Putting it into the computer is just a minor detail.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Max Kanat-Alexander"
+    "storyTitle": "Save the world we love",
+    "storyIntro": "Our land and oceans are under threat from the climate emergency. Action now will ensure a liveable world for all.",
+    "myStory": "The climate crisis is happening now, and our planet is paying the price. We can no longer afford half-measures, empty promises to climate-vulnerable communities, or foot-dragging to phase out planet-killing fossil fuels.With every delay, the scale of the crisis grows. It is extinguishing species, destroying nature and robbing millions of our livelihoods and our futures. We need climate justice now to protect countries at the frontline of the crisis. We need governments and businesses to reach net-zero emissions before 2050. And we need those in power to work together to ensure a sustainable future for all. The clock is ticking. It is time to put words into action and save the world we love.",
+    "storyAuthor": "Leonardo"
   },
   {
-    "storyTitle": "create things",
-    "storyIntro": "When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Why The Lucky Stiff"
+    "storyTitle": "What Does It Mean to Be a Refugee?",
+    "storyIntro": "Forced from their homes by conflict, crisis, or climate change, refugees are amongst the most vulnerable people in the world.",
+    "myStory": "Across the world, people are forced to flee their homes and become refugees. Most of those forced to flee face huge challenges on the path to safety. Speak out for their rights now.",
+    "storyAuthor": "Sweta S"
   },
   {
-    "storyTitle": "a good programmer with great habits",
-    "storyIntro": "I'm not a great programmer; I'm just a good programmer with great habits.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Kent Beck"
+    "storyTitle": "Support Civil Society in Afghanistan",
+    "storyIntro": "More than half of the population needs humanitarian aid.",
+    "myStory": "After the Taliban took over Afghanistan, the German government froze development cooperation funds. NGOs must be able to continue working on the ground.",
+    "storyAuthor": "Edwin O"
   },
   {
-    "storyTitle": "frozen",
-    "storyIntro": "Walking on water and developing software from a specification are easy if both are frozen.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Edward V. Berard"
+    "storyTitle": "Pledge to make an impact",
+    "storyIntro": "I pledge to create change, every day, toward a more just and equitable society. I know that my actions have an impact and that, together, we can change the world.",
+    "myStory": "Millions of people across our planet lack access to the resources they need in order to thrive. Take action daily and make an impact that can be felt across the globe.",
+    "storyAuthor": "Ward V"
   },
   {
-    "storyTitle": "The most disastrous thing",
-    "storyIntro": "The most disastrous thing that you can ever learn is your first programming language.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Alan Kay"
-  },
-  {
-    "storyTitle": "most important property of a program",
-    "storyIntro": "The most important property of a program is whether it accomplishes the intention of its user.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "C.A.R. Hoare"
-  },
-  {
-    "storyTitle": "finish and ship",
-    "storyIntro": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "David Thomas"
-  },
-  {
-    "storyTitle": "optimize everything?",  
-    "storyIntro": "If you optimize everything, you will always be unhappy.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Donald Knuth"
-  },
-  {
-    "storyTitle": "Is it a bug?",
-    "storyIntro": "It's not a bug; it's an undocumented feature.",
-    "myStory": "Bonbon bear claw cupcake ice cream caramels cotton candy chocolate cake. Sweet roll gummies jelly beans apple pie fruitcake cheesecake macaroon caramels toffee. Fruitcake shortbread gummi bears marzipan croissant cake.Bear claw macaroon jelly beans tootsie roll chocolate bar chocolate cheesecake cake cookie. Dragée carrot cake carrot cake croissant tootsie roll oat cake. Topping ice cream chocolate bar sweet lollipop. Chocolate tart apple pie sweet roll croissant dragée liquorice.",
-    "storyAuthor": "Lernantino"
+    "storyTitle": "End poverty now",
+    "storyIntro": "The world is facing global crises. We need leaders to act with urgency. We have the resources to tackle climate change, hunger, and more, but must work together",
+    "myStory": "The poorest people on our planet continue to suffer. They lack access to food, healthcare, and education. They deal with the realities of climate change — unending drought in some places, flooding, and rising sea levels in others. They are unable to put food on the table, unable to access basic medicines, education and healthcare, unable to access financing or equity, and therefore unable to offer their children a better future. Many of these people are refugees and internally displaced fleeing conflict areas such as Ukraine, Syria and Venezuela in recent years.",
+    "storyAuthor": "Guido"
   }
-]
+  ]

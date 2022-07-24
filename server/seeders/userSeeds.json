@@ -1,52 +1,36 @@
 [
   {
-    "username": "Brian Kernighan",
-    "email": "bkernighan@techfriends.dev",
-    "password": "password01"
+    "username": "Abdullahi S",
+    "email": "abdu@gmail.com",
+    "password": "password01",
+    "myProfile": "I feel that no matters in the world nothing can hamper our progress"
   },
   {
-    "username": "Max Kanat-Alexander",
-    "email": "mkanatalexander@techfriends.dev",
+    "username": "Leonardo",
+    "email": "leonardo@espana.es",
     "password": "password02"
   },
   {
-    "username": "Why The Lucky Stiff",
-    "email": "wtls@techfriends.dev",
-    "password": "password03"
+    "username": "Sweta S",
+    "email": "swets@me.com",
+    "password": "password03",
+    "myProfile": "Declare a climate emergency!"
   },
   {
-    "username": "Kent Beck",
-    "email": "kbeck@techfriends.dev",
-    "password": "password04"
+    "username": "Edwin O",
+    "email": "ed_o@gmail.com",
+    "password": "password04",
+    "myProfile": "Fight for a fairer world"
   },
   {
-    "username": "Edward V. Berard",
-    "email": "evberard@techfriends.dev",
+    "username": "kimberly",
+    "email": "kimbers@grapevine.com",
     "password": "password05"
   },
   {
-    "username": "Alan Kay",
-    "email": "akay@techfriends.dev",
-    "password": "password06"
-  },
-  {
-    "username": "C.A.R. Hoare",
-    "email": "choare@techfriends.dev",
-    "password": "password07"
-  },
-  {
-    "username": "David Thomas",
-    "email": "dthomas@techfriends.dev",
-    "password": "password08"
-  },
-  {
-    "username": "Donald Knuth",
-    "email": "dknuth@techfriends.dev",
-    "password": "password09"
-  },
-  {
-    "username": "Lernantino",
-    "email": "lernantino@techfriends.dev",
-    "password": "password10"
+    "username": "Gillian G",
+    "email": "gilliangggg@gmail.com",
+    "password": "password06",
+    "myProfile": "Exigimos justicia con las vacunas"
   }
 ]

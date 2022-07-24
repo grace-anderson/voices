@@ -4,7 +4,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import { Grid, Link, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import { QUERY_SINGLE_STORY } from "../utils/queries";
 
@@ -35,7 +35,7 @@ const SingleStory = () => {
       {/* story heading */}
       <Grid xs={1} />
       <Grid xs={10}>
-        <Typography variant="h2">{story.storyTitle}</Typography>
+        <Typography variant="h2" sx={{marginTop: "3rem"}}>{story.storyTitle}</Typography>
       </Grid>
       <Grid xs={1} />
       {/* story intro */}
