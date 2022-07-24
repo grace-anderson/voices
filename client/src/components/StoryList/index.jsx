@@ -12,26 +12,26 @@ import {
 } from "@mui/material";
 
 const CustomisedLinkStory = styled(Link)`
-  color: #103E3F;
+  color: #103e3f;
   text-decoration: none;
   font-family: Roboto;
   font-size: 1rem;
   font-weight: 500;
   :hover {
-    color: #DD4614;
+    color: #dd4614;
     font-weight: 700;
     font-size: 1rem;
   }
 `;
 
 const CustomisedLinkStoryOrange = styled(Link)`
-  color: #DD4614;
+  color: #dd4614;
   text-decoration: none;
   font-family: Roboto;
   font-size: 1rem;
   font-weight: 500;
   :hover {
-    color: #103E3F;
+    color: #103e3f;
     font-weight: 700;
     font-size: 1rem;
   }
@@ -40,19 +40,16 @@ const CustomisedLinkStoryOrange = styled(Link)`
 const StoryList = ({ stories, showUsername = true }) => {
   if (!stories.length) {
     return (
-      <Grid container
-      sx={{
-        display: "flex",
-        textAlign: "center",
-        justifyContent: "center",
-        marginTop: 1,
-      }}
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          textAlign: "center",
+          justifyContent: "center",
+          marginTop: 1,
+        }}
       >
-        <Typography
-          variant="h5Roboto"
-        >
-          No stories yet...
-        </Typography>
+        <Typography variant="h5Roboto">No stories yet...</Typography>
       </Grid>
     );
   }
@@ -83,7 +80,7 @@ const StoryList = ({ stories, showUsername = true }) => {
               }}
             >
               <div>
-                {/* <CardMedia/> TODO */}
+                {/* <CardMedia/>*/}
                 {/* Card Content */}
                 <CardContent>
                   <Typography
@@ -97,46 +94,32 @@ const StoryList = ({ stories, showUsername = true }) => {
                   >
                     {story.storyTitle}
                   </Typography>
-                  <Typography
-                    variant="h5Roboto"
-                    sx={{
-                      display: "flex",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      marginBottom: 2,
-                    }}
-                  >
+                  <Grid container>
                     {showUsername ? (
+                      <Typography
+                      
+                      variant="h5Roboto"
+                      sx={{
+                        display: "flex",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        marginBottom: 2,
+                      }}
+                      >
                       <CustomisedLinkStory
-                        className=""
                         to={`/profiles/${story.storyAuthor}`}
                       >
                         {story.storyAuthor} wrote this story on{" "}
                         {story.createdAt}
                       </CustomisedLinkStory>
+                      </Typography>
                     ) : (
                       <>
-                        <Typography
-                          variant="h5Roboto"
-                          sx={{
-                            display: "flex",
-                            textAlign: "center",
-                            justifyContent: "center",
-                            marginBottom: 2,
-                          }}
-                        >
-                          <CustomisedLinkStory
-                            className=""
-                            to={`/profiles/${story.storyAuthor}`}
-                          >
-                            <span style={{ fontSize: "1rem" }}>
-                              You wrote this story on {story.createdAt}
-                            </span>
-                          </CustomisedLinkStory>
-                        </Typography>
+                      {/* hide profile link when on user's profile */}
                       </>
                     )}
-                  </Typography>
+                  </Grid>
+                  {/* story introduction */}
                   <Typography variant="body1" sx={{ marginTop: 1 }}>
                     {story.storyIntro}
                   </Typography>

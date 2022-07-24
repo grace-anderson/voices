@@ -4,7 +4,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import { Grid, Typography } from "@mui/material";
+import { Grid, Link, Typography } from "@mui/material";
 
 import { QUERY_SINGLE_STORY } from "../utils/queries";
 

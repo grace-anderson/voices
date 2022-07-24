@@ -88,7 +88,9 @@ const Profile = () => {
           justifyContent: "center",
         }}
       >
-        <Typography variant="h2">Your stories</Typography>
+        <Typography variant="h2">
+          {userParam ? `${user.username}'s` : "Your"} stories
+        </Typography>
       </Grid>
       <Grid item xs={1} />
       {/* stories displayed */}
