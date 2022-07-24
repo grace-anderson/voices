@@ -5,6 +5,8 @@ import { useQuery } from "@apollo/client";
 import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
 
+import ProfileForm from "../components/ProfileForm";
+
 import { Grid, Typography } from "@mui/material";
 
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -52,31 +54,24 @@ const Profile = () => {
           marginBottom: 2,
         }}
       >
-        <Typography variant="h1">{user.username}'s Profile</Typography>
+        <Typography variant="h1">{user.username}'s Profile and Stories</Typography>
       </Grid>
       <Grid item xs={1} />
-      {/* form row */}
+
+      {/* Story form row */}
+      <Grid item xs={2} />
+      <Grid item xs={8}>
+        {!userParam && <ProfileForm />}
+      </Grid>
+      <Grid item xs={2} />
+
+
+      {/* Story form row */}
       <Grid item xs={2} />
       <Grid item xs={8}>
         {!userParam && <StoryForm />}
       </Grid>
       <Grid item xs={2} />
-      {/* your profile heading */}
-      <Grid xs={1} />
-      <Grid
-        xs={10}
-        sx={{
-          display: "flex",
-          textAlign: "center",
-          justifyContent: "center",
-          marginTop: 4,
-        }}
-      >
-        <Typography variant="h4Roboto">
-          Viewing {userParam ? `${user.username}'s` : "your"} profile
-        </Typography>
-      </Grid>
-      <Grid item xs={1} />
       {/* your stories heading */}
       <Grid xs={1} />
       <Grid

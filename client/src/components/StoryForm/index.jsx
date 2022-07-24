@@ -8,9 +8,6 @@ import {
   TextareaAutosize,
   styled,
   Typography,
-  // FormGroup,
-  // FormControlLabel,
-  // Checkbox,
 } from "@mui/material";
 
 import { ADD_STORY } from "../../utils/mutations";
@@ -41,9 +38,6 @@ const StoryForm = () => {
 
   const [titleCharacterCount, setTitleCharacterCount] = useState(0);
   const [introCharacterCount, setIntroCharacterCount] = useState(0);
-
-  // Publishing checkbox - not complete
-  // const [publish, setPublish] = useState(false);
 
   const [addStory, { error }] = useMutation(ADD_STORY, {
     update(cache, { data: { addStory } }) {
@@ -77,7 +71,6 @@ const StoryForm = () => {
           storyIntro,
           myStory,
           storyAuthor: Auth.getProfile().data.username,
-          // publish,
         },
       });
 
@@ -105,11 +98,6 @@ const StoryForm = () => {
     if (name === "myStory") {
       setMyStory(value);
     }
-
-    // if (setPublish(true)) {
-    //   console.log("publish is true");
-    //   setPublish(false);
-    // }
   };
 
   return (
@@ -126,7 +114,7 @@ const StoryForm = () => {
         }}
       >
         {/* form heading row */}
-        <Typography variant="h5">
+        <Typography variant="h3">
           Take some time to write your story...
         </Typography>
 
@@ -249,28 +237,10 @@ const StoryForm = () => {
                   required
                 />
               </div>
-              {/* adding a test checkbox */}
-              {/* <FormGroup>
-                <FormControlLabel
-                  // control={<Checkbox defaultChecked />}
-                  control={
-                    <Checkbox
-                      onChange={() =>
-                        setPublish((prev) => ({
-                          ...prev,
-                          publish: !publish.publish,
-                        }))
-                      }
-                    />
-                  }
-                  label="Publish this story"
-                />
-              </FormGroup> */}
-
               <Grid>
                 <CustomisedSubmitButton
                   variant="contained"
-                  sx={{ margin: 3 }}
+                  sx={{ marginTop: 3 }}
                   type="submit"
                 >
                   Add Story
