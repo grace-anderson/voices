@@ -6,7 +6,7 @@ import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
 
 import ProfileForm from "../components/ProfileForm";
-import UserProfile from "../components/UserProfile";
+// import UserProfile from "../components/UserProfile";
 
 import { Grid, Typography } from "@mui/material";
 
@@ -55,7 +55,7 @@ const Profile = () => {
           marginBottom: 2,
         }}
       >
-        <Typography variant="h1">{user.username}'s Profile and Stories</Typography>
+        <Typography variant="h1">{user.username}</Typography>
       </Grid>
       <Grid item xs={1} />
 
@@ -69,14 +69,13 @@ const Profile = () => {
       {/* Display saved profile */}
       <Grid item xs={1} />
       <Grid item xs={10}>
-      <Typography variant="h2" sx={{textAlign: "center"}}>
+      <Typography variant="h4" sx={{textAlign: "center"}}>
           {userParam ? `${user.username}'s` : "Your"} Profile
         </Typography>
         </Grid>
         <Grid item xs={1} />
       <Grid item xs={12} sx={{textAlign: "center", marginBottom: 8}}>
-      <Typography variant="body1">profile should be here</Typography>
-      <Typography variant="body1">{user.myProfile}</Typography>
+      <Typography variant="subtitle1" sx={{ fontWeight: 500, fontSize: "1.1rem" }}>{user.myProfile ? `${user.myProfile}`: "No profile added yet..."}</Typography>
         {/* <UserProfile
           profile={user.myProfile}
           title={`${user.username}'s Profile`}
@@ -102,7 +101,7 @@ const Profile = () => {
           justifyContent: "center",
         }}
       >
-        <Typography variant="h2">
+        <Typography variant="h4">
           {userParam ? `${user.username}'s` : "Your"} stories
         </Typography>
       </Grid>

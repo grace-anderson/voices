@@ -81,7 +81,7 @@ const Header = () => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
 
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(0);
 
   return (
     <React.Fragment>
@@ -162,7 +162,6 @@ const Header = () => {
               <Grid item xs={8}>
                 <Tabs
                   indicatorColor="secondary"
-                  textColor="inherit"
                   fontSize="1.2rem"
                   value={value}
                   sx={{

@@ -41,24 +41,17 @@ const ProfileForm = () => {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { user: addProfile },
+          data: { me: { ...me, myProfile: addProfile.myProfile } },
         });
       } catch (e) {
         console.error(e);
       }
-
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: ADD_PROFILE,
-        data: { me: { ...me, user: [...me.user, addProfile] } },
-      });
     },
   });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("handleFormSubmit");
     try {
       const { data } = await addProfile({
         variables: {
@@ -66,6 +59,7 @@ const ProfileForm = () => {
         },
       });
       // setMyProfile("");
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -98,44 +92,43 @@ const ProfileForm = () => {
 
         {Auth.loggedIn() ? (
           <>
-            <Box
-              style={{ display: "flex", flexDirection: "column" }}
-              onSubmit={handleFormSubmit}
-            >
-              <Grid item xs={12}>
-                <TextareaAutosize
-                  name="myProfile"
-                  placeholder="All about me..."
-                  value={myProfile}
-                  variant="outlined"
-                  className="form-input"
-                  type={"text"}
-                  // multiline
-                  onChange={handleChange}
-                  onBlur={(event) => handleChange(event.target.value)}
-                  style={{
-                    marginTop: "1rem",
-                    padding: "1rem",
-                    height: "6rem",
-                    width: "70%",
-                    fontFamily: "Roboto', sans-serif",
-                    fontSize: "1.2rem",
-                    whiteSpace: "pre-wrap",
-                  }}
-                  noValidate={false}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <CustomisedSubmitButton
-                  variant="contained"
-                  sx={{ margin: 3 }}
-                  type="submit"
-                >
-                  Update Profile
-                </CustomisedSubmitButton>
-                {error && <div>{error.message}</div>}
-              </Grid>
-            </Box>
+            <form onSubmit={handleFormSubmit}>
+              <Box style={{ display: "flex", flexDirection: "column" }}>
+                <Grid item xs={12}>
+                  <TextareaAutosize
+                    name="myProfile"
+                    placeholder="All about me..."
+                    value={myProfile}
+                    variant="outlined"
+                    className="form-input"
+                    type={"text"}
+                    // multiline
+                    onChange={handleChange}
+                    // onBlur={(event) => handleChange(event.target.value)}
+                    style={{
+                      marginTop: "1rem",
+                      padding: "1rem",
+                      height: "6rem",
+                      width: "70%",
+                      fontFamily: "Roboto', sans-serif",
+                      fontSize: "1.2rem",
+                      whiteSpace: "pre-wrap",
+                    }}
+                    noValidate={false}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <CustomisedSubmitButton
+                    variant="contained"
+                    sx={{ margin: 3 }}
+                    type="submit"
+                  >
+                    Update Profile
+                  </CustomisedSubmitButton>
+                  {error && <div>{error.message}</div>}
+                </Grid>
+              </Box>
+            </form>
           </>
         ) : (
           <Typography variant="body1">

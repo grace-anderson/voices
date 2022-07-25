@@ -148,7 +148,6 @@ const Login = (props) => {
                     name="email"
                     type="email"
                     variant="outlined"
-                    fullWidth
                     style={{ backgroundColor: "white" }}
                     value={formState.email}
                     onChange={handleChange}
@@ -160,7 +159,6 @@ const Login = (props) => {
                     name="password"
                     type="password"
                     variant="outlined"
-                    fullWidth
                     style={{ backgroundColor: "white" }}
                     value={formState.password}
                     onChange={handleChange}

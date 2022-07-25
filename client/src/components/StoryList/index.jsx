@@ -83,7 +83,7 @@ const StoryList = ({ stories, showUsername = true }) => {
                 {/* Card Content */}
                 <CardContent>
                   <Typography
-                    variant="h4Roboto"
+                    variant="h5"
                     sx={{
                       display: "flex",
                       textAlign: "center",

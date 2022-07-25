@@ -27,12 +27,7 @@ export const ADD_USER = gql`
 export const ADD_PROFILE = gql`
   mutation addProfile($myProfile: String!) {
     addProfile(myProfile: $myProfile) {
-      token
-      user {
-        _id
-        username
-        myProfile
-      }
+      myProfile
     }
   }
 `;

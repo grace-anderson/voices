@@ -148,7 +148,6 @@ const Join = () => {
                     label="Username"
                     name="username"
                     variant="outlined"
-                    fullWidth
                     style={{ backgroundColor: "white" }}
                     type="text"
                     value={formState.name}
@@ -162,7 +161,6 @@ const Join = () => {
                     label="Email"
                     name="email"
                     variant="outlined"
-                    fullWidth
                     style={{ backgroundColor: "white" }}
                     type="email"
                     value={formState.email}
@@ -174,7 +172,6 @@ const Join = () => {
                     label="Password"
                     name="password"
                     variant="outlined"
-                    fullWidth
                     required
                     style={{ backgroundColor: "white" }}
                     type="password"

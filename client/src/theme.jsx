@@ -63,27 +63,27 @@ export const theme = createTheme({
       fontSize: "3rem",
       color: "#103E3F",
     },
+    // h4: {
+    //   fontFamily: '"Satisfy", cursive',
+    //   fontSize: "2.8rem",
+    //   color: "#DD4614",
+    // },
     h4: {
-      fontFamily: '"Satisfy", cursive',
-      fontSize: "2.8rem",
-      color: "#DD4614",
-    },
-    h4Roboto: {
       fontFamily: "Roboto",
       fontSize: "1.6rem",
       marginBottom: "1rem",
       fontWeight: 700,
     },
+    // h5: {
+    //   fontFamily: '"Satisfy", cursive',
+    //   fontSize: "2rem",
+    //   marginBottom: "1rem",
+    //   color: "#103E3F",
+    // },
     h5: {
-      fontFamily: '"Satisfy", cursive',
-      fontSize: "2rem",
-      marginBottom: "1rem",
-      color: "#103E3F",
-    },
-    h5Roboto: {
       fontFamily: "Roboto",
-      fontSize: "1rem",
-      fontWeight: 500,
+      fontSize: "1.2rem",
+      fontWeight: 700,
     },
     subtitle2: {
       fontFamily: '"Satisfy", cursive',
