@@ -1,7 +1,29 @@
 import React, { useState } from "react";
 import { validateEmail, validateName, validateMessage } from "../utils/helpers";
 
-import { Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  styled,
+  TextareaAutosize,
+  Typography,
+} from "@mui/material";
+
+const CustomisedSubmitButton = styled(Button)`
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background: #103e3f;
+  text-align: center;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  :hover {
+    color: white;
+    font-weight: 700;
+    background: #dd4614;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+`;
 
 function ContactForm() {
   const [name, setName] = useState("");
@@ -83,48 +105,79 @@ function ContactForm() {
       </Grid>
       <Grid item xs={1} />
       <form style={{ display: "flex", flexDirection: "column" }}>
-        <div className="form__field">
-          <input
-            className="form__input"
-            value={name}
+        <div>
+          <TextareaAutosize
             name="name"
-            onBlur={handleBlank}
-            onChange={handleInputChange}
+            placeholder="Your name (required)"
+            value={name}
+            variant="outlined"
             type="text"
-            placeholder="Enter your name"
-          />
-        </div>
-        <div className="form__field">
-          <input
-            className="form__input"
-            value={email}
-            name="email"
             onBlur={handleBlank}
             onChange={handleInputChange}
-            type="email"
-            placeholder="Add your email"
-          />
-        </div>
-        <div className="form__field">
-          <textarea
-            className="form__input"
-            value={message}
-            name="message"
-            onBlur={handleBlank}
-            onChange={handleInputChange}
-            type="text"
-            placeholder="Type your message here"
+            style={{
+              marginTop: "1rem",
+              padding: "1rem",
+              height: "1rem",
+              width: "70%",
+              fontFamily: "Roboto', sans-serif",
+              fontSize: "1.2rem",
+            }}
+            noValidate={false}
+            required
           />
         </div>
         <div>
-          <button
-            className="form__submit"
-            type="button"
+          <TextareaAutosize
+            name="email"
+            placeholder="Add your email (required)"
+            value={email}
+            variant="outlined"
+            type="email"
+            onBlur={handleBlank}
+            onChange={handleInputChange}
+            style={{
+              marginTop: "1rem",
+              padding: "1rem",
+              height: "1rem",
+              width: "70%",
+              fontFamily: "Roboto', sans-serif",
+              fontSize: "1.2rem",
+            }}
+            noValidate={false}
+            required
+          />
+        </div>
+        <div>
+          <textarea
+            name="message"
+            placeholder="Type your message here (required)"
+            value={message}
+            variant="outlined"
+            type="text"
+            onBlur={handleBlank}
+            onChange={handleInputChange}
+            style={{
+              marginTop: "1rem",
+              padding: "1rem",
+              height: "4rem",
+              width: "70%",
+              fontFamily: "Roboto', sans-serif",
+              fontSize: "1.2rem",
+            }}
+            noValidate={false}
+            required
+          />
+        </div>
+        <Grid>
+          <CustomisedSubmitButton
+            variant="contained"
+            sx={{ marginTop: 3 }}
+            type="submit"
             onClick={handleFormSubmit}
           >
             Send message
-          </button>
-        </div>
+          </CustomisedSubmitButton>
+        </Grid>
       </form>
       {errorMessage && (
         <div>

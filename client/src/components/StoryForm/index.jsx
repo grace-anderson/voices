@@ -114,9 +114,7 @@ const StoryForm = () => {
         }}
       >
         {/* form heading row */}
-        <Typography variant="h3">
-          Take some time to write a story...
-        </Typography>
+        <Typography variant="h3">Take some time to write a story...</Typography>
 
         {Auth.loggedIn() ? (
           <>
