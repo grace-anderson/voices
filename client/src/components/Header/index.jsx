@@ -41,7 +41,11 @@ const CustomisedLinkHome = styled(Link)`
 `;
 const CustomisedTab = styled(Tab)`
   color: #103e3f;
-  font-size: 1.2rem;
+  font-size: 1rem;
+`;
+
+const CustomisedTabLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const CustomisedToProfileButton = styled(Link)`
@@ -67,7 +71,7 @@ const CustomisedToProfileButton = styled(Link)`
   }
 `;
 
-const Header = ({ links }) => {
+const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -79,7 +83,7 @@ const Header = ({ links }) => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState();
 
   return (
     <React.Fragment>
@@ -94,7 +98,7 @@ const Header = ({ links }) => {
         <Toolbar>
           {isMatch ? (
             <>
-              <DrawerComp links={links} />
+              <DrawerComp />
               <Grid sx={{ placeItems: "center" }} container>
                 <Grid item xs={1} />
                 <Grid item xs={2}>
@@ -168,9 +172,18 @@ const Header = ({ links }) => {
                   }}
                   onChange={(e, val) => setValue(val)}
                 >
-                  {links.map((link, index) => (
-                    <CustomisedTab key={index} label={link} />
-                  ))}
+                  {/* {links.map((link, index) => (
+                    <CustomisedTab key={index} label={link}  />
+                  ))} */}
+                  <CustomisedTabLink to={"/"}>
+                    <CustomisedTab label="HOME"/>
+                  </CustomisedTabLink>
+                  <CustomisedTabLink to={"/"}>
+                    <CustomisedTab label="ALL OUR STORIES" />
+                  </CustomisedTabLink>
+                  <CustomisedTabLink to={"/"}>
+                    <CustomisedTab label="ABOUT US" />
+                  </CustomisedTabLink>
                 </Tabs>
               </Grid>
               <Grid item xs={3}>
