@@ -179,7 +179,7 @@ const Header = () => {
                   <CustomisedTabLink to={"/stories"}>
                     <CustomisedTab label="ALL OUR STORIES" />
                   </CustomisedTabLink>
-                  <CustomisedTabLink to={"/"}>
+                  <CustomisedTabLink to={"/about"}>
                     <CustomisedTab label="ABOUT US" />
                   </CustomisedTabLink>
                 </Tabs>
