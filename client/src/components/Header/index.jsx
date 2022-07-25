@@ -176,7 +176,7 @@ const Header = () => {
                   <CustomisedTabLink to={"/"}>
                     <CustomisedTab label="HOME"/>
                   </CustomisedTabLink>
-                  <CustomisedTabLink to={"/"}>
+                  <CustomisedTabLink to={"/stories"}>
                     <CustomisedTab label="ALL OUR STORIES" />
                   </CustomisedTabLink>
                   <CustomisedTabLink to={"/"}>

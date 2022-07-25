@@ -40,7 +40,7 @@ const DrawerComp = ({ links }) => {
             </CustomisedTabLink>
           </ListItemButton>
           <ListItemButton>
-            <CustomisedTabLink to={"/"} >
+            <CustomisedTabLink to={"/stories"} >
               <ListItemText label="ALL STORIES" sx={{ color: "white", textDecoration: "none" }}>ALL STORIES</ListItemText>
             </CustomisedTabLink>
           </ListItemButton>
