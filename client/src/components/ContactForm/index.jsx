@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { validateEmail, validateName, validateMessage } from "../utils/helpers";
 
+import { Grid, Typography } from "@mui/material";
+
 function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -64,67 +66,77 @@ function ContactForm() {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-container__details">
-        <div className="form-container__title">
-          <h3>Welcome {name}!</h3>
+    <Grid
+      container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+        justifyContent: "center",
+        marginTop: "2rem",
+      }}
+    >
+      {/* welcome row */}
+      <Grid item xs={1} />
+      <Grid item xs={10}>
+        <Typography variant="h4Roboto">Welcome {name}!</Typography>
+      </Grid>
+      <Grid item xs={1} />
+      <form style={{ display: "flex", flexDirection: "column" }}>
+        <div className="form__field">
+          <input
+            className="form__input"
+            value={name}
+            name="name"
+            onBlur={handleBlank}
+            onChange={handleInputChange}
+            type="text"
+            placeholder="Enter your name"
+          />
         </div>
-        <form className="form">
-          <div className="form__field">
-            <input
-              className="form__input"
-              value={name}
-              name="name"
-              onBlur={handleBlank}
-              onChange={handleInputChange}
-              type="text"
-              placeholder="Enter your name"
-            />
-          </div>
-          <div className="form__field">
-            <input
-              className="form__input"
-              value={email}
-              name="email"
-              onBlur={handleBlank}
-              onChange={handleInputChange}
-              type="email"
-              placeholder="Add your email"
-            />
-          </div>
-          <div className="form__field">
-            <textarea
-              className="form__input"
-              value={message}
-              name="message"
-              onBlur={handleBlank}
-              onChange={handleInputChange}
-              type="text"
-              placeholder="Type your message here"
-            />
-          </div>
-          <div>
-            <button
-              className="form__submit"
-              type="button"
-              onClick={handleFormSubmit}
-            >
-              Send message
-            </button>
-          </div>
-        </form>
-        {errorMessage && (
-          <div>
-            <p className="message-text error-text">{errorMessage}</p>
-          </div>
-        )}
-        {successMessage && (
-          <div>
-            <p className="message-text success-text">{successMessage}</p>
-          </div>
-        )}
-      </div>
-    </div>
+        <div className="form__field">
+          <input
+            className="form__input"
+            value={email}
+            name="email"
+            onBlur={handleBlank}
+            onChange={handleInputChange}
+            type="email"
+            placeholder="Add your email"
+          />
+        </div>
+        <div className="form__field">
+          <textarea
+            className="form__input"
+            value={message}
+            name="message"
+            onBlur={handleBlank}
+            onChange={handleInputChange}
+            type="text"
+            placeholder="Type your message here"
+          />
+        </div>
+        <div>
+          <button
+            className="form__submit"
+            type="button"
+            onClick={handleFormSubmit}
+          >
+            Send message
+          </button>
+        </div>
+      </form>
+      {errorMessage && (
+        <div>
+          <p className="message-text error-text">{errorMessage}</p>
+        </div>
+      )}
+      {successMessage && (
+        <div>
+          <p className="message-text success-text">{successMessage}</p>
+        </div>
+      )}
+    </Grid>
   );
 }
 

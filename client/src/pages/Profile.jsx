@@ -41,7 +41,7 @@ const Profile = () => {
   }
 
   return (
-    <Grid>
+    <Grid container>
       {/* heading row */}
       <Grid item xs={1} />
       <Grid
@@ -67,9 +67,13 @@ const Profile = () => {
       <Grid item xs={2} />
 
       {/* Display saved profile */}
+      <Grid item xs={1} />
+      <Grid item xs={10}>
       <Typography variant="h2" sx={{textAlign: "center"}}>
           {userParam ? `${user.username}'s` : "Your"} Profile
         </Typography>
+        </Grid>
+        <Grid item xs={1} />
       <Grid item xs={12} sx={{textAlign: "center", marginBottom: 8}}>
       <Typography variant="body1">profile should be here</Typography>
       <Typography variant="body1">{user.myProfile}</Typography>
