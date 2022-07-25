@@ -53,7 +53,7 @@ export const theme = createTheme({
     },
     h2: {
       fontFamily: '"Satisfy", cursive',
-      fontSize: "3.6rem",
+      fontSize: "3.2rem",
       marginBottom: "2rem",
       color: "#103E3F",
       fontWeight: 400,
