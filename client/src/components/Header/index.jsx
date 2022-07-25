@@ -43,11 +43,9 @@ const CustomisedTab = styled(Tab)`
   color: #103e3f;
   font-size: 1rem;
 `;
-
 const CustomisedTabLink = styled(Link)`
   text-decoration: none;
 `;
-
 const CustomisedToProfileButton = styled(Link)`
   font-size: 1rem;
   color: white;
