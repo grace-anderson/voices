@@ -24,12 +24,13 @@ export const ADD_USER = gql`
   }
 `;
 
-export const UPDATE_USER_PROFILE = gql`
-  mutation updateUserProfile($myProfile: String!) {
-    updateUserProfile(myProfile: $myProfile) {
+export const ADD_PROFILE = gql`
+  mutation addProfile($myProfile: String!) {
+    addProfile(myProfile: $myProfile) {
       token
       user {
         _id
+        username
         myProfile
       }
     }
@@ -56,6 +57,3 @@ export const ADD_STORY = gql`
     }
   }
 `;
-
-
-

@@ -6,7 +6,7 @@ import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
 
 import ProfileForm from "../components/ProfileForm";
-// import UserProfile from "../components/UserProfile";
+import UserProfile from "../components/UserProfile";
 
 import { Grid, Typography } from "@mui/material";
 
@@ -59,7 +59,7 @@ const Profile = () => {
       </Grid>
       <Grid item xs={1} />
 
-      {/* Add profile data -> Profile form row */}
+      {/* Profile form */}
       <Grid item xs={2} />
       <Grid item xs={8}>
         {!userParam && <ProfileForm />}
@@ -67,7 +67,12 @@ const Profile = () => {
       <Grid item xs={2} />
 
       {/* Display saved profile */}
-      <Grid item xs={12}>
+      <Typography variant="h2" sx={{textAlign: "center"}}>
+          {userParam ? `${user.username}'s` : "Your"} Profile
+        </Typography>
+      <Grid item xs={12} sx={{textAlign: "center", marginBottom: 8}}>
+      <Typography variant="body1">profile should be here</Typography>
+      <Typography variant="body1">{user.myProfile}</Typography>
         {/* <UserProfile
           profile={user.myProfile}
           title={`${user.username}'s Profile`}

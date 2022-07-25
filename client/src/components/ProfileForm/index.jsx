@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { UPDATE_USER_PROFILE } from "../../utils/mutations";
+import { ADD_PROFILE } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
@@ -35,26 +35,24 @@ const CustomisedSubmitButton = styled(Button)`
 const ProfileForm = () => {
   const [myProfile, setMyProfile] = useState("");
 
-  const [updateUserProfile, { error}] = useMutation(UPDATE_USER_PROFILE, {
-    update(cache, { data: { updateUserProfile } }) {
+  const [addProfile, { error }] = useMutation(ADD_PROFILE, {
+    update(cache, { data: { addProfile } }) {
       try {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { user: updateUserProfile },
+          data: { user: addProfile },
         });
-      }
-      catch (e) {
+      } catch (e) {
         console.error(e);
       }
 
-// update me object's cache
+      // update me object's cache
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
-        query: UPDATE_USER_PROFILE,
-        data: { me: { ...me, user: [...me.user, updateUserProfile] } },
+        query: ADD_PROFILE,
+        data: { me: { ...me, user: [...me.user, addProfile] } },
       });
-
     },
   });
 
@@ -62,13 +60,12 @@ const ProfileForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await updateUserProfile({
+      const { data } = await addProfile({
         variables: {
           myProfile,
         },
       });
-
-      setMyProfile("");
+      // setMyProfile("");
     } catch (err) {
       console.error(err);
     }
@@ -79,6 +76,7 @@ const ProfileForm = () => {
 
     if (name === "myProfile") {
       setMyProfile(value);
+      console.log("myProfile", value);
     }
   };
 
@@ -114,6 +112,7 @@ const ProfileForm = () => {
                   type={"text"}
                   // multiline
                   onChange={handleChange}
+                  onBlur={(event) => handleChange(event.target.value)}
                   style={{
                     marginTop: "1rem",
                     padding: "1rem",

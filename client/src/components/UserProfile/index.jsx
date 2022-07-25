@@ -2,7 +2,7 @@ import React from "react";
 
 import { Grid, Typography } from "@mui/material";
 
-const UserProfile = ({ user, myProfile, showUsername = true }) => {
+const UserProfile = ({ user, myProfile }) => {
   if (!myProfile.length) {
     return (
       <Grid
