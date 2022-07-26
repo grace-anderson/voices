@@ -130,7 +130,7 @@ const StoryForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
-                  multiline
+                  multiline="true"
                   onChange={handleChange}
                   style={{
                     marginTop: "1rem",
@@ -175,7 +175,7 @@ const StoryForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
-                  multiline
+                  multiline="true"
                   onChange={handleChange}
                   style={{
                     marginTop: "1rem",
@@ -220,7 +220,7 @@ const StoryForm = () => {
                   variant="outlined"
                   className="form-input"
                   type={"text"}
-                  multiline
+                  multiline="true"
                   onChange={handleChange}
                   style={{
                     marginTop: "1rem",

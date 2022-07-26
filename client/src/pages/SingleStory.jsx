@@ -1,26 +1,43 @@
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useNavigate, useParams } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
 
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, styled, Typography } from "@mui/material";
 
 import { QUERY_SINGLE_STORY } from "../utils/queries";
-import { QUERY_STORIES } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { REMOVE_STORY } from "../utils/mutations";
+
 import Auth from "../utils/auth";
+
+const CustomisedSubmitButton = styled(Button)`
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+  background: #103e3f;
+  text-align: center;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  :hover {
+    color: white;
+    font-weight: 700;
+    background: #dd4614;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+`;
 
 const SingleStory = () => {
   //STORY
   // Use `useParams()` to retrieve value of the route parameter `:storyId`
   const { storyId } = useParams();
   // load the story data / load user data here?
-  const { loading, data } = useQuery(QUERY_SINGLE_STORY, 
-    // QUERY_ME, 
-    {
+  const { loading, data } = useQuery(QUERY_SINGLE_STORY, {
     // pass URL parameter
     variables: { storyId: storyId },
   });
+  let navigate = useNavigate();
+  const [removeStory, { error }] = useMutation(REMOVE_STORY);
 
   const story = data?.story || {};
 
@@ -29,43 +46,38 @@ const SingleStory = () => {
   }
 
   // IDENTIFY USER
-  //1. identify if story author is logged in user
-  //IDENTIFY IF 
-  //a.user is logged in AND 
-  //b.user is story author 
-  // let user = data?.me || {};
-  // console.log(user);
+  //1. identify if story author === logged in user
+  //IDENTIFY IF
+  //a.user is logged in AND
+  //b.user is story author
+  //2. => if so, show EDIT STORY and DELETE STORY buttons
 
-  // 2. if logged in user is story author, show delete button
-  // if (Auth.loggedIn() && data.username === story.author) {
-  //   <p>show this text</p>
-  // }
+  console.log(
+    "Is author logged in?",
+    Auth.loggedIn() && Auth.getProfile()?.data?.username === story.storyAuthor
+  );
+
+  const username = Auth.getProfile()?.data?.username;
+
+  const isAuthor = Auth.loggedIn() && username === story.storyAuthor;
 
   // DELETE STORY
   // 3. handle delete
-  // const handleDeleteStory = async (storyId) => {
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null; //need this if have already identified user=story.author?
+  const stories = data?.stories || [];
+  console.log("stories", stories);
 
-  //   if (!token) {
-  //     return false;
-  //   }
-
-  //   try {
-  //     const removeStoryId = (removeStoryId) => {
-  //       //get all the stories from QUERY_STORIES
-  //       const allStories = getItem('stories'); //?correct
-  //     }
-  //       //if no stories = return false
-  //       if (!allStories) {
-  //         return false;
-  //       }
-      
-  //       const updateAllStories = allStories?.filter((storyId) => removeStoryId !== storyId);
-
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  const handleDelete = async (storyId) => {
+    try {
+      await removeStory({
+        variables: { storyId },
+        refetchQueries: [{ query: QUERY_ME }],
+      });
+      // navigate("/profile/:" + username);
+      navigate("/me");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   //RETURN STORY
   return (
@@ -120,11 +132,33 @@ const SingleStory = () => {
       {/* story author and publish date */}
       <Grid item xs={1} md={3} />
       <Grid item xs={10} md={6}>
-        <Typography variant="h6" sx={{ marginTop: "2rem" }}>
+        <Typography
+          variant="h6"
+          sx={{ marginTop: "2rem", marginBottom: "2rem" }}
+        >
           {story.storyAuthor} wrote this story on {story.createdAt}
         </Typography>
       </Grid>
       <Grid item xs={1} md={3} />
+      {isAuthor && (
+        <Grid item xs={12}>
+          <CustomisedSubmitButton
+            variant="contained"
+            sx={{ margin: 3 }}
+            type="submit"
+          >
+            EDIT STORY
+          </CustomisedSubmitButton>
+          <CustomisedSubmitButton
+            onClick={() => handleDelete(story._id)}
+            variant="contained"
+            sx={{ margin: 3 }}
+            type="submit"
+          >
+            DELETE STORY
+          </CustomisedSubmitButton>
+        </Grid>
+      )}
     </Grid>
   );
 };

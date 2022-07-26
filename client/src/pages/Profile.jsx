@@ -93,13 +93,6 @@ const Profile = () => {
         </Typography>
       </Grid>
       <Grid item xs={1} md={4} />
-      {/* <UserProfile
-          profile={user.myProfile}
-          title={`${user.username}'s Profile`}
-          showTitle={false}
-          showUsername={false}
-        /> */}
-
       {/* Story form row */}
       <Grid item xs={2} />
       <Grid item xs={8}>

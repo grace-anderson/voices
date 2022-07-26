@@ -161,7 +161,7 @@ const Header = () => {
               </Grid>
               <Grid item xs={8}>
                 <Tabs
-                  indicatorColor="secondary"
+                  indicatorColor="false"
                   fontSize="1.2rem"
                   value={value}
                   sx={{
@@ -173,7 +173,7 @@ const Header = () => {
                     <CustomisedTab key={index} label={link}  />
                   ))} */}
                   <CustomisedTabLink to={"/"}>
-                    <CustomisedTab label="HOME"/>
+                    <CustomisedTab label="HOME" />
                   </CustomisedTabLink>
                   <CustomisedTabLink to={"/stories"}>
                     <CustomisedTab label="ALL OUR STORIES" />

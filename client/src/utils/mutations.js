@@ -52,3 +52,11 @@ export const ADD_STORY = gql`
     }
   }
 `;
+
+export const REMOVE_STORY = gql`
+  mutation removeStory($storyId: ID!) {
+    removeStory(storyId: $storyId) {
+      _id
+    }
+  }
+`;

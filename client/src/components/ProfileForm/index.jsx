@@ -51,7 +51,7 @@ const ProfileForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("handleFormSubmit");
+    // console.log("handleFormSubmit");
     try {
       const { data } = await addProfile({
         variables: {
@@ -102,7 +102,6 @@ const ProfileForm = () => {
                     variant="outlined"
                     className="form-input"
                     type={"text"}
-                    // multiline
                     onChange={handleChange}
                     style={{
                       marginTop: "1rem",
