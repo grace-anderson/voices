@@ -104,7 +104,6 @@ const ProfileForm = () => {
                     type={"text"}
                     // multiline
                     onChange={handleChange}
-                    // onBlur={(event) => handleChange(event.target.value)}
                     style={{
                       marginTop: "1rem",
                       padding: "1rem",

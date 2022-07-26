@@ -67,22 +67,39 @@ const Profile = () => {
       <Grid item xs={2} />
 
       {/* Display saved profile */}
+      {/* Profile heading */}
       <Grid item xs={1} />
       <Grid item xs={10}>
-      <Typography variant="h4" sx={{textAlign: "center"}}>
+        <Typography variant="h4" sx={{ textAlign: "center" }}>
           {userParam ? `${user.username}'s` : "Your"} Profile
         </Typography>
-        </Grid>
-        <Grid item xs={1} />
-      <Grid item xs={12} sx={{textAlign: "center", marginBottom: 8}}>
-      <Typography variant="subtitle1" sx={{ fontWeight: 500, fontSize: "1.1rem" }}>{user.myProfile ? `${user.myProfile}`: "No profile added yet..."}</Typography>
-        {/* <UserProfile
+      </Grid>
+      <Grid item xs={1} />
+      {/* Profile Text */}
+      <Grid item xs={1} md={4} />
+      <Grid item xs={10} md={4} sx={{ marginBottom: 8 }}>
+        <Typography
+          // variant="subtitle1"
+          // sx={{ fontWeight: 500, fontSize: "1.1rem" }}
+          variant="body1"
+          sx={{
+            textAlign: "left",
+            backgroundColor: "#eeedeb",
+            padding: "1rem",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          {user.myProfile ? `${user.myProfile}` : "No profile added yet..."}
+          {/* {user.myProfile} */}
+        </Typography>
+      </Grid>
+      <Grid item xs={1} md={4} />
+      {/* <UserProfile
           profile={user.myProfile}
           title={`${user.username}'s Profile`}
           showTitle={false}
           showUsername={false}
         /> */}
-      </Grid>
 
       {/* Story form row */}
       <Grid item xs={2} />
