@@ -6,7 +6,6 @@ import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
 
 import ProfileForm from "../components/ProfileForm";
-// import UserProfile from "../components/UserProfile";
 
 import { Grid, Typography } from "@mui/material";
 
