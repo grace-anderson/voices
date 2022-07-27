@@ -85,7 +85,7 @@ const UpdateStoryForm = ({ match }) => {
         {/* form heading row */}
         <Typography variant="h2">Edit your story...</Typography>
 
-        {Auth.loggedIn() ? (
+        {/* {Auth.loggedIn() ? ( */}
           <>
             <form
               style={{ display: "flex", flexDirection: "column" }}
@@ -239,13 +239,14 @@ const UpdateStoryForm = ({ match }) => {
               {error && <div className="">{error.message}</div>}
             </form>
           </>
-        ) : (
-          <Typography variant="body1">
-            You need to be logged in to update your stories. Please{" "}
-            <Link to="/login">login</Link> or{" "}
-            <Link to="/join">join Voices.</Link>
-          </Typography>
-        )}
+{/*           
+        // ) : (
+        //   <Typography variant="body1">
+        //     You need to be logged in to update your stories. Please{" "}
+        //     <Link to="/login">login</Link> or{" "}
+        //     <Link to="/join">join Voices.</Link>
+        //   </Typography>
+        // )} */}
       </Grid>
     </>
   );

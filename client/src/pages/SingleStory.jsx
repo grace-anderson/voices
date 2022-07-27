@@ -81,16 +81,13 @@ const SingleStory = () => {
 
   // EDIT STORY
   //handleEdit
-  // const handleUpdate = async (storyId) => {
-  //   navigate(`/edit/${storyId}`);
-  // }
-  // const handleUpdate = async (storyId) => {
-  //   try {
-  //     navigate(`/stories/${storyId}/update`);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  const handleUpdate = async (storyId) => {
+    try {
+      navigate(`/stories/${storyId}/update`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   //RETURN STORY
   return (
@@ -158,7 +155,7 @@ const SingleStory = () => {
           <CustomisedSubmitButton
             // TODO: add handleUdate
             //handleEdit links to EditStoryForm
-            // onClick={() => handleUpdate(story.id)}
+            onClick={() => handleUpdate(story.id)}
             variant="contained"
             sx={{ margin: 3 }}
             type="submit"
