@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useQuery } from "@apollo/client";
 
 // import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
@@ -12,8 +12,10 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_STORIES);
   const stories = data?.stories || [];
 
-  // const theme = useTheme();
-  // const isMatch = useMediaQuery(theme.breakpoints.down("xs"));
+  //set up for pagination
+  //to hold the data
+  const [pageData, setData] = useState([])
+  const [pageDataLoading, setLoading] = useState(true)
 
   return (
     <Grid container spacing={3}>
@@ -58,9 +60,9 @@ const Home = () => {
           </Typography>
         </Grid>
         <Grid item xs={1} />
-        {/* Stories list */}
+        {/*Recent Stories list */}
         <Grid item xs={12}>
-          {loading ? <div>Loading...</div> : <StoryList stories={stories} />}
+        {loading ? <div>Loading...</div> : <StoryList stories={stories.slice(0, 6)} />}
         </Grid>
       </Grid>
     </Grid>
