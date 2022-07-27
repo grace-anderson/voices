@@ -79,6 +79,19 @@ const SingleStory = () => {
     }
   };
 
+  // EDIT STORY
+  //handleEdit
+  // const handleUpdate = async (storyId) => {
+  //   navigate(`/edit/${storyId}`);
+  // }
+  // const handleUpdate = async (storyId) => {
+  //   try {
+  //     navigate(`/stories/${storyId}/update`);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
   //RETURN STORY
   return (
     <Grid
@@ -143,6 +156,9 @@ const SingleStory = () => {
       {isAuthor && (
         <Grid item xs={12}>
           <CustomisedSubmitButton
+            // TODO: add handleUdate
+            //handleEdit links to EditStoryForm
+            // onClick={() => handleUpdate(story.id)}
             variant="contained"
             sx={{ margin: 3 }}
             type="submit"

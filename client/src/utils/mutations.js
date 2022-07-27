@@ -53,6 +53,23 @@ export const ADD_STORY = gql`
   }
 `;
 
+//add mutation to edit story
+export const UPDATE_STORY = gql`
+  mutation updateStory($storyId: ID!) {
+    updateStory(
+      storyId: $storyId
+      storyTitle: $storyTitle
+      storyIntro: $storyIntro
+      myStory: $myStory
+    ) {
+      _id
+      storyTitle
+      storyIntro
+      myStory
+    }
+  }
+`;
+
 export const REMOVE_STORY = gql`
   mutation removeStory($storyId: ID!) {
     removeStory(storyId: $storyId) {

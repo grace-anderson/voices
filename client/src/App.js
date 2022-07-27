@@ -17,6 +17,7 @@ import SingleStory from "./pages/SingleStory";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import UpdateStoryForm from "./components/UpdateStoryForm";
 
 // Header navbar links
 // const linksArray = ["Home", "All Our Stories", "About Us"];
@@ -49,22 +50,24 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header  />
-          <div>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/stories" element={<Stories />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/join" element={<Join />} />
-              <Route path="/me" element={<Profile />} />
-              <Route path="/profiles/:username" element={<Profile />} />
-              <Route path="/stories/:storyId" element={<SingleStory />} />
-            </Routes>
-          </div>
-          <Footer />
+        <Header />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/stories" element={<Stories />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/join" element={<Join />} />
+            <Route path="/me" element={<Profile />} />
+            <Route path="/profiles/:username" element={<Profile />} />
+            <Route path="/stories/:storyId" element={<SingleStory />} />
+            <Route
+              path="/stories/:storyId/update"
+              element={<UpdateStoryForm />}
+            />
+          </Routes>
         </div>
+        <Footer />
       </Router>
     </ApolloProvider>
   );

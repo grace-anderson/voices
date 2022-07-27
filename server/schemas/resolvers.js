@@ -88,7 +88,6 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     addStory: async (parent, { storyTitle, storyIntro, myStory }, context) => {
-      // server side validation
       if (!storyTitle || !storyIntro || !myStory) {
         throw new Error("Have you completed title, introduction and story?");
       }
@@ -107,6 +106,13 @@ const resolvers = {
         );
 
         return story;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    // add updateStory
+    updateStory: async (parent, { storyId, storyTitle, storyIntro, myStory }, context) => {
+      if (context.user) {
+        return await Story.findOneAndUpdate({ _id: storyId }, { $set: { storyTitle, storyIntro, myStory } }, { new: true });
       }
       throw new AuthenticationError("You need to be logged in!");
     },
