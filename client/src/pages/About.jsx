@@ -5,7 +5,7 @@ import { Grid, Typography } from "@mui/material";
 
 const About = () => {
   return (
-    <Grid container spacing={3}>
+    <Grid container>
       <Grid container sx={{ placeItems: "center" }}>
         {/* heading row */}
         <Grid item xs={1} />
@@ -20,7 +20,7 @@ const About = () => {
           }}
         >
           <Typography variant="h1" sx={{ marginBottom: "2rem" }}>
-            About us
+            About Voices
           </Typography>
         </Grid>
         <Grid item xs={1} />
@@ -63,8 +63,8 @@ const About = () => {
         {/* Contact form heading*/}
         <Grid item xs={1} md={2} />
         <Grid item xs={10} md={8}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
-            Please feel free to reach out by completing the contact form. If you
+          <Typography variant="subtitle1" sx={{ fontWeight: 500, textAlign: "center", marginBottom: "1rem" }}>
+            Please feel free to reach out by completing the form. If you
             require a response, we will contact you within a few days.
           </Typography>
         </Grid>
