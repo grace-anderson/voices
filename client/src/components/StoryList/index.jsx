@@ -17,6 +17,7 @@ const CustomisedLinkStory = styled(Link)`
   font-family: Roboto;
   font-size: 1rem;
   font-weight: 500;
+  margin-top: 1rem;
   :hover {
     color: #dd4614;
     font-weight: 700;
@@ -63,7 +64,7 @@ const StoryList = ({ stories, showUsername = true }) => {
       flexDirection="row"
       justify="space-between"
       justifyContent="center"
-      sx={{ marginLeft: "auto", marginRight: "auto" }}
+      // sx={{ marginLeft: "auto", marginRight: "auto" }}
     >
       {stories &&
         stories.map((story) => (
@@ -72,6 +73,7 @@ const StoryList = ({ stories, showUsername = true }) => {
             <Card
               sx={{
                 maxWidth: 300,
+                minWidth: 300,
                 minHeight: 350,
                 maxHeight: 350,
                 margin: 3,
