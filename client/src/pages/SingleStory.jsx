@@ -8,6 +8,7 @@ import { QUERY_SINGLE_STORY } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
 import { REMOVE_STORY } from "../utils/mutations";
+// import { UpdateStoryForm } from "../components/UpdateStoryForm";
 
 import Auth from "../utils/auth";
 
@@ -63,8 +64,7 @@ const SingleStory = () => {
 
   // DELETE STORY
   // 3. handle delete
-  const stories = data?.stories || [];
-  console.log("stories", stories);
+  // const stories = data?.stories || [];
 
   const handleDelete = async (storyId) => {
     try {
@@ -155,7 +155,7 @@ const SingleStory = () => {
           <CustomisedSubmitButton
             // TODO: add handleUdate
             //handleEdit links to EditStoryForm
-            onClick={() => handleUpdate(story.id)}
+            onClick={() => handleUpdate(story._id)}
             variant="contained"
             sx={{ margin: 3 }}
             type="submit"

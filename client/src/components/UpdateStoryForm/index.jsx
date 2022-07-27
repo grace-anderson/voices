@@ -15,7 +15,7 @@ import { UPDATE_STORY } from "../../utils/mutations";
 // add queries here
 import { QUERY_SINGLE_STORY } from "../../utils/queries";
 
-import Auth from "../../utils/auth";
+// import Auth from "../../utils/auth";
 
 const CustomisedSubmitButton = styled(Button)`
   font-size: 1rem;
@@ -33,7 +33,7 @@ const CustomisedSubmitButton = styled(Button)`
   }
 `;
 
-const UpdateStoryForm = ({ match }) => {
+const UpdateStoryForm = ({ match}) => {
   //add updateStory function here
   const [storyTitle, setStoryTitle] = useState("");
   const [storyIntro, setStoryIntro] = useState("");
@@ -44,14 +44,14 @@ const UpdateStoryForm = ({ match }) => {
 
   const { loading, error, data } = useQuery(QUERY_SINGLE_STORY, {
     variables: {
-      _id: match.params.id,
+      storyId: match._id,
     },
   });
 
   const [updateStory] = useMutation(UPDATE_STORY);
 
-  if (loading) return <div>Fetching note</div>;
-  if (error) return <div>Error fetching note</div>;
+  if (loading) return <div>Fetching story</div>;
+  if (error) return <div>Error fetching story</div>;
 
   const story = data;
 
