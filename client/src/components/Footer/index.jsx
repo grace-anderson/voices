@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -15,6 +15,14 @@ const CustomisedButton = styled(Button)`
   background: #DD4614;
   :hover {
     color: white;
+  }
+`;
+
+const CustomisedLinkHome = styled(Link)`
+  color: #103e3f;
+  text-decoration: none;
+  :hover {
+    color: #dd4614;
   }
 `;
 
@@ -41,7 +49,9 @@ const Footer = () => {
             </Grid>
             <Grid item xs={12}>
               <Box textAlign={"center"}>
+                <CustomisedLinkHome to="/about">
                 <Typography variant="h5">&copy; 2022 Voices</Typography>
+                </CustomisedLinkHome>
               </Box>
             </Grid>
           </Grid>
