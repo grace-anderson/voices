@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 
 import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
@@ -9,7 +9,8 @@ import ProfileForm from "../components/ProfileForm";
 
 import { Grid, Typography } from "@mui/material";
 
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { ADD_STORY } from "../utils/mutations";
+import { QUERY_USER, QUERY_ME, QUERY_STORIES } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
@@ -18,6 +19,28 @@ const Profile = () => {
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
+  });
+
+  const [addStory, { error }] = useMutation(ADD_STORY, {
+    update(cache, { data: { addStory } }) {
+      try {
+        const { stories } = cache.readQuery({ query: QUERY_STORIES });
+
+        cache.writeQuery({
+          query: QUERY_STORIES,
+          data: { stories: [addStory, ...stories] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, stories: [...me.stories, addStory] } },
+      });
+    },
   });
 
   const user = data?.me || data?.user || {};
@@ -38,6 +61,16 @@ const Profile = () => {
       </h4>
     );
   }
+
+  const handleStoryFormSubmit = async (formValues) => {
+    try {
+      const { data } = await addStory({
+        variables: formValues,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <Grid container>
@@ -96,7 +129,9 @@ const Profile = () => {
       {/* Story form row */}
       <Grid item xs={2} />
       <Grid item xs={8}>
-        {!userParam && <StoryForm />}
+        {!userParam && (
+          <StoryForm onSubmit={handleStoryFormSubmit} error={error} />
+        )}
       </Grid>
       <Grid item xs={2} />
       {/* your stories heading */}

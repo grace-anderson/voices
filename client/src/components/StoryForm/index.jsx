@@ -31,47 +31,69 @@ const CustomisedSubmitButton = styled(Button)`
   }
 `;
 
-const StoryForm = () => {
-  const [storyTitle, setStoryTitle] = useState("");
-  const [storyIntro, setStoryIntro] = useState("");
-  const [myStory, setMyStory] = useState("");
+/*
+  1. StoryForm is going to be a stateful component that takes in initial form values and onSubmit
+    a. when creating a story, initial values would be empty strings
+    b. when updating a story, initial values would be the current story values
+  2. Move out " const [addStory, { error }] = useMutation(ADD_STORY," out of this component to a AddStory component
+  3. Similary the updateStory mutation would be setup in UpdateStory
 
+  
+*/
+const StoryForm = ({
+  onSubmit,
+  error,
+  initialStoryTitle = "",
+  initialStoryInto = "",
+  initialMyStory = "",
+}) => {
+  const [storyTitle, setStoryTitle] = useState(initialStoryTitle);
+  const [storyIntro, setStoryIntro] = useState(initialStoryInto);
+  const [myStory, setMyStory] = useState(initialMyStory);
+
+  //can do count with .length
   const [titleCharacterCount, setTitleCharacterCount] = useState(0);
   const [introCharacterCount, setIntroCharacterCount] = useState(0);
 
-  const [addStory, { error }] = useMutation(ADD_STORY, {
-    update(cache, { data: { addStory } }) {
-      try {
-        const { stories } = cache.readQuery({ query: QUERY_STORIES });
+  // const [addStory, { error }] = useMutation(ADD_STORY, {
+  //   update(cache, { data: { addStory } }) {
+  //     try {
+  //       const { stories } = cache.readQuery({ query: QUERY_STORIES });
 
-        cache.writeQuery({
-          query: QUERY_STORIES,
-          data: { stories: [addStory, ...stories] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
+  //       cache.writeQuery({
+  //         query: QUERY_STORIES,
+  //         data: { stories: [addStory, ...stories] },
+  //       });
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
 
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, stories: [...me.stories, addStory] } },
-      });
-    },
-  });
+  //     // update me object's cache
+  //     const { me } = cache.readQuery({ query: QUERY_ME });
+  //     cache.writeQuery({
+  //       query: QUERY_ME,
+  //       data: { me: { ...me, stories: [...me.stories, addStory] } },
+  //     });
+  //   },
+  // });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addStory({
-        variables: {
-          storyTitle,
-          storyIntro,
-          myStory,
-          storyAuthor: Auth.getProfile().data.username,
-        },
+      // const { data } = await addStory({
+      //   variables: {
+      //     storyTitle,
+      //     storyIntro,
+      //     myStory,
+      //     storyAuthor: Auth.getProfile().data.username,
+      //   },
+      // });
+      onSubmit({
+        storyTitle,
+        storyIntro,
+        myStory,
+        storyAuthor: Auth.getProfile().data.username,
       });
 
       setStoryTitle("");

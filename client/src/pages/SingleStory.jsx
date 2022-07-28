@@ -7,7 +7,7 @@ import { Button, Grid, styled, Typography } from "@mui/material";
 import { QUERY_SINGLE_STORY } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
-import { REMOVE_STORY } from "../utils/mutations";
+import { REMOVE_STORY, UPDATE_STORY } from "../utils/mutations";
 // import { UpdateStoryForm } from "../components/UpdateStoryForm";
 
 import Auth from "../utils/auth";
@@ -83,6 +83,10 @@ const SingleStory = () => {
   //handleEdit
   const handleUpdate = async (storyId) => {
     try {
+      // await UPDATE_STORY({
+      //   variables: { storyId },
+      //   refetchQueries: [{ query: QUERY_SINGLE_STORY }],
+      // });
       navigate(`/stories/${storyId}/update`);
     } catch (err) {
       console.error(err);

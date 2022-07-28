@@ -55,7 +55,7 @@ export const ADD_STORY = gql`
 
 //add mutation to edit story
 export const UPDATE_STORY = gql`
-  mutation updateStory($storyId: ID!) {
+  mutation updateStory($storyId: ID!, $storyTitle: String!, $storyIntro: String!, $myStory: String!) {
     updateStory(
       storyId: $storyId
       storyTitle: $storyTitle
