@@ -58,9 +58,9 @@ const SingleStory = () => {
     Auth.loggedIn() && Auth.getProfile()?.data?.username === story.storyAuthor
   );
 
-  const username = Auth.getProfile()?.data?.username;
+  const username = Auth.loggedIn() ? Auth.getProfile()?.data?.username : null;
 
-  const isAuthor = Auth.loggedIn() && username === story.storyAuthor;
+  const isAuthor = username === story.storyAuthor;
 
   // DELETE STORY
   // 3. handle delete
