@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import {
   AppBar,
@@ -73,6 +73,8 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    //go to home page
+    
   };
 
   const theme = useTheme();

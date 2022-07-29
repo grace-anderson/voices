@@ -49,7 +49,7 @@ const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, myProfile: addProfile.myProfile } },
+          data: { me: { ...me, myProfile: addProfile.myProfile }} || `No profile added yet`,
         });
       } catch (e) {
         console.error(e);
@@ -103,7 +103,7 @@ const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
                 <Grid item xs={12}>
                   <TextareaAutosize
                     name="myProfile"
-                    // placeholder="All about me..."
+                    placeholder="All about me..."
                     myProfile={myProfile}
                     value={myProfile}
                     variant="outlined"
