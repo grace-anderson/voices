@@ -7,7 +7,7 @@ import { Button, Grid, styled, Typography } from "@mui/material";
 import { QUERY_SINGLE_STORY } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
 
-import { REMOVE_STORY, UPDATE_STORY } from "../utils/mutations";
+import { REMOVE_STORY } from "../utils/mutations";
 // import { UpdateStoryForm } from "../components/UpdateStoryForm";
 
 import Auth from "../utils/auth";
@@ -38,7 +38,7 @@ const SingleStory = () => {
     variables: { storyId: storyId },
   });
   let navigate = useNavigate();
-  const [removeStory, { error }] = useMutation(REMOVE_STORY);
+  const [removeStory] = useMutation(REMOVE_STORY);
 
   const story = data?.story || {};
 
