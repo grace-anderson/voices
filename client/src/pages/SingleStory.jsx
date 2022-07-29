@@ -63,9 +63,6 @@ const SingleStory = () => {
   const isAuthor = username === story.storyAuthor;
 
   // DELETE STORY
-  // 3. handle delete
-  // const stories = data?.stories || [];
-
   const handleDelete = async (storyId) => {
     try {
       await removeStory({
@@ -79,14 +76,9 @@ const SingleStory = () => {
     }
   };
 
-  // EDIT STORY
-  //handleEdit
+  // UPDATE STORY
   const handleUpdate = async (storyId) => {
     try {
-      // await UPDATE_STORY({
-      //   variables: { storyId },
-      //   refetchQueries: [{ query: QUERY_SINGLE_STORY }],
-      // });
       navigate(`/stories/${storyId}/update`);
     } catch (err) {
       console.error(err);
@@ -157,8 +149,6 @@ const SingleStory = () => {
       {isAuthor && (
         <Grid item xs={12}>
           <CustomisedSubmitButton
-            // TODO: add handleUdate
-            //handleEdit links to EditStoryForm
             onClick={() => handleUpdate(story._id)}
             variant="contained"
             sx={{ margin: 3 }}

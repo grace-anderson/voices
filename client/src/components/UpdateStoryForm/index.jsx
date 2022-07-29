@@ -28,7 +28,6 @@ const UpdateStoryForm = () => {
   if (loading) return <div>Fetching story</div>;
   if (error) return <div>Error fetching story</div>;
 
-  //handle character count here
   const handleStoryFormSubmit = async (formValues) => {
     try {
       await updateStory({
@@ -39,13 +38,6 @@ const UpdateStoryForm = () => {
     } catch (err) {
       console.error(err);
     }
-    // if (name === "storyTitle" && value.length <= 140) {
-    //   setTitleCharacterCount(value.length);
-    // }
-
-    // if (name === "storyIntro" && value.length <= 280) {
-    //   setIntroCharacterCount(value.length);
-    // }
   };
 
   // RETURN FORM to update story

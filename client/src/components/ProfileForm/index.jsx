@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+import { Link, useParams } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
 
 import {
   Box,
@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 import { ADD_PROFILE } from "../../utils/mutations";
-import { QUERY_ME } from "../../utils/queries";
+import {  QUERY_USER, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -33,7 +33,15 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 const ProfileForm = () => {
-  const [myProfile, setMyProfile] = useState("");
+  // const [myProfile, setMyProfile] = useState("");
+// identify username and load user data
+const { username: userParam } = useParams();
+
+const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  variables: { username: userParam },
+});
+  const user = data?.me || data?.user || {};
+  const [myProfile, setMyProfile] = useState(`${user.myProfile}`);
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE, {
     update(cache, { data: { addProfile } }) {
@@ -51,14 +59,12 @@ const ProfileForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log("handleFormSubmit");
     try {
       const { data } = await addProfile({
         variables: {
           myProfile,
         },
       });
-      // setMyProfile("");
       console.log(data);
     } catch (err) {
       console.error(err);
@@ -97,7 +103,8 @@ const ProfileForm = () => {
                 <Grid item xs={12}>
                   <TextareaAutosize
                     name="myProfile"
-                    placeholder="All about me..."
+                    // placeholder="All about me..."
+                    myProfile={myProfile}
                     value={myProfile}
                     variant="outlined"
                     className="form-input"
@@ -123,7 +130,12 @@ const ProfileForm = () => {
                   >
                     Update Profile
                   </CustomisedSubmitButton>
-                  {error && <div>{error.message}</div>}
+                  <Typography
+                    variant="body1"
+                    style={{ color: "#A61A14", fontWeight: 700 }}
+                  >
+                    {error && <div>{error.message}</div>}
+                  </Typography>
                 </Grid>
               </Box>
             </form>
