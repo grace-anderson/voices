@@ -72,10 +72,9 @@ const resolvers = {
       }
       console.log("myProfile in addProfile", myProfile);
       if (context.user) {
-
-     const updateProfile =  await User.findOneAndUpdate(
+        const updateProfile = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $set: { myProfile } }, 
+          { $set: { myProfile } },
           { new: true }
         );
 
@@ -106,9 +105,17 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     // add updateStory
-    updateStory: async (parent, { storyId, storyTitle, storyIntro, myStory }, context) => {
+    updateStory: async (
+      parent,
+      { storyId, storyTitle, storyIntro, myStory },
+      context
+    ) => {
       if (context.user) {
-        return await Story.findOneAndUpdate({ _id: storyId }, { $set: { storyTitle, storyIntro, myStory } }, { new: true });
+        return await Story.findOneAndUpdate(
+          { _id: storyId },
+          { $set: { storyTitle, storyIntro, myStory } },
+          { new: true }
+        );
       }
       throw new AuthenticationError("You need to be logged in!");
     },

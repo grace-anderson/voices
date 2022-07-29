@@ -38,8 +38,12 @@ const typeDefs = gql`
     addProfile(myProfile: String!): User
     login(email: String!, password: String!): Auth
     addStory(storyTitle: String!, storyIntro: String!, myStory: String!): Story
-    # add update story
-    updateStory(storyId: ID!, storyTitle: String!, storyIntro: String!, myStory: String!): Story
+    updateStory(
+      storyId: ID!
+      storyTitle: String!
+      storyIntro: String!
+      myStory: String!
+    ): Story
     removeStory(storyId: ID!): Story
   }
 `;
