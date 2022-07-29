@@ -4,7 +4,6 @@ import { useQuery, useMutation } from "@apollo/client";
 
 import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
-
 import ProfileForm from "../components/ProfileForm";
 
 import { Grid, Typography } from "@mui/material";
@@ -15,12 +14,14 @@ import { QUERY_USER, QUERY_ME, QUERY_STORIES } from "../utils/queries";
 import Auth from "../utils/auth";
 
 const Profile = () => {
+  // identify username and load user data
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
 
+  // for adding a story from the profile page
   const [addStory, { error }] = useMutation(ADD_STORY, {
     update(cache, { data: { addStory } }) {
       try {
@@ -34,7 +35,7 @@ const Profile = () => {
         console.error(e);
       }
 
-      // update me object's cache
+      // update (user's) me object's cache with stories
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
@@ -44,7 +45,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
+  // navigate to personal profile page if username is auth user
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
   }
@@ -62,6 +63,7 @@ const Profile = () => {
     );
   }
 
+  //handle form submit for adding story
   const handleStoryFormSubmit = async (formValues) => {
     try {
       const { data } = await addStory({
@@ -90,14 +92,13 @@ const Profile = () => {
         <Typography variant="h1">{user.username}</Typography>
       </Grid>
       <Grid item xs={1} />
-
       {/* Profile form */}
       <Grid item xs={2} />
       <Grid item xs={8}>
+        {/* display profile form to the logged in user with identified username */}
         {!userParam && <ProfileForm />}
       </Grid>
       <Grid item xs={2} />
-
       {/* Display saved profile */}
       {/* Profile heading */}
       <Grid item xs={1} />
@@ -111,8 +112,6 @@ const Profile = () => {
       <Grid item xs={1} md={4} />
       <Grid item xs={10} md={4} sx={{ marginBottom: 8 }}>
         <Typography
-          // variant="subtitle1"
-          // sx={{ fontWeight: 500, fontSize: "1.1rem" }}
           variant="body1"
           sx={{
             textAlign: "left",
@@ -143,6 +142,7 @@ const Profile = () => {
           display: "flex",
           textAlign: "center",
           justifyContent: "center",
+          marginBottom: 2,
         }}
       >
         <Typography variant="h4">
@@ -150,7 +150,7 @@ const Profile = () => {
         </Typography>
       </Grid>
       <Grid item xs={1} />
-      {/* stories displayed */}
+      {/* Display the logged in user's stories (where user === username)  */}
       <Grid item xs={12}>
         <StoryList
           stories={user.stories}

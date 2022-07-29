@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
 
 import {
   Button,
@@ -10,8 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import { ADD_STORY } from "../../utils/mutations";
-import { QUERY_STORIES, QUERY_ME } from "../../utils/queries";
+// import { ADD_STORY } from "../../utils/mutations";
+// import { QUERY_STORIES, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -41,61 +40,35 @@ const CustomisedSubmitButton = styled(Button)`
   
 */
 const StoryForm = ({
+  // initial empty Values when adding a new story
   onSubmit,
   error,
   initialStoryTitle = "",
-  initialStoryInto = "",
+  initialStoryIntro = "",
   initialMyStory = "",
 }) => {
   const [storyTitle, setStoryTitle] = useState(initialStoryTitle);
-  const [storyIntro, setStoryIntro] = useState(initialStoryInto);
+  const [storyIntro, setStoryIntro] = useState(initialStoryIntro);
   const [myStory, setMyStory] = useState(initialMyStory);
 
   //can do count with .length
-  const [titleCharacterCount, setTitleCharacterCount] = useState(0);
-  const [introCharacterCount, setIntroCharacterCount] = useState(0);
+  const [titleCharacterCount, setTitleCharacterCount] = useState(initialStoryTitle.length);
+  const [introCharacterCount, setIntroCharacterCount] = useState(initialStoryIntro.length);
 
-  // const [addStory, { error }] = useMutation(ADD_STORY, {
-  //   update(cache, { data: { addStory } }) {
-  //     try {
-  //       const { stories } = cache.readQuery({ query: QUERY_STORIES });
-
-  //       cache.writeQuery({
-  //         query: QUERY_STORIES,
-  //         data: { stories: [addStory, ...stories] },
-  //       });
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-
-  //     // update me object's cache
-  //     const { me } = cache.readQuery({ query: QUERY_ME });
-  //     cache.writeQuery({
-  //       query: QUERY_ME,
-  //       data: { me: { ...me, stories: [...me.stories, addStory] } },
-  //     });
-  //   },
-  // });
+  // const [titleCharacterCount, setTitleCharacterCount] = {useState(0);
+  // const [introCharacterCount, setIntroCharacterCount] = useState(0);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // const { data } = await addStory({
-      //   variables: {
-      //     storyTitle,
-      //     storyIntro,
-      //     myStory,
-      //     storyAuthor: Auth.getProfile().data.username,
-      //   },
-      // });
       onSubmit({
         storyTitle,
         storyIntro,
         myStory,
         storyAuthor: Auth.getProfile().data.username,
       });
-
+      //clear form values after submit
       setStoryTitle("");
       setStoryIntro("");
       setMyStory("");
@@ -122,6 +95,19 @@ const StoryForm = ({
     }
   };
 
+  // conditional display form heading and button label
+  let formTitle = "";
+  let buttonLabel = "";
+  if (initialStoryTitle.length === 0) {
+    formTitle = "Take some time to write a story...";
+    buttonLabel = "Add Story";
+  } else {
+    formTitle = "Edit your story...";
+    buttonLabel = "Update Story";
+  }
+
+  // conditional display button label
+
   return (
     <>
       <Grid
@@ -136,7 +122,7 @@ const StoryForm = ({
         }}
       >
         {/* form heading row */}
-        <Typography variant="h3">Take some time to write a story...</Typography>
+        <Typography variant="h3">{formTitle}</Typography>
 
         {Auth.loggedIn() ? (
           <>
@@ -263,7 +249,7 @@ const StoryForm = ({
                   sx={{ marginTop: 3 }}
                   type="submit"
                 >
-                  Add Story
+                  {buttonLabel}
                 </CustomisedSubmitButton>
               </Grid>
               {error && <div className="">{error.message}</div>}
