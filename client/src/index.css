@@ -11,3 +11,8 @@ body {
     background-position: center center;
     background-size: cover;
 }
+
+a:-webkit-any-link {
+    color: #103e3f;
+    text-decoration: none;
+  }

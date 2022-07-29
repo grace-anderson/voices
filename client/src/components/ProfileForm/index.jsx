@@ -33,7 +33,6 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 const ProfileForm = () => {
-
   // identify username and load user data
   const { username: userParam } = useParams();
 
@@ -44,9 +43,11 @@ const ProfileForm = () => {
   const user = data?.me || data?.user || {};
 
   // use state of myProfile if user has entered profile, otherwise add placeholder text
-  const [myProfile, setMyProfile] = useState( user.myProfile ? `${user.myProfile}` : "Add your profile here");
+  const [myProfile, setMyProfile] = useState(
+    user.myProfile ? `${user.myProfile}` : "Add your profile here"
+  );
 
-  console.log(`${user.myProfile}`)
+  console.log(`${user.myProfile}`);
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE, {
     update(cache, { data: { addProfile } }) {
@@ -80,12 +81,14 @@ const ProfileForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     if (name === "myProfile") {
       setMyProfile(value);
-      console.log("myProfile", value);
+      // console.log("myProfile", value);
     }
   };
+
+  if (loading) return <div>Fetching profile</div>;
+  if (error) return <div>Error fetching profile</div>;
 
   return (
     <>
@@ -96,7 +99,7 @@ const ProfileForm = () => {
           flexDirection: "column",
           textAlign: "center",
           justifyContent: "center",
-          marginTop: 1,
+          marginTop: 4,
           marginBottom: 4,
         }}
       >
@@ -110,12 +113,13 @@ const ProfileForm = () => {
                 <Grid item xs={12}>
                   <TextareaAutosize
                     name="myProfile"
-                    placeholder="All about me..."
+                    // placeholder="All about me..."
                     myProfile={myProfile}
                     value={myProfile}
                     variant="outlined"
                     className="form-input"
                     type={"text"}
+                    fullWidth
                     onChange={handleChange}
                     style={{
                       marginTop: "1rem",
@@ -135,7 +139,7 @@ const ProfileForm = () => {
                     sx={{ margin: 3 }}
                     type="submit"
                   >
-                    Update Profile
+                      Update Profile
                   </CustomisedSubmitButton>
                   <Typography
                     variant="body1"
