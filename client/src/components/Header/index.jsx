@@ -45,6 +45,9 @@ const CustomisedTab = styled(Tab)`
 `;
 const CustomisedTabLink = styled(Link)`
   text-decoration: none;
+  :hover {
+    color: #dd4614;
+  }
 `;
 const CustomisedToProfileButton = styled(Link)`
   font-size: 1rem;
@@ -83,7 +86,7 @@ const Header = () => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState();
 
   return (
     <React.Fragment>
@@ -142,10 +145,7 @@ const Header = () => {
                           }}
                           variant="contained"
                         >
-                          <CustomisedLink
-                            className="btn"
-                            to="/join"
-                          >
+                          <CustomisedLink className="btn" to="/join">
                             Join Voices
                           </CustomisedLink>
                         </CustomisedButton>
@@ -166,13 +166,12 @@ const Header = () => {
               </Grid>
               <Grid item xs={8}>
                 <Tabs
-                  indicatorColor="false"
                   fontSize="1.2rem"
                   value={value}
                   sx={{
                     textAlign: "left",
                   }}
-                  onChange={(e, val) => setValue(val)}
+                  onChange={(e, value) => setValue(value) && console.log(value)}
                 >
                   {/* {links.map((link, index) => (
                     <CustomisedTab key={index} label={link}  />

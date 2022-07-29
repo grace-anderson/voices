@@ -23,7 +23,7 @@ const Stories = () => {
             display: "flex",
             textAlign: "center",
             justifyContent: "center",
-            marginTop: 1,
+            marginTop: 4,
           }}
         >
           <Typography variant="h1" sx={{marginBottom: "2rem"}}>All our stories</Typography>
