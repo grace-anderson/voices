@@ -120,52 +120,53 @@ const Profile = () => {
         <Typography variant="h1">{user.username}</Typography>
       </Grid>
       <Grid item xs={1} />
+
       {/* Links to profile sections */}
-
-      <Grid
-        container
-        style={{ width: "100%" }}
-        sx={{
-          display: "flex",
-          // flexDirection: 'row',
-          flexWrap: "wrap",
-          textAlign: "center",
-          justifyContent: "space-between",
-          maxWidth: "100%",
-          p: 1,
-          m: 1,
-        }}
-      >
-        <Grid item xs={12} md={6} lg={3}>
-          <CustomisedProfileButton variant="outlined">
-            <CustomisedProfileHashLink smooth to={"/me#profile-form"}>
-              Update your profile
-            </CustomisedProfileHashLink>
-          </CustomisedProfileButton>
+      {!userParam && (
+        <Grid
+          container
+          style={{ width: "100%" }}
+          sx={{
+            display: "flex",
+            // flexDirection: 'row',
+            flexWrap: "wrap",
+            textAlign: "center",
+            justifyContent: "space-between",
+            maxWidth: "100%",
+            marginTop: 4,
+            marginBottom: 2,
+          }}
+        >
+          <Grid item xs={12} md={6} lg={3} sx={{ marginBottom: 2 }}>
+            <CustomisedProfileButton variant="outlined">
+              <CustomisedProfileHashLink smooth to={"/me#profile-form"}>
+                Update your profile
+              </CustomisedProfileHashLink>
+            </CustomisedProfileButton>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3} sx={{ marginBottom: 2 }}>
+            <CustomisedProfileButton variant="outlined">
+              <CustomisedProfileHashLink smooth to={"/me#profile"}>
+                View your profile
+              </CustomisedProfileHashLink>
+            </CustomisedProfileButton>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3} sx={{ marginBottom: 2 }}>
+            <CustomisedProfileButton variant="outlined">
+              <CustomisedProfileHashLink smooth to={"/me#write-story"}>
+                Write a story
+              </CustomisedProfileHashLink>
+            </CustomisedProfileButton>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3} sx={{ marginBottom: 2 }}>
+            <CustomisedProfileButton variant="outlined">
+              <CustomisedProfileHashLink smooth to={"/me#stories"}>
+                View your stories
+              </CustomisedProfileHashLink>
+            </CustomisedProfileButton>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6} lg={3}>
-          <CustomisedProfileButton variant="outlined">
-            <CustomisedProfileHashLink smooth to={"/me#profile"}>
-              View your profile
-            </CustomisedProfileHashLink>
-          </CustomisedProfileButton>
-        </Grid>
-        <Grid item xs={12} md={6} lg={3}>
-          <CustomisedProfileButton variant="outlined">
-            <CustomisedProfileHashLink smooth to={"/me#write-story"}>
-              Write a story
-            </CustomisedProfileHashLink>
-          </CustomisedProfileButton>
-        </Grid>
-        <Grid item xs={12} md={6} lg={3}>
-          <CustomisedProfileButton variant="outlined">
-            <CustomisedProfileHashLink smooth to={"/me#stories"}>
-              View your stories
-            </CustomisedProfileHashLink>
-          </CustomisedProfileButton>
-        </Grid>
-      </Grid>
-
+      )}
       {/* Profile form */}
       <Grid item xs={2} />
       <Grid item xs={8} id="profile-form">

@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 
 const CustomisedLinkStory = styled(Link)`
-  color: #103e3f;
   text-decoration: none;
   font-family: Roboto;
   font-size: 1rem;
@@ -20,19 +19,6 @@ const CustomisedLinkStory = styled(Link)`
   margin-top: 1rem;
   :hover {
     color: #dd4614;
-    font-weight: 700;
-    font-size: 1rem;
-  }
-`;
-
-const CustomisedLinkStoryOrange = styled(Link)`
-  color: #dd4614;
-  text-decoration: none;
-  font-family: Roboto;
-  font-size: 1rem;
-  font-weight: 500;
-  :hover {
-    color: #103e3f;
     font-weight: 700;
     font-size: 1rem;
   }
@@ -131,12 +117,12 @@ const StoryList = ({ stories, showUsername = true }) => {
                     marginBottom: 2,
                   }}
                 >
-                  <CustomisedLinkStoryOrange
+                  <CustomisedLinkStory
                     className="btn"
                     to={`/stories/${story._id}`}
                   >
                     Read the whole story
-                  </CustomisedLinkStoryOrange>
+                  </CustomisedLinkStory>
                 </CardActions>
               </div>
             </Card>

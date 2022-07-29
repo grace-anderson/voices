@@ -33,7 +33,7 @@ const CustomisedLink = styled(Link)`
   text-decoration: none;
 `;
 const CustomisedLinkHome = styled(Link)`
-  color: #103e3f;
+  color: white;
   text-decoration: none;
   :hover {
     color: #dd4614;
@@ -64,6 +64,7 @@ const CustomisedToProfileButton = styled(Link)`
     0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   :hover {
     color: white;
+    font-weight: 400;
     background: #dd4614;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
@@ -74,7 +75,6 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
     //go to home page
-    
   };
 
   const theme = useTheme();
@@ -142,7 +142,10 @@ const Header = () => {
                           }}
                           variant="contained"
                         >
-                          <CustomisedLink className="btn" to="/join">
+                          <CustomisedLink
+                            className="btn"
+                            to="/join"
+                          >
                             Join Voices
                           </CustomisedLink>
                         </CustomisedButton>

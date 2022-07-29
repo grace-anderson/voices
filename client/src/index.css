@@ -12,7 +12,16 @@ body {
     background-size: cover;
 }
 
+/* css overrides to manage custom links */
 a:-webkit-any-link {
     color: #103e3f;
     text-decoration: none;
+  }
+
+ a.css-dvn85d {
+    color: #fff;
+  }
+
+  a.css-wxcut6 {
+    color: #fff;
   }
