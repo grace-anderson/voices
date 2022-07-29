@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 import { ADD_PROFILE } from "../../utils/mutations";
-import {  QUERY_USER, QUERY_ME } from "../../utils/queries";
+import { QUERY_USER, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -33,15 +33,20 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 const ProfileForm = () => {
-  // const [myProfile, setMyProfile] = useState("");
-// identify username and load user data
-const { username: userParam } = useParams();
 
-const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-  variables: { username: userParam },
-});
+  // identify username and load user data
+  const { username: userParam } = useParams();
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
+  });
+
   const user = data?.me || data?.user || {};
-  const [myProfile, setMyProfile] = useState(`${user.myProfile}`);
+
+  // use state of myProfile if user has entered profile, otherwise add placeholder text
+  const [myProfile, setMyProfile] = useState( user.myProfile ? `${user.myProfile}` : "Add your profile here");
+
+  console.log(`${user.myProfile}`)
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE, {
     update(cache, { data: { addProfile } }) {
@@ -49,7 +54,9 @@ const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: { ...me, myProfile: addProfile.myProfile }} || `No profile added yet`,
+          data:
+            { me: { ...me, myProfile: addProfile.myProfile } } ||
+            `No profile added yet`,
         });
       } catch (e) {
         console.error(e);
