@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   AppBar,
@@ -45,9 +45,6 @@ const CustomisedTab = styled(Tab)`
 `;
 const CustomisedTabLink = styled(Link)`
   text-decoration: none;
-  :hover {
-    color: #dd4614;
-  }
 `;
 const CustomisedToProfileButton = styled(Link)`
   font-size: 1rem;
@@ -80,17 +77,18 @@ const Header = () => {
     //go to home page
   };
 
+  const nav = useNavigate();
+
   const theme = useTheme();
   console.log(theme);
 
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
 
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(0);
 
   return (
     <React.Fragment>
-      const theme = useTheme(); console.log(theme);
       <AppBar
         sx={{
           backgroundColor: "#eeedeb",
@@ -173,18 +171,24 @@ const Header = () => {
                   }}
                   onChange={(e, value) => setValue(value) && console.log(value)}
                 >
-                  {/* {links.map((link, index) => (
-                    <CustomisedTab key={index} label={link}  />
-                  ))} */}
-                  <CustomisedTabLink to={"/"}>
-                    <CustomisedTab label="HOME" />
-                  </CustomisedTabLink>
-                  <CustomisedTabLink to={"/stories"}>
-                    <CustomisedTab label="ALL OUR STORIES" />
-                  </CustomisedTabLink>
-                  <CustomisedTabLink to={"/about"}>
-                    <CustomisedTab label="ABOUT US" />
-                  </CustomisedTabLink>
+                  <Tab
+                    label="HOME"
+                    onClick={() => {
+                      nav("/");
+                    }}
+                  />
+                  <Tab
+                    label="ALL OUR STORIES"
+                    onClick={() => {
+                      nav("/stories");
+                    }}
+                  />
+                  <Tab
+                    label="ABOUT US"
+                    onClick={() => {
+                      nav("/about");
+                    }}
+                  />
                 </Tabs>
               </Grid>
               <Grid item xs={3}>
