@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import CloseIcon from "@mui/icons-material/Close";
 
-// import dotenv
-
 import {
   Box,
   Button,
@@ -31,21 +29,23 @@ const CustomisedSubmitButton = styled(Button)`
 
 function ContactForm() {
 
-  // require("dotenv").config();
-
   const form = useRef();
 
   const [open, setOpen] = React.useState(false);
 
+  console.log(process.env)
 
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_il3hfvi",
-        "template_wgpl7rr",
+        // "service_il3hfvi",
+        process.env.REACT_APP_SERVICE_ID,
+        // "template_wgpl7rr",
+        process.env.REACT_APP_TEMPLATE_ID,
         form.current,
-        "qN8AKYtpmiXqcVjJg"
+        // "qN8AKYtpmiXqcVjJg",
+        process.env.REACT_APP_USER_ID
       )
       .then(
         (result) => console.log(result.status, result.text),
