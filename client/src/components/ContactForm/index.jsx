@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import CloseIcon from "@mui/icons-material/Close";
 
+// import dotenv
+
 import {
   Box,
   Button,
@@ -28,7 +30,7 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 function ContactForm() {
-  // import dotenv
+
   // require("dotenv").config();
 
   const form = useRef();
