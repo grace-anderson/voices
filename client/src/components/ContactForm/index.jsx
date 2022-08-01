@@ -42,7 +42,7 @@ function ContactForm() {
         // (error) => console.log(error.text)
         (response) => {
           console.log("SUCCESS!", response.status, response.text);
-          alert("SUCCESS! Your email has been sent.");
+          alert("SUCCESS! Your email has been sent to Voices.");
         },
         (error) => {
           console.log("FAILED...", error);
