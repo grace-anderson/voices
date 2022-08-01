@@ -38,8 +38,16 @@ function ContactForm() {
         "qN8AKYtpmiXqcVjJg"
       )
       .then(
-        (result) => console.log(result.text),
-        (error) => console.log(error.text)
+        // (result) => console.log(result.text),
+        // (error) => console.log(error.text)
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("SUCCESS! Your email has been sent.");
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          alert("FAILED. Sorry your email did not send.", error);
+        }
       );
     e.target.reset();
   };
@@ -80,7 +88,7 @@ function ContactForm() {
               variant="outlined"
               style={{
                 backgroundColor: "white",
-                fontFamily: "Roboto', sans-serif"
+                fontFamily: "Roboto', sans-serif",
               }}
               type="email"
               required
