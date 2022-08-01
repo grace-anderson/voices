@@ -114,12 +114,12 @@ const ProfileForm = () => {
                   <TextareaAutosize
                     name="myProfile"
                     // placeholder="All about me..."
-                    myProfile={myProfile}
+                    // myProfile={myProfile}
                     value={myProfile}
                     variant="outlined"
                     className="form-input"
                     type={"text"}
-                    fullWidth
+                    // fullWidth
                     onChange={handleChange}
                     style={{
                       marginTop: "1rem",
