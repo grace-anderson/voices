@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   Box,
   Button,
+  IconButton,
+  Snackbar,
   styled,
   TextareaAutosize,
   TextField,
@@ -25,11 +28,16 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 function ContactForm() {
+  // import dotenv
+  // require("dotenv").config();
+
   const form = useRef();
+
+  const [open, setOpen] = React.useState(false);
+
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         "service_il3hfvi",
@@ -38,19 +46,33 @@ function ContactForm() {
         "qN8AKYtpmiXqcVjJg"
       )
       .then(
-        // (result) => console.log(result.text),
-        // (error) => console.log(error.text)
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          alert("SUCCESS! Your email has been sent to Voices.");
-        },
-        (error) => {
-          console.log("FAILED...", error);
-          alert("FAILED. Sorry your email did not send.", error);
-        }
+        (result) => console.log(result.status, result.text),
+        setOpen(true),
+        (error) => console.log(error.text)
       );
     e.target.reset();
   };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <>
@@ -79,8 +101,6 @@ function ContactForm() {
               type="text"
               required
             />
-            {/* <label>Email</label> */}
-            {/* <input type="email" name="user_email" /> */}
             <TextField
               placeholder="Enter your email"
               label="Email"
@@ -94,8 +114,6 @@ function ContactForm() {
               required
               sx={{ marginTop: 2, marginBottom: 2 }}
             />
-            {/* <label>Message</label> */}
-            {/* <textarea name="message" /> */}
             <TextareaAutosize
               placeholder="Add your message"
               label="Message"
@@ -113,7 +131,6 @@ function ContactForm() {
                 whiteSpace: "pre-wrap",
               }}
             />
-            {/* <input type="submit" value="Send" /> */}
             <Box
               style={{ cursor: "pointer" }}
               textAlign={"center"}
@@ -122,6 +139,14 @@ function ContactForm() {
               <CustomisedSubmitButton type="submit" value="Send">
                 SEND MESSAGE
               </CustomisedSubmitButton>
+              <Snackbar
+                open={open}
+                autoHideDuration={4000}
+                onClose={handleClose}
+                action={action}
+                severity="success"
+                message="Email sent successfully!"
+              />
             </Box>
           </Box>
         </form>

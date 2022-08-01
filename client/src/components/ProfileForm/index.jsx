@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 
 import {
+  Alert,
   Box,
   Button,
   Grid,
   TextareaAutosize,
+  Stack,
   styled,
   Typography,
 } from "@mui/material";
@@ -87,8 +89,15 @@ const ProfileForm = () => {
     }
   };
 
-  if (loading) return <div>Fetching profile</div>;
-  if (error) return <div>Error fetching profile</div>;
+  if (loading) return <Typography variant="h4">Fetching profile...</Typography>;
+  if (error)
+    return (
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <Alert severity="Error">
+          Sorry, error fetching profile. Please try again.
+        </Alert>
+      </Stack>
+    );
 
   return (
     <>
@@ -139,7 +148,7 @@ const ProfileForm = () => {
                     sx={{ margin: 3 }}
                     type="submit"
                   >
-                      Update Profile
+                    Update Profile
                   </CustomisedSubmitButton>
                   <Typography
                     variant="body1"

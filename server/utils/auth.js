@@ -1,3 +1,6 @@
+// import dotenv
+// require('dotenv').config();
+
 const jwt = require('jsonwebtoken');
 
 const secret = 'mysecretssshhhhhhh';
