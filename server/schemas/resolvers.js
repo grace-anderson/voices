@@ -70,7 +70,6 @@ const resolvers = {
       if (!myProfile) {
         throw new Error("Have you added something in your profile?");
       }
-      console.log("myProfile in addProfile", myProfile);
       if (context.user) {
         const updateProfile = await User.findOneAndUpdate(
           { _id: context.user._id },

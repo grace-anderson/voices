@@ -68,16 +68,14 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-    //go to home page
+    //logout takes user to home page
   };
 
   const nav = useNavigate();
 
   const theme = useTheme();
-  console.log(theme);
 
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(isMatch);
 
   const [value, setValue] = React.useState(0);
 
@@ -163,7 +161,7 @@ const Header = () => {
                   sx={{
                     textAlign: "left",
                   }}
-                  onChange={(e, value) => setValue(value) && console.log(value)}
+                  onChange={(e, value) => setValue(value)}
                 >
                   <Tab
                     label="HOME"

@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import CloseIcon from "@mui/icons-material/Close";
-
 import {
   Box,
   Button,
@@ -28,41 +27,36 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 function ContactForm() {
-
   const form = useRef();
-
   const [open, setOpen] = React.useState(false);
-
-  console.log(process.env)
-
+  // send email on contact form button submit
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        // "service_il3hfvi",
         process.env.REACT_APP_SERVICE_ID,
-        // "template_wgpl7rr",
         process.env.REACT_APP_TEMPLATE_ID,
         form.current,
-        // "qN8AKYtpmiXqcVjJg",
         process.env.REACT_APP_USER_ID
       )
       .then(
-        (result) => console.log(result.status, result.text),
-        setOpen(true),
+        (result) => {
+          console.log(result.text);
+          // open snackbar
+          setOpen(true);
+        },
         (error) => console.log(error.text)
       );
     e.target.reset();
   };
-
+  // handle close of the snackbar
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
-
+  // snackbar action
   const action = (
     <React.Fragment>
       <IconButton
@@ -78,6 +72,7 @@ function ContactForm() {
 
   return (
     <>
+      {/* contact form */}
       <Box sx={{ flexGrow: 1 }}>
         <form ref={form} onSubmit={sendEmail}>
           <Box
@@ -89,8 +84,7 @@ function ContactForm() {
               marginRight: "auto",
             }}
           >
-            {/* <label>Name</label> */}
-            {/* <input type="text" name="user_name" /> */}
+            {/* name field */}
             <TextField
               placeholder="Enter your name"
               label="Name"
@@ -103,6 +97,7 @@ function ContactForm() {
               type="text"
               required
             />
+            {/* email field */}
             <TextField
               placeholder="Enter your email"
               label="Email"
@@ -116,6 +111,7 @@ function ContactForm() {
               required
               sx={{ marginTop: 2, marginBottom: 2 }}
             />
+            {/* message field */}
             <TextareaAutosize
               placeholder="Add your message"
               label="Message"
@@ -141,15 +137,16 @@ function ContactForm() {
               <CustomisedSubmitButton type="submit" value="Send">
                 SEND MESSAGE
               </CustomisedSubmitButton>
-              <Snackbar
-                open={open}
-                autoHideDuration={4000}
-                onClose={handleClose}
-                action={action}
-                severity="success"
-                message="Email sent successfully!"
-              />
-            </Box>
+              {/* snackbar appears on submit */}
+                <Snackbar
+                  open={open}
+                  autoHideDuration={4000}
+                  onClose={handleClose}
+                  action={action}
+                  severity="success"
+                  message="Email sent successfully!"
+                />
+              </Box>
           </Box>
         </form>
       </Box>

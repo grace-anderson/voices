@@ -18,9 +18,6 @@ const UpdateStoryForm = () => {
     variables: { storyId: storyId },
   });
 
-  const story = data;
-  console.log(story, "story");
-
   let navigate = useNavigate();
 
   const [updateStory, { error }] = useMutation(UPDATE_STORY);

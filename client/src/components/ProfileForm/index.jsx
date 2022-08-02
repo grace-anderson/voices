@@ -75,7 +75,7 @@ const ProfileForm = () => {
           myProfile,
         },
       });
-      console.log(data);
+      console.log("Profile handleFormSubmit", data);
     } catch (err) {
       console.error(err);
     }
@@ -85,7 +85,6 @@ const ProfileForm = () => {
     const { name, value } = event.target;
     if (name === "myProfile") {
       setMyProfile(value);
-      // console.log("myProfile", value);
     }
   };
 

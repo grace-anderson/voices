@@ -35,7 +35,6 @@ const UserProfile = ({ user, myProfile }) => {
     >
       <Typography variant="h2">{user}'s Profile</Typography>,
       <Typography variant="body1">{myProfile}</Typography>
-      console.log("myProfile-is this displaying?");
     </Grid>
   );
 };
