@@ -37,24 +37,16 @@ const UpdateStoryForm = () => {
     }
   };
 
-  // RETURN FORM to update story
+  // RETURN form with story data, to update story
   return (
     <>
       <Grid
         container
         sx={{
-          // display: "flex",
-          // flexDirection: "column",
-          // textAlign: "center",
-          // justifyContent: "center",
           marginTop: 10,
           marginBottom: 2
         }}
       >
-
-        {/* form heading row */}
-        {/* <Typography variant="h3">Edit your story...</Typography> */}
-
         <StoryForm
           onSubmit={handleStoryFormSubmit}
           error={error}

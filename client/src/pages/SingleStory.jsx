@@ -6,9 +6,7 @@ import { Button, Grid, styled, Typography } from "@mui/material";
 
 import { QUERY_SINGLE_STORY } from "../utils/queries";
 import { QUERY_ME } from "../utils/queries";
-
 import { REMOVE_STORY } from "../utils/mutations";
-// import { UpdateStoryForm } from "../components/UpdateStoryForm";
 
 import Auth from "../utils/auth";
 
@@ -32,7 +30,7 @@ const SingleStory = () => {
   //STORY
   // Use `useParams()` to retrieve value of the route parameter `:storyId`
   const { storyId } = useParams();
-  // load the story data / load user data here?
+  // load the story data
   const { loading, data } = useQuery(QUERY_SINGLE_STORY, {
     // pass URL parameter
     variables: { storyId: storyId },
@@ -46,13 +44,7 @@ const SingleStory = () => {
     return <div>Loading...</div>;
   }
 
-  // IDENTIFY USER
-  //1. identify if story author === logged in user
-  //IDENTIFY IF
-  //a.user is logged in AND
-  //b.user is story author
-  //2. => if so, show EDIT STORY and DELETE STORY buttons
-
+  // Identify if logged in user
   console.log(
     "Is author logged in?",
     Auth.loggedIn() && Auth.getProfile()?.data?.username === story.storyAuthor
@@ -69,7 +61,6 @@ const SingleStory = () => {
         variables: { storyId },
         refetchQueries: [{ query: QUERY_ME }],
       });
-      // navigate("/profile/:" + username);
       navigate("/me");
     } catch (err) {
       console.error(err);

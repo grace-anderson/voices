@@ -60,8 +60,6 @@ const Join = () => {
     });
   };
 
-  // const [errorText, setErrorText] = useState();
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -74,7 +72,6 @@ const Join = () => {
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
-      // setErrorText(e);
     }
   };
 
@@ -153,8 +150,6 @@ const Join = () => {
                     value={formState.name}
                     required
                     onChange={handleChange}
-                    // helperText={errorText}
-                    // error={error}
                   />
                   <TextField
                     placeholder="Your email"

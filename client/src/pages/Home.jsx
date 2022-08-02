@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 
-// import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Grid, Typography } from "@mui/material";
 
 import StoryList from "../components/StoryList";
@@ -58,7 +57,7 @@ const Home = () => {
           </Typography>
         </Grid>
         <Grid item xs={1} />
-        {/*Recent Stories list */}
+        {/*Recent Stories list - limited to six stories */}
         <Grid item xs={12}>
           {loading ? (
             <div>Loading...</div>

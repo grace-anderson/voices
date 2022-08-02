@@ -9,9 +9,6 @@ import {
   Typography,
 } from "@mui/material";
 
-// import { ADD_STORY } from "../../utils/mutations";
-// import { QUERY_STORIES, QUERY_ME } from "../../utils/queries";
-
 import Auth from "../../utils/auth";
 
 const CustomisedSubmitButton = styled(Button)`
@@ -30,15 +27,6 @@ const CustomisedSubmitButton = styled(Button)`
   }
 `;
 
-/*
-  1. StoryForm is going to be a stateful component that takes in initial form values and onSubmit
-    a. when creating a story, initial values would be empty strings
-    b. when updating a story, initial values would be the current story values
-  2. Move out " const [addStory, { error }] = useMutation(ADD_STORY," out of this component to a AddStory component
-  3. Similary the updateStory mutation would be setup in UpdateStory
-
-  
-*/
 const StoryForm = ({
   // initial empty Values when adding a new story
   onSubmit,
@@ -51,12 +39,9 @@ const StoryForm = ({
   const [storyIntro, setStoryIntro] = useState(initialStoryIntro);
   const [myStory, setMyStory] = useState(initialMyStory);
 
-  //can do count with .length
+  //use text length to show character count
   const [titleCharacterCount, setTitleCharacterCount] = useState(initialStoryTitle.length);
   const [introCharacterCount, setIntroCharacterCount] = useState(initialStoryIntro.length);
-
-  // const [titleCharacterCount, setTitleCharacterCount] = {useState(0);
-  // const [introCharacterCount, setIntroCharacterCount] = useState(0);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -105,8 +90,6 @@ const StoryForm = ({
     formTitle = "Edit your story...";
     buttonLabel = "Update Story";
   }
-
-  // conditional display button label
 
   return (
     <>

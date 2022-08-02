@@ -44,7 +44,7 @@ const ProfileForm = () => {
 
   const user = data?.me || data?.user || {};
 
-  // use state of myProfile if user has entered profile, otherwise add placeholder text
+  // use state of myProfile if user has entered profile, otherwise show placeholder profile text
   const [myProfile, setMyProfile] = useState(
     user.myProfile ? `${user.myProfile}` : "Add your profile here"
   );
@@ -80,7 +80,7 @@ const ProfileForm = () => {
       console.error(err);
     }
   };
-
+//profile form retains profile text for logged in user to edit and update
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "myProfile") {
@@ -121,13 +121,10 @@ const ProfileForm = () => {
                 <Grid item xs={12}>
                   <TextareaAutosize
                     name="myProfile"
-                    // placeholder="All about me..."
-                    // myProfile={myProfile}
                     value={myProfile}
                     variant="outlined"
                     className="form-input"
                     type={"text"}
-                    // fullWidth
                     onChange={handleChange}
                     style={{
                       marginTop: "1rem",

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import {
   Card,
-  // CardMedia,
   CardActions,
   CardContent,
   Grid,
@@ -50,7 +49,6 @@ const StoryList = ({ stories, showUsername = true }) => {
       flexDirection="row"
       justify="space-between"
       justifyContent="center"
-      // sx={{ marginLeft: "auto", marginRight: "auto" }}
     >
       {stories &&
         stories.map((story) => (
@@ -67,7 +65,6 @@ const StoryList = ({ stories, showUsername = true }) => {
               }}
             >
               <div>
-                {/* <CardMedia/>*/}
                 {/* Card Content */}
                 <CardContent>
                   <Typography
@@ -126,7 +123,7 @@ const StoryList = ({ stories, showUsername = true }) => {
                 </CardActions>
               </div>
             </Card>
-            {/* end of card */}
+            {/* end of story card */}
           </Grid>
         ))}
     </Grid>

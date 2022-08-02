@@ -34,6 +34,7 @@ const Footer = () => {
       <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 10 }}>
         <Container maxWidth="lg">
           <Grid container spacing={5} sx={{ placeItems: "center" }} >
+            {/* Go back button */}
             <Grid item xs={12}>
               <Box textAlign={"center"}>
               {location.pathname !== "/" && (
@@ -47,6 +48,7 @@ const Footer = () => {
               )}
               </Box>
             </Grid>
+            {/* copyright notice */}
             <Grid item xs={12}>
               <Box textAlign={"center"}>
                 <CustomisedLinkHome to="/about">

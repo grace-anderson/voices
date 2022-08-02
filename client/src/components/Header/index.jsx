@@ -68,7 +68,7 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-    //logout takes user to home page
+    //Logging out takes user to home page
   };
 
   const nav = useNavigate();
@@ -102,6 +102,7 @@ const Header = () => {
                 <Grid item xs={3} />
                 <Grid item xs={4}>
                   <Box display="flex">
+                    {/* Profile and logout buttons show when user logged in */}
                     {Auth.loggedIn() ? (
                       <>
                         <CustomisedToProfileButton className="" to="/me">
@@ -148,6 +149,7 @@ const Header = () => {
           ) : (
             <Grid container sx={{ placeItems: "center" }}>
               <Grid item xs={1}>
+                {/* voices logo takes user to home */}
                 <CustomisedLinkHome className="" to="/">
                   <Typography variant="subtitle2" sx={{ textAlign: "left" }}>
                     Voices

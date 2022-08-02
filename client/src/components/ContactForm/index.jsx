@@ -25,6 +25,8 @@ const CustomisedSubmitButton = styled(Button)`
   }
 `;
 
+//placeholder contact form
+//future enhancement: add heroku email addon
 function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

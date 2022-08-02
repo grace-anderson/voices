@@ -128,14 +128,13 @@ const Profile = () => {
       </Grid>
       <Grid item xs={1} />
 
-      {/* Links to profile sections */}
+      {/* Show anchor links to profile sections, if logged in user's profile*/}
       {!userParam && (
         <Grid
           container
           style={{ width: "100%" }}
           sx={{
             display: "flex",
-            // flexDirection: 'row',
             flexWrap: "wrap",
             textAlign: "center",
             justifyContent: "space-between",
