@@ -7,7 +7,7 @@ import StoryForm from "../components/StoryForm";
 import StoryList from "../components/StoryList";
 import ProfileForm from "../components/ProfileForm";
 
-import { Button, Grid, styled, Typography } from "@mui/material";
+import { Alert, Button, Grid, Stack, styled, Typography } from "@mui/material";
 
 import { ADD_STORY } from "../utils/mutations";
 import { QUERY_USER, QUERY_ME, QUERY_STORIES } from "../utils/queries";
@@ -100,11 +100,18 @@ const Profile = () => {
     }
   };
 
-  if (loading) return <div>Fetching profile</div>;
-  if (error) return <div>Error fetching profile</div>;
+  if (loading) return <Typography variant="h4">Fetching profile...</Typography>;
+  if (error)
+    return (
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <Alert severity="Error">
+          Sorry, error fetching profile. Please try again.
+        </Alert>
+      </Stack>
+    );
 
   return (
-    <Grid container>
+    <Grid container id="top">
       {/* heading row */}
       <Grid item xs={1} />
       <Grid
@@ -206,7 +213,25 @@ const Profile = () => {
         </Typography>
       </Grid>
       <Grid item xs={1} md={4} />
-      {/* Story form row */}
+      {/* link to top of page */}
+      <Grid
+        item
+        xs={12}
+        style={{ width: "100%" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: "100%",
+          marginBottom: 4,
+        }}
+      >
+        <CustomisedProfileButton variant="outlined">
+          <CustomisedProfileHashLink smooth to={"/me#top"}>
+            Go to top of page
+          </CustomisedProfileHashLink>
+        </CustomisedProfileButton>
+      </Grid>
+      {/* Story form */}
       <Grid item xs={2} />
       <Grid item xs={8} id="write-story" sx={{ marginTop: 1 }}>
         {!userParam && (
@@ -214,6 +239,24 @@ const Profile = () => {
         )}
       </Grid>
       <Grid item xs={2} />
+      {/* link to top of page */}
+      <Grid
+        item
+        xs={12}
+        style={{ width: "100%" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: "100%",
+          marginBottom: "4rem",
+        }}
+      >
+        <CustomisedProfileButton variant="outlined">
+          <CustomisedProfileHashLink smooth to={"/me#top"}>
+            Go to top of page
+          </CustomisedProfileHashLink>
+        </CustomisedProfileButton>
+      </Grid>
       {/* your stories heading */}
       <Grid item xs={1} />
       <Grid
@@ -239,6 +282,25 @@ const Profile = () => {
           showTitle={false}
           showUsername={false}
         />
+      </Grid>
+      {/* link to top of page */}
+      <Grid
+        item
+        xs={12}
+        style={{ width: "100%" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: "100%",
+          marginTop: "4rem",
+          marginBottom: "4rem",
+        }}
+      >
+        <CustomisedProfileButton variant="outlined">
+          <CustomisedProfileHashLink smooth to={"/me#top"}>
+            Go to top of page
+          </CustomisedProfileHashLink>
+        </CustomisedProfileButton>
       </Grid>
     </Grid>
   );
