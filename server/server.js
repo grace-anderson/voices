@@ -31,11 +31,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
 
-  if (process.env.Node_ENV === "production") {
-    app.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "../client/build/index.html"));
-    });
-  }
+	if (process.env.NODE_ENV === "production") {
+		app.get("*", (req, res) => {
+			res.sendFile(path.join(__dirname, "../client/build/index.html"));
+		});
+	}
 
   db.once("open", () => {
     app.listen(PORT, () => {
