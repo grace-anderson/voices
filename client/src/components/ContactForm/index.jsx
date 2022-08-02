@@ -1,14 +1,13 @@
-import React, { useRef } from "react";
-import emailjs from "emailjs-com";
-import CloseIcon from "@mui/icons-material/Close";
+import React, { useState } from "react";
+import { validateEmail, validateName, validateMessage } from "../utils/helpers";
+
 import {
   Box,
   Button,
-  IconButton,
-  Snackbar,
   styled,
   TextareaAutosize,
   TextField,
+  Typography,
 } from "@mui/material";
 
 const CustomisedSubmitButton = styled(Button)`
@@ -27,55 +26,86 @@ const CustomisedSubmitButton = styled(Button)`
 `;
 
 function ContactForm() {
-  const form = useRef();
-  const [open, setOpen] = React.useState(false);
-  // send email on contact form button submit
-  const sendEmail = (e) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleBlank = (e) => {
+    //handle when field exited without entering anything
     e.preventDefault();
-    e.target.reset();
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        form.current,
-        process.env.REACT_APP_USER_ID
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          // open snackbar
-          setOpen(true);
-        },
-        (error) => console.log(error.text)
-      );
-    e.target.reset();
+    if (
+      e.target.name === "name" ||
+      e.target.name === "message" ||
+      e.target.name === "email"
+    ) {
+      if (e.target.value.length === 0) {
+        setErrorMessage(`${e.target.name} is required`);
+        setSuccessMessage("");
+      }
+    }
   };
-  // handle close of the snackbar
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+
+  const handleInputChange = (e) => {
+    //get field that triggered the change
+    const { target } = e;
+    const inputType = target.name;
+    const inputValue = target.value;
+    setSuccessMessage("");
+    // Set the input field state to the value of the input
+    if (inputType === "email") {
+      setEmail(inputValue);
+    } else if (inputType === "name") {
+      setName(inputValue);
+    } else {
+      setMessage(inputValue);
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateName(name)) {
+      setErrorMessage("name must be at least four (4) characters");
+      return;
+    } else if (!validateEmail(email)) {
+      setErrorMessage("email is invalid");
+      return;
+    } else if (validateMessage(message)) {
+      setErrorMessage("message is empty");
       return;
     }
-    setOpen(false);
+    setSuccessMessage(
+      `Thank you, ${name}. Contact form submitted successfully.`
+    );
+
+    // Clear input and error message after successful submission
+    setName("");
+    setEmail("");
+    setMessage("");
+    setErrorMessage("");
   };
-  // snackbar action
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
 
   return (
     <>
       {/* contact form */}
+      {/* form container */}
       <Box sx={{ flexGrow: 1 }}>
-        <form ref={form} onSubmit={sendEmail}>
+        {/* form container details */}
+        <form>
+          {/* form title */}
+          <Box
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <Typography variant="h4">Hello {name}!</Typography>
+          </Box>
           <Box
             style={{
               display: "flex",
@@ -87,39 +117,44 @@ function ContactForm() {
           >
             {/* name field */}
             <TextField
+              value={name}
+              name="name"
+              onBlur={handleBlank}
+              onChange={handleInputChange}
+              type="text"
               placeholder="Enter your name"
-              label="Name"
-              name="user_name"
               variant="outlined"
               style={{
                 backgroundColor: "white",
                 fontFamily: "Roboto', sans-serif",
               }}
-              type="text"
               required
             />
             {/* email field */}
             <TextField
-              placeholder="Enter your email"
-              label="Email"
-              name="user_email"
+              value={email}
+              name="email"
+              onBlur={handleBlank}
+              onChange={handleInputChange}
+              type="email"
+              placeholder="Add your email"
               variant="outlined"
               style={{
                 backgroundColor: "white",
                 fontFamily: "Roboto', sans-serif",
               }}
-              type="email"
-              required
               sx={{ marginTop: 2, marginBottom: 2 }}
+              required
             />
             {/* message field */}
             <TextareaAutosize
-              placeholder="Add your message"
-              label="Message"
+              value={message}
               name="message"
-              variant="outlined"
+              onBlur={handleBlank}
+              onChange={handleInputChange}
               type="text"
-              required
+              placeholder="Type your message here"
+              variant="outlined"
               style={{
                 backgroundColor: "white",
                 padding: "1rem",
@@ -129,27 +164,31 @@ function ContactForm() {
                 fontSize: "1rem",
                 whiteSpace: "pre-wrap",
               }}
+              required
             />
             <Box
               style={{ cursor: "pointer" }}
               textAlign={"center"}
               sx={{ marginTop: 2, marginBottom: 2 }}
             >
-              <CustomisedSubmitButton type="submit" value="Send">
+              <CustomisedSubmitButton type="button" onClick={handleFormSubmit}>
                 SEND MESSAGE
               </CustomisedSubmitButton>
-              {/* snackbar appears on submit */}
-                <Snackbar
-                  open={open}
-                  autoHideDuration={4000}
-                  onClose={handleClose}
-                  action={action}
-                  severity="success"
-                  message="Email sent successfully!"
-                />
-              </Box>
+            </Box>
           </Box>
         </form>
+        <Box textAlign={"center"} sx={{ marginTop: 2, marginBottom: 2 }}>
+          {errorMessage && (
+            <div>
+              <Typography variant="body1" sx={{color: "#A61A14", fontWeight: 600}}>{errorMessage}</Typography>
+            </div>
+          )}
+          {successMessage && (
+            <div>
+              <Typography variant="body1" sx={{fontWeight: 500}}>{successMessage}</Typography>
+            </div>
+          )}
+        </Box>
       </Box>
     </>
   );
