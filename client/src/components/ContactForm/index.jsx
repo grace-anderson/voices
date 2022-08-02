@@ -32,6 +32,7 @@ function ContactForm() {
   // send email on contact form button submit
   const sendEmail = (e) => {
     e.preventDefault();
+    e.target.reset();
     emailjs
       .sendForm(
         process.env.REACT_APP_SERVICE_ID,

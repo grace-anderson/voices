@@ -5,7 +5,7 @@
 
 **Voices** is publishing app built as a single-page MERN application built using React, GraphQL, Node.js and Express.js server, Mongoose ODM and MongoDB. The app provides a safe space for people to become writers by providing tools to write and sharing their stories and creations without the commentary or feedback typical of a social media-style app. 
 
-[Create-react-app](https://github.com/facebook/create-react-app) was used to kick start app development. [React Router](https://www.npmjs.com/package/react-router-dom) was used to create the routing. MVP email functionality was added using [EmailJS](https://www.emailjs.com/) software as a service. The app is styled using [Material-UI](https://mui.com/) with the [Emotion styling engine](https://emotion.sh/docs/introduction). User authentication is handled using [JWT](https://jwt.io/).
+[Create-react-app](https://github.com/facebook/create-react-app) was used to kick start app development. [React Router](https://www.npmjs.com/package/react-router-dom) was used to create the routing. The app is styled using [Material-UI](https://mui.com/) with the [Emotion styling engine](https://emotion.sh/docs/introduction). User authentication is handled using [JWT](https://jwt.io/).
 
 The app is deployed to [Heroku](TODO), with the code available on [GitHub](https://github.com/grace-anderson/voices)
 
@@ -34,7 +34,6 @@ This application uses the following technologies. See the package.json files in 
 * [@emotion/react](https://www.npmjs.com/package/@emotion/react)
 * [@emotion/styled](https://www.npmjs.com/package/@emotion/styled)
 * [@mui/material](https://www.npmjs.com/package/@mui/material)
-* [emailjs-com](https://www.npmjs.com/package/@emailjs/browser)
 * [graphql](https://www.npmjs.com/package/graphql)
 * [jwt-decode](https://www.npmjs.com/package/jwt-decode)
 * [prop-types](https://www.npmjs.com/package/prop-types)
