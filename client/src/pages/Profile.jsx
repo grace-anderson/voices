@@ -214,32 +214,7 @@ const Profile = () => {
       </Grid>
       <Grid item xs={1} md={4} />
       {/* link to top of page */}
-      <Grid
-        item
-        xs={12}
-        style={{ width: "100%" }}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          maxWidth: "100%",
-          marginBottom: 4,
-        }}
-      >
-        <CustomisedProfileButton variant="outlined">
-          <CustomisedProfileHashLink smooth to={"/me#top"}>
-            Go to top of page
-          </CustomisedProfileHashLink>
-        </CustomisedProfileButton>
-      </Grid>
-      {/* Story form */}
-      <Grid item xs={2} />
-      <Grid item xs={8} id="write-story" sx={{ marginTop: 1 }}>
-        {!userParam && (
-          <StoryForm onSubmit={handleStoryFormSubmit} error={error} />
-        )}
-      </Grid>
-      <Grid item xs={2} />
-      {/* link to top of page */}
+      {!userParam && (
       <Grid
         item
         xs={12}
@@ -257,6 +232,35 @@ const Profile = () => {
           </CustomisedProfileHashLink>
         </CustomisedProfileButton>
       </Grid>
+      )}
+      {/* Story form */}
+      <Grid item xs={2} />
+      <Grid item xs={8} id="write-story" sx={{ marginTop: 1 }}>
+        {!userParam && (
+          <StoryForm onSubmit={handleStoryFormSubmit} error={error} />
+        )}
+      </Grid>
+      <Grid item xs={2} />
+      {/* link to top of page */}
+      {!userParam && (
+      <Grid
+        item
+        xs={12}
+        style={{ width: "100%" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: "100%",
+          marginBottom: "4rem",
+        }}
+      >
+        <CustomisedProfileButton variant="outlined">
+          <CustomisedProfileHashLink smooth to={"/me#top"}>
+            Go to top of page
+          </CustomisedProfileHashLink>
+        </CustomisedProfileButton>
+      </Grid>
+      )}
       {/* your stories heading */}
       <Grid item xs={1} />
       <Grid
@@ -284,6 +288,7 @@ const Profile = () => {
         />
       </Grid>
       {/* link to top of page */}
+      {!userParam && (
       <Grid
         item
         xs={12}
@@ -292,8 +297,7 @@ const Profile = () => {
           display: "flex",
           justifyContent: "center",
           maxWidth: "100%",
-          marginTop: "4rem",
-          marginBottom: "4rem",
+          marginTop: "4rem"
         }}
       >
         <CustomisedProfileButton variant="outlined">
@@ -302,6 +306,7 @@ const Profile = () => {
           </CustomisedProfileHashLink>
         </CustomisedProfileButton>
       </Grid>
+      )}
     </Grid>
   );
 };
