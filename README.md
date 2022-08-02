@@ -7,7 +7,7 @@
 
 [Create-react-app](https://github.com/facebook/create-react-app) was used to kick start app development. [React Router](https://www.npmjs.com/package/react-router-dom) was used to create the routing. The app is styled using [Material-UI](https://mui.com/) with the [Emotion styling engine](https://emotion.sh/docs/introduction). User authentication is handled using [JWT](https://jwt.io/).
 
-The app is deployed to [Heroku](TODO), with the code available on [GitHub](https://github.com/grace-anderson/voices)
+The app is deployed to [Heroku](https://voices-stories.herokuapp.com), with the code available on [GitHub](https://github.com/grace-anderson/voices)
 
 
 ## Table of Contents
@@ -67,7 +67,7 @@ This application uses the following technologies. See the package.json files in 
 
 ## Usage
 
-* Access the live **Voices** app via its [Heroku](TODO)
+* Access the live **Voices** app via its [Heroku](https://voices-stories.herokuapp.com)
 
 ## Functionality
 
