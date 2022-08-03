@@ -3,7 +3,7 @@
 
 ## Description
 
-**Voices** is publishing app built as a single-page MERN application built using React front-end, GraphQL, Node.js and Express.js server, Mongoose ODM and MongoDB. The app provides a safe space for people to become writers by providing tools to write and publish their stories without the commentary or feedback typical of a social media-style app. Future planned development is to extend the app into a curated publishing app
+**Voices** is publishing app built as a single-page MERN application built using React front-end, GraphQL, Node.js and Express.js server, Mongoose ODM and MongoDB. The app provides a safe space for people to become writers by providing tools to write and publish their stories without the commentary or feedback typical of a social media-style app. Writers can also choose how much of their identity they wish to share via their username and profile. Future planned development is to extend the app into a curated publishing app
 
 [Create-react-app](https://github.com/facebook/create-react-app) was used to kick start app development. [React Router](https://www.npmjs.com/package/react-router-dom) was used to create the routing. The app is styled using [Material-UI](https://mui.com/) with the [Emotion styling engine](https://emotion.sh/docs/introduction). User authentication is handled using [JWT](https://jwt.io/).
 
@@ -83,15 +83,16 @@ The current MVP release of **Voices** delivers the following functionality.
 ## Future development
 
 This initial release of the Voices app fulfils client MVP requirements. Future planned releases include
-* donation and subscription payment options using payment platform such as Stripe
+* enhanced functionality sensitive to the user context, including an improved contact form
 * expanded writing and creation capabilities including adding images, video, and audio to the current text capability, enhanced text editing (e.g. rich text), and a manifest writing tool with local storage
 * the ability for the writer to choose components of their profile to share publicly
 * the ability for the writer to choose to publish a story.
+* a review and feedback workflow where writers review and comment on each other's work
+* capability to form writing groups that can be connected to geographic or virtual meet ups
+* donation and subscription payment options using payment platform such as Stripe
 * an enhanced publishing workflow with administrator curation and editorial feedback
 * administrator control of the home page to enable promotion of selected stories and events  
-* a review and feedback workflow where writers review and comment on each other's work
-* enhanced functionality sensitive to the user context, including an improved contact form
-* capability to form writing groups that can be connected to geographic or virtual meet ups
+
 
 ## Installation
 
