@@ -83,17 +83,20 @@ The current MVP release of **Voices** delivers the following functionality.
 ## Future development
 
 This initial release of the Voices app fulfils client MVP requirements. Future planned releases include
-* enhanced functionality sensitive to the user context, including an improved contact form
+* working contact form
 * search functionality 
-* expanded writing and creation capabilities including adding images, video, and audio to the current text capability, enhanced text editing (e.g. rich text), and a manifest writing tool with local storage
-* the ability for the writer to choose components of their profile to share publicly
-* the ability for the writer to choose to publish a story.
-* a review and feedback workflow where writers review and comment on each other's work
+* expanded creation capabilities 
+  * adding images, video, and audio 
+  * enhanced text editing (e.g. rich text)
+  * manifest writing tool with local storage
+* the ability for the writer to choose 
+  * components of their profile to share publicly
+  * to publish a story.
+* a review workflow where writers comment on each other's work
 * capability to form writing groups that can be connected to geographic or virtual meet ups
 * donation and subscription payment options using payment platform such as Stripe
-* an enhanced publishing workflow with administrator curation and editorial feedback
+* publishing workflow with administrator curation and editorial feedback
 * administrator control of the home page to enable promotion of selected stories and events  
-
 
 ## Installation
 
