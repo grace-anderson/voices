@@ -3,7 +3,6 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   palette: {
     primary: {
-      // main: "#D9B589",
       main: "#103E3F",
     },
     secondary: {
@@ -18,36 +17,12 @@ export const theme = createTheme({
       fontWeight: "700",
     },
   },
-  // palette: {
-  //   type: 'light',
-  //   primary: {
-  //     main: '#DD4614',
-  //   },
-  //   secondary: {
-  //     main: '#103E3F',
-  //   },
-  //   background: {
-  //     paper: '#eeedeb',
-  //     default: '#fcfbfb',
-  //   },
-  //   divider: '#A61A14',
-  //   text: {
-  //     primary: '#181517',
-  //     secondary: '#2f2c2e',
-  //     disabled: '#464445',
-  //     hint: '#5d5b5d',
-  //   },
-  //   error: {
-  //     main: '#A61A14',
-  //   },
-  // },
   typography: {
     h1: {
       fontFamily: '"Satisfy", cursive',
       fontSize: "4rem",
       marginTop: "8rem",
       marginBottom: "1rem",
-      // color: "#F2762E",
       color: "#DD4614",
       fontWeight: 400,
     },
@@ -63,25 +38,14 @@ export const theme = createTheme({
       fontSize: "3rem",
       color: "#103E3F",
     },
-    // h4: {
-    //   fontFamily: '"Satisfy", cursive',
-    //   fontSize: "2.8rem",
-    //   color: "#DD4614",
-    // },
     h4: {
-      fontFamily: "Roboto",
+      fontFamily: '"Roboto", sans-serif',
       fontSize: "1.6rem",
       marginBottom: "1rem",
       fontWeight: 700,
     },
-    // h5: {
-    //   fontFamily: '"Satisfy", cursive',
-    //   fontSize: "2rem",
-    //   marginBottom: "1rem",
-    //   color: "#103E3F",
-    // },
     h5: {
-      fontFamily: "Roboto",
+      fontFamily: '"Roboto", sans-serif',
       fontSize: "1.2rem",
       fontWeight: 700,
     },
@@ -90,8 +54,8 @@ export const theme = createTheme({
       fontSize: "2.4rem",
       color: "#white",
     },
+    body1: {
+      fontFamily: '"Roboto", sans-serif',
+    }
   },
-  // components: {
-  //   MuiButton: {}
-  // }
 });
