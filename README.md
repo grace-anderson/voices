@@ -84,6 +84,7 @@ The current MVP release of **Voices** delivers the following functionality.
 
 This initial release of the Voices app fulfils client MVP requirements. Future planned releases include
 * enhanced functionality sensitive to the user context, including an improved contact form
+* search functionality 
 * expanded writing and creation capabilities including adding images, video, and audio to the current text capability, enhanced text editing (e.g. rich text), and a manifest writing tool with local storage
 * the ability for the writer to choose components of their profile to share publicly
 * the ability for the writer to choose to publish a story.
