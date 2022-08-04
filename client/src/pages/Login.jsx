@@ -169,7 +169,7 @@ const Login = (props) => {
                     sx={{ marginTop: 2, marginBottom: 2 }}
                   >
                     <CustomisedSubmitButton type="submit">
-                      Submit
+                      LOGIN
                     </CustomisedSubmitButton>
                   </Box>
                 </Box>

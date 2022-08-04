@@ -179,7 +179,7 @@ const Join = () => {
                     sx={{ marginTop: 2, marginBottom: 2 }}
                   >
                     <CustomisedSubmitButton type="submit">
-                      Submit
+                      JOIN VOICES
                     </CustomisedSubmitButton>
                   </Box>
                 </Box>
